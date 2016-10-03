@@ -1,0 +1,19 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPages/Base/Base.Master" AutoEventWireup="true" CodeBehind="Anonimo.master.cs" Inherits="AlquilaCocheras.Web.MasterPages.Anonimo" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head_Base" runat="server">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder_Head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Principal_Base" runat="server">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">AlquilaCochera</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="default.aspx">Inicio</a></li>
+                <li><a href="login.aspx">Ingresar</a></li>
+                <li><a href="registracion.aspx">Registrarse</a></li>
+            </ul>
+        </div>
+    </nav>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder_Principal" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
