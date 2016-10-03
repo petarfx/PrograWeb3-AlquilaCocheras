@@ -17,7 +17,7 @@
     
     <%--si no se encuentran resultados mostrar mensaje "No se encontraron resultados"--%>
     <%--<asp:Label ID="lblResultado" runat="server"></asp:Label>--%>
-    <%--Fin User Control--%>--%>
+    <%--Fin User Control--%>
     <uc:Buscador runat="server" ID="ucBuscador" EnableViewState="false" />
 
 

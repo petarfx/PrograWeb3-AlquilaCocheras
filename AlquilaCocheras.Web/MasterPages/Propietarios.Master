@@ -7,14 +7,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Principal_Base" runat="server">
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo right">AlquilaCochera</a>
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <a href="#" class="brand-logo"><i class="material-icons left">local_parking</i><i class="material-icons left">directions_car</i> AlquilerCochera</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
                     <asp:Label ID="lblUsuario" runat="server" Text=""></asp:Label></li>
-                <li><a href="propietarios/cocheras.aspx">Crear cochera​</a></li>
-                <li><a href="​propietarios/perfil.aspx">Perfil</a></li>
-                <li><a href="propietarios/reservas.aspx">Reservas</a></li>
-                <li><a href="~/login.html">Cerrar Sesion</a></li>
+                <li><a href="propietarios/cocheras.aspx"><i class="material-icons left">add_location</i>Crear cochera​</a></li>
+                <li><a href="​propietarios/perfil.aspx"><i class="material-icons left">account_circle</i>Perfil</a></li>
+                <li><a href="propietarios/reservas.aspx"><i class="material-icons left">list</i>Reservas</a></li>
+                <li><a href="../login.aspx"><i class="material-icons left">exit_to_app</i>Cerrar Sesion</a></li>
             </ul>
         </div>
     </nav>
