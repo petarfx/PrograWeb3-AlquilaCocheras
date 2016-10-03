@@ -1,18 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Clientes.Master" AutoEventWireup="true" CodeBehind="reservar.aspx.cs" Inherits="AlquilaCocheras.Web.clientes.reservar" %>
-
+<%@ Register TagName="Buscador" TagPrefix="uc" src="~/ucBuscador.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Principal" runat="server">
     <%--Esto va en un UserControl--%>
     <%--Inicio User Control--%>
-    <asp:Label ID="label1" runat="server" Text="Ubicación: "></asp:Label>
+    <%--<asp:Label ID="label1" runat="server" Text="Ubicación: "></asp:Label>
     <asp:TextBox ID="txtUbicacion" runat="server" ClientIDMode="Static"></asp:TextBox>
-    <asp:Button ID="btnFiltrar" runat="server" Text="Buscar" ClientIDMode="Static" />
+    <asp:Button ID="btnFiltrar" runat="server" Text="Buscar" ClientIDMode="Static" />--%>
 
     <%--si no se encuentran resultados mostrar mensaje "No se encontraron resultados"--%>
-    <asp:Label ID="lblResultado" runat="server"></asp:Label>
+    <%--<asp:Label ID="lblResultado" runat="server"></asp:Label>--%>
 
     <%--Fin User Control--%>
+
+    <uc:Buscador runat="server" ID="ucBuscador" EnableViewState="false" />
 
       <%--    LISTADO  (gridview, repeater o datalist)
     Por cada disponibilidad se deberá mostrar la siguiente información:

@@ -11,7 +11,19 @@ namespace AlquilaCocheras.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
+        }
+
+        protected void btnRegistrarUsuario_Click(object sender, EventArgs e)
+        {
+            if (rblPerfil.SelectedValue != "")
+            {
+                lblResultado.Text = "Registración exitosa, diríjase al login";
+            }
+            else
+            {
+                lblResultado.Text = "Ingrese el perfil";
+            }
         }
     }
 }

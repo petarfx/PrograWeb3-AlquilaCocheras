@@ -103,6 +103,15 @@ namespace AlquilaCocheras.Web {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revEmail;
         
         /// <summary>
+        /// Control label6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label6;
+        
+        /// <summary>
         /// Control rblPerfil.
         /// </summary>
         /// <remarks>

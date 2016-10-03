@@ -6,11 +6,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Principal_Base" runat="server">
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo center">AlquilaCochera</a>
+            <a href="#" class="brand-logo right"><i class="material-icons left">directions_car</i>AlquilaCochera</a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a href="default.aspx">Inicio</a></li>
-                <li><a href="login.aspx">Ingresar</a></li>
-                <li><a href="registracion.aspx">Registrarse</a></li>
+                <li><a href="default.aspx"><i class="material-icons left">home</i>Inicio</a></li>
+                <li><a href="login.aspx"><i class="material-icons left ">fingerprint</i>Ingresar</a></li>
+                <li><a href="registracion.aspx"><i class="material-icons left">today</i>Registrarse</a></li>
             </ul>
         </div>
     </nav>
