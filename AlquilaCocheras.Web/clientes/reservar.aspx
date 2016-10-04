@@ -14,7 +14,7 @@
 
     <%--Fin User Control--%>
 
-    <uc:Buscador runat="server" ID="ucBuscador" EnableViewState="false" />
+    <uc:Buscador runat="server" ID="ucBuscador" myUbicacion="txtUbicacion" myFiltrar="btnFiltrar" EnableViewState="false" />
 
       <%--    LISTADO  (gridview, repeater o datalist)
     Por cada disponibilidad se deberá mostrar la siguiente información:

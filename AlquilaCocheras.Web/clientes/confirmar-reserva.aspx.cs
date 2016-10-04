@@ -11,7 +11,21 @@ namespace AlquilaCocheras.Web.clientes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            { }
+            if (Request.QueryString["idcochera"] != null)
+            {
+                //Si tuviera los datos en la bd hago un get por idcochera para obtener todos los datos..
+                #region datosPruebaVisualizar
+                txtFechaInicio.Text = "10/05/2016";
+                txtFechaFin.Text = "20/05/2016";
+                txtHorarioInicio.Text = "08:00";
+                txtHorarioFin.Text = "17:00";
+                lblPrecioHora.Text = "20";
+                lblPrecioTotal.Text = "$ 1800";
+                lblUbicacion.Text = "HAEDO";
+                #endregion
+            }
         }
     }
 }

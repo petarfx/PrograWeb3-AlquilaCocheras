@@ -11,7 +11,10 @@ namespace AlquilaCocheras.Web.MasterPages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                Session["ROL"] = null;
+            }
         }
     }
 }

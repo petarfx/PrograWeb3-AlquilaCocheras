@@ -12,8 +12,32 @@
             precio total.
             puntuación 
         
-        --%>
-    <asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>
+    --%>
+    <table class="highlight light-blue">
+        <thead>
+            <tr>
+                <th data-field="fechaInicio">fecha inicio</th>
+                <th data-field="fechaFin">fecha fin</th>
+                <th data-field="hora">horario</th>
+                <th data-field="precioTotal">precio total</th>
+                <th data-field="puntuacion">puntuacion</th>
+                <th data-field="Select"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10/05/2016</td>
+                <td>20/05/2016</td>
+                <td>9</td>
+                <td>$1800.00</td>
+                <td>4</td>
+                <td><asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    
 
 
     <!-- Modal -->

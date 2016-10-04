@@ -27,10 +27,6 @@
     <asp:Label ID="lblResultado" runat="server"></asp:Label>
     <asp:Button ID="btnRegistrarUsuario" runat="server" Text="Registrar usuario" ClientIDMode="Static" />--%>
 
-
-
-
-
     <div class="row">
         <div class="col s12 m10 offset-m1">
             <div class="z-depth-4 card-panel">
@@ -77,7 +73,6 @@
                         <asp:CompareValidator ID="cvContraseñas" runat="server" ControlToCompare="txtContrasenia" ControlToValidate="txtConfContrasenia" ErrorMessage="Las Contraseñas no coinciden" ForeColor="Red" ValueToCompare="=">*</asp:CompareValidator>
                     </div>
                 </div>
-
                 
                 <div class="row">
                     <div class=" col s12 m12 center-align input-field">
@@ -97,9 +92,5 @@
             </div>
         </div>
     </div>
-
-
-
-
 
 </asp:Content>

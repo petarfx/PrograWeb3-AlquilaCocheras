@@ -18,7 +18,7 @@
     <%--si no se encuentran resultados mostrar mensaje "No se encontraron resultados"--%>
     <%--<asp:Label ID="lblResultado" runat="server"></asp:Label>--%>
     <%--Fin User Control--%>
-    <uc:Buscador runat="server" ID="ucBuscador" EnableViewState="false" />
+    <uc:Buscador runat="server" ID="ucBuscador" myFiltrar="btnFiltrar" EnableViewState="false" />
 
 
     <%--    LISTADO  (gridview, repeater o datalist)
