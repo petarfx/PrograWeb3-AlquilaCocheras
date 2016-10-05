@@ -7,19 +7,26 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="~/css/materialize.min.css" />
     <link rel="stylesheet" type="text/css" href="~/css/material-icons.css" />
-    <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/css/calendar.css"/>    
     <asp:ContentPlaceHolder ID="head_Base" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body class="cyan loaded">
     <div class="container">
-        <form id="form1" runat="server">
+        <form id="form1" runat="server">            
             <div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder_Principal_Base" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
         </form>
     </div>
+    <%--<script type="text/javascript" src="~/js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="~/js/materialize.min.js"></script>
+    <script type="text/javascript" src="~/js/script.js"></script>--%>
+
+    <script src='<%= ResolveUrl("~/js/jquery-3.1.1.js") %>'></script>
+    <script src='<%= ResolveUrl("~/js/materialize.min.js") %>'></script>
+    <script src='<%= ResolveUrl("~/js/script.js") %>'></script>
+    <script src='<%= ResolveUrl("~/js/userControlBuscador.js") %>'></script>
 </body>
 </html>

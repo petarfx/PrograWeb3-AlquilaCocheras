@@ -11,6 +11,11 @@ namespace AlquilaCocheras.Web.propietarios
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                //Para que siempre pueda editar la fecha de inicio
+                esEdicion.Value = "true";
+            }
 
         }
     }

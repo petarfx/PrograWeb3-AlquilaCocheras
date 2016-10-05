@@ -22,6 +22,15 @@ namespace AlquilaCocheras.Web {
         protected global::AlquilaCocheras.Web.ucBuscador ucBuscador;
         
         /// <summary>
+        /// Control gvCocheras.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvCocheras;
+        
+        /// <summary>
         /// Control aConfirmar.
         /// </summary>
         /// <remarks>

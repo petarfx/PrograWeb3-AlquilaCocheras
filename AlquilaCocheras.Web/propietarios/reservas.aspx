@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Principal" runat="server">
-
+    <asp:HiddenField ID="esEdicion" runat="server" />
     <div class="row">
         <div class="col s12 m10 offset-m1">
             <div class="z-depth-4 card-panel">
