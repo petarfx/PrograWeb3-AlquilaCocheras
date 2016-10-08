@@ -29,10 +29,9 @@
                     ForeColor="Red">Debe ingresar al menos un campo</asp:CustomValidator>
             </div>
             <div class="row center-align">
-                <%--<div class=" col s12 m10 offset-m1 input-field">
-                    <asp:Button ID="btnFiltrar" runat="server" Text="Buscar" ClientIDMode="Static" />
-                </div>--%>
-                <asp:LinkButton ID="btnFiltrar" CssClass="btn cyan waves-effect waves-light" runat="server" Text="Buscar" ClientIDMode="Static" CausesValidation="true"></asp:LinkButton>
+                <%--<div class=" col s12 m10 offset-m1 input-field">--%>
+                    <asp:Button ID="btnFiltrar" CssClass="btn cyan waves-effect waves-light" runat="server" Text="Buscar" ClientIDMode="Static" CausesValidation="true"/>
+                <%--</div>--%>               
 
             </div>
             <div class="row center-align">

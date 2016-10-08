@@ -163,7 +163,7 @@ namespace AlquilaCocheras.Web.clientes {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnConfirmar;
+        protected global::System.Web.UI.WebControls.Button btnConfirmar;
         
         /// <summary>
         /// Control btnCancelar.
@@ -172,7 +172,7 @@ namespace AlquilaCocheras.Web.clientes {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnCancelar;
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
         
         /// <summary>
         /// Control lblResultado.

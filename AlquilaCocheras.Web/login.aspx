@@ -58,7 +58,7 @@
                 </div>
                 <div class="row">
                     <div class="col s12 m12 center-align input-field">
-                        <asp:LinkButton ID="btnLogin" CssClass="btn cyan waves-effect waves-light" runat="server" Text="Ingresar" OnClick="btnLogin_Click"></asp:LinkButton>
+                        <asp:Button ID="btnLogin" CssClass="btn cyan waves-effect waves-light" runat="server" Text="Ingresar" OnClick="btnLogin_Click"></asp:Button>
                     </div>
                 </div>
             </div>

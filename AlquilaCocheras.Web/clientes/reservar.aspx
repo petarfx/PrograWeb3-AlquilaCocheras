@@ -14,7 +14,7 @@
 
     <%--Fin User Control--%>
 
-    <uc:Buscador runat="server" ID="ucBuscador" myUbicacion="txtUbicacion" myFiltrar="btnFiltrar" EnableViewState="false" />
+    <uc:Buscador runat="server" ID="ucBuscador" EnableViewState="false" />
 
       <%--    LISTADO  (gridview, repeater o datalist)
     Por cada disponibilidad se deberá mostrar la siguiente información:
@@ -28,5 +28,45 @@
     y el link a confirmar reserva que esta agregado abajo como asp:HyperLink, 
         donde deberán cambiarle dinamicamente el link y ponerle el idcochera correspondiente
     --%>
+
+    <div class="row">
+        <asp:GridView ID="gvCocheras" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" OnRowDataBound="gvCocheras_RowDataBound" OnPreRender="gvCocheras_PreRender">
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:TemplateField HeaderText="idCochera" Visible="False">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("idCochera") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblid" runat="server" Text='<%# Bind("idCochera") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField HeaderText="Precio" DataField="Precio" />
+                <asp:BoundField HeaderText="ApeyNom" DataField="ApeyNom" />
+                <asp:BoundField HeaderText="PrecioTotal" DataField="PrecioTotal" />
+                <asp:BoundField HeaderText="Foto" DataField="Foto" />
+                <asp:BoundField HeaderText="Mapa" DataField="Mapa" />
+                <asp:BoundField HeaderText="Puntuacion" DataField="Puntuacion" />
+                <asp:TemplateField HeaderText="Reservar">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        </asp:GridView>
+    </div>
     <asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>
 </asp:Content>

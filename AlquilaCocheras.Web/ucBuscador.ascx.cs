@@ -41,7 +41,7 @@ namespace AlquilaCocheras.Web
             set { txtFechaFin.Text = value; }
         }
     //"btnFiltrar"
-        public LinkButton myFiltrar
+        public Button myFiltrar
         {
             get { return btnFiltrar; }
             //set { btnFiltrar.Text = value; }

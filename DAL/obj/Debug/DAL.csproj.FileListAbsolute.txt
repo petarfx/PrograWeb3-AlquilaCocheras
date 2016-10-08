@@ -2,3 +2,4 @@ C:\Proyectos\PrograWeb3-AlquilaCocheras\DAL\bin\Debug\DAL.dll
 C:\Proyectos\PrograWeb3-AlquilaCocheras\DAL\bin\Debug\DAL.pdb
 C:\Proyectos\PrograWeb3-AlquilaCocheras\DAL\obj\Debug\DAL.dll
 C:\Proyectos\PrograWeb3-AlquilaCocheras\DAL\obj\Debug\DAL.pdb
+C:\Proyectos\PrograWeb3-AlquilaCocheras\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

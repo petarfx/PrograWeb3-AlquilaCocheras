@@ -18,7 +18,7 @@ namespace AlquilaCocheras.Web
         protected override void OnInit(EventArgs e)
         {
             //find the button control within the user control
-            LinkButton button = (LinkButton)ucBuscador.FindControl("btnFiltrar");
+            Button button = (Button)ucBuscador.FindControl("btnFiltrar");
             //wire up event handler
             button.Click += new EventHandler(button_Click);
             base.OnInit(e);
@@ -60,6 +60,34 @@ namespace AlquilaCocheras.Web
             }
             else
                 ucBuscador.myResultado = "Ubicacion desconocida";
+        }
+
+        protected void gvCocheras_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Label lblid = (Label)e.Row.FindControl("lblid");
+            if (lblid != null)
+            {
+                HyperLink aConfirmar = (HyperLink)e.Row.FindControl("aConfirmar");
+                aConfirmar.NavigateUrl = "/clientes/confirmar-reserva.aspx?idcochera=" + lblid.Text;
+            }
+        }
+
+        protected void gvCocheras_PreRender(object sender, EventArgs e)
+        {
+            try
+            {
+                GridView dgr = (System.Web.UI.WebControls.GridView)sender;
+                if (dgr != null)
+                {
+                    GridViewRow PagerRow = dgr.BottomPagerRow;
+                    if (PagerRow != null)
+                        PagerRow.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+               //error
+            }
         }
     }
 }

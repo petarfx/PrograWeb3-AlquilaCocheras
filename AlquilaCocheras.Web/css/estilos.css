@@ -1,0 +1,22 @@
+.btnEstilo
+{    
+    padding: 4px 16px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: text-bottom;
+    font-size: 12px !important;
+    font-family: Helvetica, Open Sans, arial, sans-serif !important;
+    color: #fff;
+    text-shadow: -1px 2px 2px rgba(0, 0, 0, 0.56); /*background: #276A99;*/
+    background-color: #00bcd4 !important;/*#428bca;*/
+    border: 1px solid #357ebd;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    font-weight: bold;
+
+    text-decoration:none;
+    letter-spacing:.5px;
+}

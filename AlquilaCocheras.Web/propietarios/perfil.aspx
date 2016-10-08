@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Principal" runat="server">
-   <%-- <asp:Label ID="label1" runat="server" Text="Nombre: "></asp:Label>
+    <%-- <asp:Label ID="label1" runat="server" Text="Nombre: "></asp:Label>
     <asp:TextBox ID="txtNombre" runat="server" ClientIDMode="Static"></asp:TextBox>
 
     <asp:Label ID="label2" runat="server" Text="Apellido: "></asp:Label>
@@ -77,8 +77,8 @@
 
                 <div class="row">
                     <div class=" col s12 m12 center-align input-field">
-                        <asp:LinkButton ID="btnActualizar" CssClass="btn cyan waves-effect waves-light" ClientIDMode="Static" runat="server" Text="Actualizar perfil"></asp:LinkButton>
-                        <asp:LinkButton ID="btnCancelar" CssClass="btn cyan waves-effect waves-light" ClientIDMode="Static" runat="server" Text="Cancelar"></asp:LinkButton>
+                        <asp:Button ID="btnActualizar" CssClass="btn cyan waves-effect waves-light" ClientIDMode="Static" runat="server" Text="Actualizar perfil"></asp:Button>
+                        <asp:Button ID="btnCancelar" CssClass="btn cyan waves-effect waves-light" ClientIDMode="Static" runat="server" Text="Cancelar"></asp:Button>
                     </div>
                 </div>
                 <div class="row">

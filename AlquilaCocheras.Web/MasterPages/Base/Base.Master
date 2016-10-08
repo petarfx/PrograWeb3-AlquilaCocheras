@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="~/css/materialize.min.css" />
     <link rel="stylesheet" type="text/css" href="~/css/material-icons.css" />
     <link rel="stylesheet" type="text/css" href="~/css/calendar.css"/>    
+    <link rel="stylesheet" type="text/css" href="~/css/estilos.css"/>  
     <asp:ContentPlaceHolder ID="head_Base" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -28,5 +29,7 @@
     <script src='<%= ResolveUrl("~/js/materialize.min.js") %>'></script>
     <script src='<%= ResolveUrl("~/js/script.js") %>'></script>
     <script src='<%= ResolveUrl("~/js/userControlBuscador.js") %>'></script>
+    <script src='<%= ResolveUrl("~/jquery-1.9.1.js") %>'></script>
+    <script src='<%= ResolveUrl("~/jquery-ui-1.10.3.custom.min.js") %>'></script>
 </body>
 </html>

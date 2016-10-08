@@ -23,8 +23,7 @@
                 </div>
                 <div class="row">
                     <div class=" col s12 m12 input-field">
-                        <%--<asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" ClientIDMode="Static" />--%>
-                        <asp:LinkButton ID="btnFiltrar" CssClass="btn cyan waves-effect waves-light" ClientIDMode="Static" runat="server" Text="Filtrar" ></asp:LinkButton>
+                        <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" ClientIDMode="Static" CssClass="btn cyan waves-effect waves-light"/>
                     </div>
                 </div>
             </div>

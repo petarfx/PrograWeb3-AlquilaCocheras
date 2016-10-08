@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DAL;
+using System.Configuration;
 
 namespace AlquilaCocheras.Web
 {
@@ -12,7 +13,13 @@ namespace AlquilaCocheras.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-                        
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["idcochera"] != null)
+                {
+ 
+                }
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -22,7 +29,10 @@ namespace AlquilaCocheras.Web
             {
                 //Cliente OK
                 Session["ROL"] = "C";
-                Response.Redirect("clientes/reservas.aspx");
+                if (Request.QueryString["idcochera"] == null)
+                    Response.Redirect(ConfigurationManager.AppSettings["ClienteReservarCochera"].ToString());         
+                else                
+                    Response.Redirect(ConfigurationManager.AppSettings["ClienteConfirmarCochera"].ToString() + "?idcochera=" + Request.QueryString["idcochera"].ToString());
             }
             else if (txtEmail.Text == "propietario@gmail.com" && txtContrasenia.Text == "Password1")
             {

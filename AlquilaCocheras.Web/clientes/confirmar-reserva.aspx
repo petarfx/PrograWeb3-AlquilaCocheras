@@ -76,8 +76,8 @@
                                
                 <div class="row">
                     <div class=" col s12 m12 center-align input-field">
-                        <asp:LinkButton ID="btnConfirmar" CssClass="btn cyan waves-effect waves-light" ClientIDMode="Static" runat="server" Text="Confirmar Reserva"></asp:LinkButton>
-                        <asp:LinkButton ID="btnCancelar" CssClass="btn cyan waves-effect waves-light" ClientIDMode="Static" runat="server" Text="Cancelar"></asp:LinkButton>
+                        <asp:Button ID="btnConfirmar" runat="server" Class="btn cyan waves-effect waves-light" Text="Confirmar Reserva" ClientIDMode="Static"/>   
+                        <asp:Button ID="btnCancelar" runat="server" Class="btn cyan waves-effect waves-light" Text="Cancelar" ClientIDMode="Static" />
                     </div>
                 </div>
                 <div class="row">

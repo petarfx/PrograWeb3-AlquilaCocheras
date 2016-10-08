@@ -66,6 +66,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\calendar.css" />
+    <Content Include="imagenes\calendario.png" />
+    <Content Include="js\script.js" />
     <Content Include="packages.config" />
     <Content Include="MasterPages\Base\Base.Master" />
     <Content Include="MasterPages\Anonimo.Master" />
@@ -203,9 +206,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="css\" />
     <Folder Include="imagenes\cocheras\" />
-    <Folder Include="js\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

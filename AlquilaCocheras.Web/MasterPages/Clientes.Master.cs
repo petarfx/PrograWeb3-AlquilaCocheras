@@ -16,7 +16,11 @@ namespace AlquilaCocheras.Web.MasterPages
                 if (Session["ROL"] != "C")
                 {
                     Session["ROL"] = null;
-                    Response.Redirect("../login.aspx");
+                    if (Request.QueryString == null)
+                        Response.Redirect("../login.aspx");
+                    else
+                        if (Request.QueryString["idcochera"] != null)
+                    Response.Redirect("../login.aspx?idCochera=" + Request.QueryString["idCochera"].ToString());
                 }
             }
         }
