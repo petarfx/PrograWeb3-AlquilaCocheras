@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 namespace AlquilaCocheras.Web.propietarios
 {
@@ -20,12 +21,16 @@ namespace AlquilaCocheras.Web.propietarios
         }
 
         protected void btnCrearCochera_Click(object sender, EventArgs e)
-        {            
+        {
+            //Hago el insert en la base
+
             //Abre la Modal
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "show", "showDiv('wnOk', 'Cochera Alta');", true);
-            
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "show", "showDiv('wnOk', 'Cochera Alta','Operación exitosa');", true);
+
+            //LimpiaControles
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "clearAll", "LimpiaControles();", true);
             //Muestra un Alert
-            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Operación exitosa')", true);
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Operación exitosa')", true);
         }
     }
 }

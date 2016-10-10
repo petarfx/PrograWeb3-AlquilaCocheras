@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Propietarios.Master" AutoEventWireup="true" CodeBehind="cocheras.aspx.cs" Inherits="AlquilaCocheras.Web.propietarios.cocheras" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Propietarios.Master" AutoEventWireup="true" CodeBehind="cocheras.aspx.cs" Inherits="AlquilaCocheras.Web.propietarios.cocheras" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Head" runat="server">
 </asp:Content>
@@ -133,17 +133,18 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <%-- <div class=" col s12 m12 input-field">--%>
-                    <asp:Label ID="label19" runat="server" Text="Tipo Vehículo: "></asp:Label>
-                    <asp:ListBox ID="lbTipoVehiculo" runat="server" ClientIDMode="Static">
-                        <asp:ListItem Value="0">Seleccione:</asp:ListItem>
-                        <asp:ListItem Value="1">Auto</asp:ListItem>
-                        <asp:ListItem Value="2">Pickup</asp:ListItem>
-                        <asp:ListItem Value="3">Camion</asp:ListItem>
-                        <asp:ListItem Value="4">Moto</asp:ListItem>
-                    </asp:ListBox>
-                    <%--</div>--%>
+<%--                <div class="row">
+                    <div class="col s12 m6">--%>
+                        <%-- <div class=" col s12 m12 input-field">--%>
+                        <asp:Label ID="label19" runat="server" Text="Tipo Vehículo: "></asp:Label>
+                        <asp:ListBox ID="lbTipoVehiculo" runat="server" ClientIDMode="Static">
+                            <asp:ListItem Value="0">Seleccione:</asp:ListItem>
+                            <asp:ListItem Value="1">Auto</asp:ListItem>
+                            <asp:ListItem Value="2">Pickup</asp:ListItem>
+                            <asp:ListItem Value="3">Camion</asp:ListItem>
+                            <asp:ListItem Value="4">Moto</asp:ListItem>
+                        </asp:ListBox>
+<%--                    </div>--%>
 
 
                     <%--<div class=" col s12 m12 input-field">
@@ -167,7 +168,10 @@
                             <label for="chk4">Moto</label>
                         </p>
                     </div>--%>
-                </div>
+
+
+
+<%--                </div>--%>
 
 
 
@@ -193,13 +197,17 @@
                 <div class="row">
                     <div class=" col s12 m6 input-field">
                         <asp:Label ID="label12" runat="server" Text="Foto: "></asp:Label>
-                        <asp:FileUpload ID="fuFoto" runat="server" ClientIDMode="Static" />
+                        <asp:FileUpload ID="fuFoto" runat="server" ClientIDMode="Static" onchange="showimagepreview(this)" />
                         <asp:RequiredFieldValidator ID="rfvfuFoto" runat="server" ControlToValidate="fuFoto" ErrorMessage="Debe cargar la foto de la cochera" ForeColor="Red">*</asp:RequiredFieldValidator>
+                    </div>
+                    <div class=" col s12 m6 input-field">
+                        <asp:Image ID="imgFoto" runat="server" Height="200px" Width="200px" />
                     </div>
                 </div>
                 <div class="row">
                     <div class=" col s12 m12 center-align input-field">
-                        <asp:Button ID="btnCrearCochera" href="#modal1" runat="server" Text="Crear Cochera" ClientIDMode="Static" Class="btn cyan waves-effect waves-light" OnClick="btnCrearCochera_Click" OnClientClick = "showDiv('wnOk','Cochera Alta')" />
+                        <asp:Button ID="btnCrearCochera" runat="server" Text="Crear Cochera" ClientIDMode="Static" Class="btn cyan waves-effect waves-light" OnClick="btnCrearCochera_Click" />
+                        <%--OnClientClick="showDiv('wnOk','Cochera Alta', 'Operacion Exitosa')"--%>
                     </div>
                 </div>
                 <div class="row">
@@ -213,26 +221,13 @@
     </div>
 
     <div id="wnOk" style="display: none" class="modal offset-m1">
-        <div class="z-depth-4 card-panel">
-            <div class="row">
-                <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
-            </div>
-            <div class="row">
-                <div class=" col s12 m12 center-align input-field">
-                    <asp:Button ID="btnOK" runat="server" Text="Crear Cochera" ClientIDMode="Static" Class="btn cyan waves-effect waves-light modal-trigger" />
-                </div>
+        <div class="row">
+            <asp:Label ID="lblMensaje" name="lblMensaje" runat="server" Text=""></asp:Label>
+        </div>
+        <div class="row">
+            <div class=" col s12 m12 center-align input-field">
+                <asp:Button ID="btnOK" runat="server" Text="Aceptar" ClientIDMode="Static" Class="btn cyan waves-effect waves-light" />
             </div>
         </div>
     </div>
-
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-    </div>
-
 </asp:Content>

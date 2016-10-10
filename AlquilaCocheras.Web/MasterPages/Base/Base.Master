@@ -4,32 +4,35 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title></title>    
+    <link rel="stylesheet" type="text/css" href="~/css/calendar.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/estilos.css" />
+    <link rel="stylesheet" type="text/css" href="~/Themes/rocket/jquery-wijmo.css" />
+    <link rel="stylesheet" type="text/css" href="~/js/Wijmo/wijdialog/jquery.wijmo.wijdialog.css" />
     <link rel="stylesheet" type="text/css" href="~/css/materialize.min.css" />
     <link rel="stylesheet" type="text/css" href="~/css/material-icons.css" />
-    <link rel="stylesheet" type="text/css" href="~/css/calendar.css"/>    
-    <link rel="stylesheet" type="text/css" href="~/css/estilos.css"/>  
     <asp:ContentPlaceHolder ID="head_Base" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body class="cyan loaded">
     <div class="container">
-        <form id="form1" runat="server">            
+        <form id="form1" runat="server">
             <div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder_Principal_Base" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
         </form>
-    </div>
-    <%--<script type="text/javascript" src="~/js/jquery-3.1.1.js"></script>
-    <script type="text/javascript" src="~/js/materialize.min.js"></script>
-    <script type="text/javascript" src="~/js/script.js"></script>--%>
+    </div>  
+    
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-3.1.1.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-1.9.1.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-ui-1.10.3.custom.min.js") %>'></script>    
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/Wijmo/wijutil/jquery.wijmo.wijutil.min.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/Wijmo/Base/jquery.wijmo.widget.min.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/Wijmo/wijdialog/jquery.wijmo.wijdialog.min.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/materialize.min.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/userControlBuscador.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/script.js") %>'></script>  
 
-    <script src='<%= ResolveUrl("~/js/jquery-3.1.1.js") %>'></script>
-    <script src='<%= ResolveUrl("~/js/materialize.min.js") %>'></script>
-    <script src='<%= ResolveUrl("~/js/script.js") %>'></script>
-    <script src='<%= ResolveUrl("~/js/userControlBuscador.js") %>'></script>
-    <script src='<%= ResolveUrl("~/jquery-1.9.1.js") %>'></script>
-    <script src='<%= ResolveUrl("~/jquery-ui-1.10.3.custom.min.js") %>'></script>
 </body>
 </html>
