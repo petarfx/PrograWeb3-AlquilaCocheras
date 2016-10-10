@@ -18,5 +18,14 @@ namespace AlquilaCocheras.Web.propietarios
             }
 
         }
+
+        protected void btnCrearCochera_Click(object sender, EventArgs e)
+        {            
+            //Abre la Modal
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "show", "showDiv('wnOk', 'Cochera Alta');", true);
+            
+            //Muestra un Alert
+            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Operación exitosa')", true);
+        }
     }
 }

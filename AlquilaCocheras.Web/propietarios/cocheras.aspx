@@ -44,7 +44,7 @@
 
     <asp:Button ID="btnCrearCochera" runat="server" Text="Crear Cochera" ClientIDMode="Static"/>--%>
 
-        <asp:HiddenField ID="esEdicion" runat="server" />
+    <asp:HiddenField ID="esEdicion" runat="server" />
 
     <div class="row">
         <div class="col s12 m10 offset-m1">
@@ -95,7 +95,7 @@
                         <asp:Label ID="label7" runat="server" Text="Horario Fin: "></asp:Label>
                         <asp:TextBox ID="txtHorarioFin" runat="server" ClientIDMode="Static" MaxLength="5"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvtxtHorarioFin" runat="server" ControlToValidate="txtHorarioFin" ErrorMessage="Debe ingresar la hora de fin" ForeColor="Red">*</asp:RequiredFieldValidator>
-                        <asp:CompareValidator ID="cvHorario" runat="server" ControlToCompare="txtHorarioFin" ControlToValidate="txtHorarioInicio" ErrorMessage="El horario de Inicio no puede superar el de Fin" ForeColor="Red" Operator="LessThan" >*</asp:CompareValidator>
+                        <asp:CompareValidator ID="cvHorario" runat="server" ControlToCompare="txtHorarioFin" ControlToValidate="txtHorarioInicio" ErrorMessage="El horario de Inicio no puede superar el de Fin" ForeColor="Red" Operator="LessThan">*</asp:CompareValidator>
                         <asp:RegularExpressionValidator ID="revHoraFin" runat="server" ControlToValidate="txtHorarioFin" ErrorMessage="Formato de Hora invalido (hh:mm) en formato 24hs" ForeColor="Red" ValidationExpression="^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$">*</asp:RegularExpressionValidator>
                     </div>
                 </div>
@@ -117,28 +117,36 @@
                         <asp:Label ID="label10" runat="server" Text="Latitud: "></asp:Label>
                         <asp:TextBox ID="txtLatitud" runat="server" ClientIDMode="Static"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvtxtLatitud" runat="server" ControlToValidate="txtLatitud" ErrorMessage="Debe ingresar la latitud" ForeColor="Red">*</asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="revLatitud" runat="server" ControlToValidate="txtLatitud" ErrorMessage="Debe ingresar un valor decimal para la latitud" ForeColor="Red" ValidationExpression="^[0-9]\d{0,9}(\.\d{1,3})?%?$">*</asp:RegularExpressionValidator>
+                        <%--<asp:RegularExpressionValidator ID="revLatitud" runat="server" ControlToValidate="txtLatitud" ErrorMessage="Debe ingresar un valor decimal para la latitud" ForeColor="Red" ValidationExpression="^[0-9]\d{0,9}(\.\d{1,3})?%?$">*</asp:RegularExpressionValidator>--%>
+                        <asp:RegularExpressionValidator ID="revLatitud" runat="server" ControlToValidate="txtLatitud"
+                            ErrorMessage="Debe Ingresar solo Numeros de hasta 3 enteros y 4 decimales separados por un punto para la Latitud"
+                            ValidationExpression="(^([0-9]{1,3}(\.|\,)[0-9]{1,4})$)|(^([0-9]{0,3})$)" ForeColor="Red">*</asp:RegularExpressionValidator>
                     </div>
                     <div class=" col s12 m6 input-field">
                         <asp:Label ID="label11" runat="server" Text="Longitud: "></asp:Label>
                         <asp:TextBox ID="txtLongitud" runat="server" ClientIDMode="Static"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvtxtLongitud" runat="server" ControlToValidate="txtLongitud" ErrorMessage="Debe ingresar la longitud" ForeColor="Red">*</asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="revLongitud" runat="server" ControlToValidate="txtLongitud" ErrorMessage="Debe ingresar un valor decimal para la longitud" ForeColor="Red" ValidationExpression="^[0-9]\d{0,9}(\.\d{1,3})?%?$">*</asp:RegularExpressionValidator>
+                        <%--<asp:RegularExpressionValidator ID="revLongitud" runat="server" ControlToValidate="txtLongitud" ErrorMessage="Debe ingresar un valor decimal para la longitud" ForeColor="Red" ValidationExpression="^[0-9]\d{0,9}(\.\d{1,3})?%?$">*</asp:RegularExpressionValidator>--%>
+                        <asp:RegularExpressionValidator ID="revLongitud" runat="server" ControlToValidate="txtLongitud"
+                            ErrorMessage="Debe Ingresar solo Numeros de hasta 3 enteros y 4 decimales separados por un punto para la Longitud"
+                            ValidationExpression="(^([0-9]{1,3}(\.|\,)[0-9]{1,4})$)|(^([0-9]{0,3})$)" ForeColor="Red">*</asp:RegularExpressionValidator>
                     </div>
                 </div>
 
                 <div class="row">
+                    <%-- <div class=" col s12 m12 input-field">--%>
+                    <asp:Label ID="label19" runat="server" Text="Tipo Vehículo: "></asp:Label>
+                    <asp:ListBox ID="lbTipoVehiculo" runat="server" ClientIDMode="Static">
+                        <asp:ListItem Value="0">Seleccione:</asp:ListItem>
+                        <asp:ListItem Value="1">Auto</asp:ListItem>
+                        <asp:ListItem Value="2">Pickup</asp:ListItem>
+                        <asp:ListItem Value="3">Camion</asp:ListItem>
+                        <asp:ListItem Value="4">Moto</asp:ListItem>
+                    </asp:ListBox>
+                    <%--</div>--%>
+
+
                     <%--<div class=" col s12 m12 input-field">
-                        <asp:Label ID="label12" runat="server" Text="Tipo Vehículo: "></asp:Label>
-                        <asp:ListBox ID="lbTipoVehiculo" runat="server" ClientIDMode="Static">
-                            <asp:ListItem Value="0">Seleccione:</asp:ListItem>
-                            <asp:ListItem Value="1">Auto</asp:ListItem>
-                            <asp:ListItem Value="2">Pickup</asp:ListItem>
-                            <asp:ListItem Value="3">Camion</asp:ListItem>
-                            <asp:ListItem Value="4">Moto</asp:ListItem>
-                        </asp:ListBox>
-                    </div>--%>
-                    <div class=" col s12 m12 input-field">
                         <p>
                             <asp:Label ID="label14" runat="server" Text="Tipo Vehículo: "></asp:Label>
                         </p>
@@ -158,7 +166,7 @@
                             <input type="checkbox" id="chk4" />
                             <label for="chk4">Moto</label>
                         </p>
-                    </div>
+                    </div>--%>
                 </div>
 
 
@@ -175,12 +183,13 @@
                         <asp:Label ID="label9" runat="server" Text="Precio por Hora: "></asp:Label>
                         <asp:TextBox ID="txtPrecioHora" runat="server" ClientIDMode="Static"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvtxtPrecioHora" runat="server" ControlToValidate="txtPrecioHora" ErrorMessage="Debe ingresar el precio por hora" ForeColor="Red">*</asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="revPrecioHora" runat="server" ControlToValidate="txtPrecioHora" ErrorMessage="Debe ingresar un valor decimal para el precio por hora" ForeColor="Red" ValidationExpression="^[0-9]\d{0,9}(\.\d{1,3})?%?$">*</asp:RegularExpressionValidator>
+                        <%--<asp:RegularExpressionValidator ID="revPrecioHora" runat="server" ControlToValidate="txtPrecioHora" ErrorMessage="Debe ingresar un valor decimal para el precio por hora" ForeColor="Red" ValidationExpression="^[0-9]\d{0,9}(\.\d{1,3})?%?$">*</asp:RegularExpressionValidator>--%>
                         <asp:RangeValidator ID="rvPrecioHora" runat="server" ControlToValidate="txtPrecioHora" ErrorMessage="El&nbsp;precio&nbsp;de&nbsp;la&nbsp;cochera&nbsp;debe&nbsp;ser&nbsp;mayor&nbsp;a&nbsp;0&nbsp;(cero)." ForeColor="Red" MaximumValue="99999" MinimumValue="1">*</asp:RangeValidator>
+                        <asp:RegularExpressionValidator ID="revPrecioHora" runat="server" ControlToValidate="txtPrecioHora"
+                            ErrorMessage="Debe Ingresar solo Numeros de hasta 3 enteros y 4 decimales separados por un punto para el Precio"
+                            ValidationExpression="(^([0-9]{1,3}(\.|\,)[0-9]{1,4})$)|(^([0-9]{0,3})$)" ForeColor="Red">*</asp:RegularExpressionValidator>
                     </div>
                 </div>
-
-
                 <div class="row">
                     <div class=" col s12 m6 input-field">
                         <asp:Label ID="label12" runat="server" Text="Foto: "></asp:Label>
@@ -188,13 +197,11 @@
                         <asp:RequiredFieldValidator ID="rfvfuFoto" runat="server" ControlToValidate="fuFoto" ErrorMessage="Debe cargar la foto de la cochera" ForeColor="Red">*</asp:RequiredFieldValidator>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class=" col s12 m12 center-align input-field">
-                        <asp:Button ID="btnCrearCochera" runat="server" Text="Crear Cochera" ClientIDMode="Static" Class="btn cyan waves-effect waves-light" />
+                        <asp:Button ID="btnCrearCochera" href="#modal1" runat="server" Text="Crear Cochera" ClientIDMode="Static" Class="btn cyan waves-effect waves-light" OnClick="btnCrearCochera_Click" OnClientClick = "showDiv('wnOk','Cochera Alta')" />
                     </div>
                 </div>
-
                 <div class="row">
                     <div class=" col s12 center-align">
                         <asp:ValidationSummary ID="ValidationSummary" runat="server" ForeColor="Red" />
@@ -204,4 +211,28 @@
             </div>
         </div>
     </div>
+
+    <div id="wnOk" style="display: none" class="modal offset-m1">
+        <div class="z-depth-4 card-panel">
+            <div class="row">
+                <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
+            </div>
+            <div class="row">
+                <div class=" col s12 m12 center-align input-field">
+                    <asp:Button ID="btnOK" runat="server" Text="Crear Cochera" ClientIDMode="Static" Class="btn cyan waves-effect waves-light modal-trigger" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
 </asp:Content>
