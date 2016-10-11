@@ -40,6 +40,15 @@ namespace AlquilaCocheras.Web.propietarios {
         protected global::System.Web.UI.WebControls.TextBox txtFechaInicio;
         
         /// <summary>
+        /// Control revFechaInicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revFechaInicio;
+        
+        /// <summary>
         /// Control txtFechaFin.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,24 @@ namespace AlquilaCocheras.Web.propietarios {
         protected global::System.Web.UI.WebControls.TextBox txtFechaFin;
         
         /// <summary>
+        /// Control revFechaFin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revFechaFin;
+        
+        /// <summary>
+        /// Control cvFechas90.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvFechas90;
+        
+        /// <summary>
         /// Control btnFiltrar.
         /// </summary>
         /// <remarks>
@@ -56,5 +83,14 @@ namespace AlquilaCocheras.Web.propietarios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFiltrar;
+        
+        /// <summary>
+        /// Control gvCocheras.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvCocheras;
     }
 }

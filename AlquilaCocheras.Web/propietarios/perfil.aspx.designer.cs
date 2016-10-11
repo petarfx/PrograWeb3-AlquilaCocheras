@@ -103,6 +103,15 @@ namespace AlquilaCocheras.Web.propietarios {
         protected global::System.Web.UI.WebControls.RadioButtonList rblPerfil;
         
         /// <summary>
+        /// Control rfvPerfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPerfil;
+        
+        /// <summary>
         /// Control label10.
         /// </summary>
         /// <remarks>
@@ -128,6 +137,24 @@ namespace AlquilaCocheras.Web.propietarios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvContrasenia;
+        
+        /// <summary>
+        /// Control revContrasenia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revContrasenia;
+        
+        /// <summary>
+        /// Control revContrasenia8.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revContrasenia8;
         
         /// <summary>
         /// Control label11.
@@ -164,6 +191,24 @@ namespace AlquilaCocheras.Web.propietarios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CompareValidator cvContraseñas;
+        
+        /// <summary>
+        /// Control revConfContrasenia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revConfContrasenia;
+        
+        /// <summary>
+        /// Control revConfContrasenia8.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revConfContrasenia8;
         
         /// <summary>
         /// Control btnActualizar.

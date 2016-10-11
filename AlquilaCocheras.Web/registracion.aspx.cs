@@ -18,7 +18,7 @@ namespace AlquilaCocheras.Web
         {
             if (rblPerfil.SelectedValue != "")
             {
-                lblResultado.Text = "Registración exitosa, diríjase al login";
+                lblResultado.Text = "Registración exitosa, diríjase al <a href=\"login.aspx\">login</a>";
             }
             else
             {
