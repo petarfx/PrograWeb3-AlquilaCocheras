@@ -25,9 +25,54 @@ function pageLoad() {
     });
 }
 
+
+
+// Función para calcular los días transcurridos entre dos fechas
+restaFechas = function (f1, f2) {
+    var aFecha1 = f1.split('/');
+    var aFecha2 = f2.split('/');
+    var fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
+    var fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
+    var dif = fFecha2 - fFecha1;
+    var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+    return dias;
+}
+
 // A $( document ).ready() block.
 $(document).ready(function () {
     $('select').material_select();
+
+    $("#txtHorarioInicio,#txtHorarioFin,#txtFechaInicio,#txtFechaFin").keyup(function ()
+    {
+        if ($("input[id$='txtHorarioInicio']").val().length == 5 && $("input[id$='txtHorarioFin']").val().length == 5 && $("input[id$='txtFechaInicio']").val().length == 10 && $("input[id$='txtFechaFin']").val().length == 10) {
+            var hi = parseFloat(parseInt(($("input[id$='txtHorarioInicio']").val().substr(0, 2))) + parseFloat(($("input[id$='txtHorarioInicio']").val().substr(3, 2)) / 60))
+            var hf = parseFloat(parseInt(($("input[id$='txtHorarioFin']").val().substr(0, 2))) + parseFloat(($("input[id$='txtHorarioFin']").val().substr(3, 2)) / 60))
+            var fi = $("input[id$='txtFechaInicio']").val();
+            var ff = $("input[id$='txtFechaFin']").val();
+            var precioHora = document.getElementById('lblPrecioHora').innerHTML;
+            var precioTotal = document.getElementById('lblPrecioTotal').innerHTML;
+
+            //dias = DiferenciaDeDias(fecha fin,  fecha inicio)  ­ 
+            //horas = DiferenciaDeHoras(hora salida, hora entrada)  ­ 
+            //horas totales = horas * dias  ­ 
+            //precio total = horas totales * precio hora
+
+            var dias = restaFechas(fi, ff);
+            var horas = hf - hi;
+            var horasTotales = horas * dias;
+            var precioTotal = horasTotales * precioHora;
+
+            document.getElementById('lblPrecioTotal').innerHTML = precioTotal;
+
+            console.log(dias);
+            console.log(horas);
+            console.log(horasTotales);
+            console.log(precioTotal);
+        }
+        else
+            document.getElementById('lblPrecioTotal').innerHTML = "";
+    });
+
 });
 
 function showDiv(nomWn, titulo, mensaje) {

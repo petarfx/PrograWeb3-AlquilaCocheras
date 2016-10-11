@@ -31,34 +31,34 @@
                 <div class="row">
                     <div class=" col s12 m6 input-field">
                         <asp:Label ID="label2" runat="server" Text="Fecha Inicio: "></asp:Label>
-                        <asp:TextBox ID="txtFechaInicio" runat="server" ClientIDMode="Static"></asp:TextBox>
+                        <asp:TextBox ID="txtFechaInicio" name="FechaInicio" runat="server" ClientIDMode="Static"></asp:TextBox>
                     </div>
                     <div class=" col s12 m6 input-field">
                         <asp:Label ID="label4" runat="server" Text="Fecha Fin: "></asp:Label>
-                        <asp:TextBox ID="txtFechaFin" runat="server" ClientIDMode="Static"></asp:TextBox>
+                        <asp:TextBox ID="txtFechaFin" name="FechaFin" runat="server" ClientIDMode="Static"></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class=" col s12 m6 input-field">
                         <asp:Label ID="label1" runat="server" Text="Hora de Entrada: "></asp:Label>
-                        <asp:TextBox ID="txtHorarioInicio" runat="server" ClientIDMode="Static"></asp:TextBox>
+                        <asp:TextBox ID="txtHorarioInicio" name="HoraInicio" runat="server" ClientIDMode="Static"></asp:TextBox>
                     </div>
                     <div class=" col s12 m6 input-field">
                         <asp:Label ID="label3" runat="server" Text="Hora de Salida: "></asp:Label>
-                        <asp:TextBox ID="txtHorarioFin" runat="server" ClientIDMode="Static"></asp:TextBox>
+                        <asp:TextBox ID="txtHorarioFin" name="HoraFin" runat="server" ClientIDMode="Static"></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class=" col s12 m6 input-field">
                         <asp:Label ID="label5" runat="server" Text="Precio Hora: "></asp:Label>
-                        <asp:Label ID="lblPrecioHora" ClientIDMode="Static" runat="server"></asp:Label>
+                        <asp:Label ID="lblPrecioHora" name="PrecioHora" ClientIDMode="Static" runat="server"></asp:Label>
     
                     </div>
                     <div class=" col s12 m6 input-field">
                         <asp:Label ID="label6" runat="server" Text="Precio Total: "></asp:Label>
-                        <asp:Label ID="lblPrecioTotal" ClientIDMode="Static" runat="server"></asp:Label>
+                        <asp:Label ID="lblPrecioTotal" name="PrecioTotal" ClientIDMode="Static" runat="server"></asp:Label>
                     </div>
                 </div>
 
