@@ -35,33 +35,36 @@ namespace AlquilaCocheras.Web
             }
             else if (ucBuscador.myUbicacion == "HAEDO")
             {
-                //Haria el get a la base, lo asigno a un datatable, y lo bindeo a la grilla
-                DataTable dt = new DataTable();
-                dt.Columns.Add("idCochera");
-                dt.Columns.Add("Precio");
-                dt.Columns.Add("ApeyNom");
-                dt.Columns.Add("PrecioTotal");
-                dt.Columns.Add("Foto");
-                dt.Columns.Add("Mapa");
-                dt.Columns.Add("Puntuacion");
-                //dt.Columns.Add("Seleccionar");
-                dt.Rows.Add();
-                dt.Rows[0]["idCochera"] = "123";
-                dt.Rows[0]["Precio"] = "20";
-                dt.Rows[0]["ApeyNom"] = "Juan Perez";
-                dt.Rows[0]["PrecioTotal"] = "800";
-                dt.Rows[0]["Foto"] = "";
-                dt.Rows[0]["Mapa"] = "";
-                dt.Rows[0]["Puntuacion"] = "4";
-                //dt.Rows[0]["Seleccionar"] = "Seleccionar";
-
-                gvCocheras.DataSource = dt;
-                gvCocheras.DataBind();
+                cargarGrilla();
             }
             else
                 ucBuscador.myResultado = "Ubicacion desconocida";
         }
 
+        public void cargarGrilla()
+        { //Haria el get a la base, lo asigno a un datatable, y lo bindeo a la grilla
+            DataTable dt = new DataTable();
+            dt.Columns.Add("idCochera");
+            dt.Columns.Add("Precio");
+            dt.Columns.Add("ApeyNom");
+            dt.Columns.Add("PrecioTotal");
+            dt.Columns.Add("Foto");
+            dt.Columns.Add("Mapa");
+            dt.Columns.Add("Puntuacion");
+            //dt.Columns.Add("Seleccionar");
+            dt.Rows.Add();
+            dt.Rows[0]["idCochera"] = "123";
+            dt.Rows[0]["Precio"] = "20";
+            dt.Rows[0]["ApeyNom"] = "Juan Perez";
+            dt.Rows[0]["PrecioTotal"] = "800";
+            dt.Rows[0]["Foto"] = "";
+            dt.Rows[0]["Mapa"] = "";
+            dt.Rows[0]["Puntuacion"] = "4";
+            //dt.Rows[0]["Seleccionar"] = "Seleccionar";
+
+            gvCocheras.DataSource = dt;
+            gvCocheras.DataBind();
+        }
         protected void gvCocheras_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             Label lblid = (Label)e.Row.FindControl("lblid");

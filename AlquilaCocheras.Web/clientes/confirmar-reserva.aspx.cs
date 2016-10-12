@@ -27,5 +27,12 @@ namespace AlquilaCocheras.Web.clientes
                 #endregion
             }
         }
+
+        protected void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            //LimpiaControles
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "clearAll", "LimpiaControles();", true);
+            lblResultado.Text = "Operación exitosa";
+        }
     }
 }

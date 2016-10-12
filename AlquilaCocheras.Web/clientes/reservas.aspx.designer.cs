@@ -13,13 +13,13 @@ namespace AlquilaCocheras.Web.clientes {
     public partial class reservas {
         
         /// <summary>
-        /// Control aConfirmar.
+        /// Control gvReservas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink aConfirmar;
+        protected global::System.Web.UI.WebControls.GridView gvReservas;
         
         /// <summary>
         /// Control ddlPuntuacion.

@@ -25,7 +25,7 @@ namespace AlquilaCocheras.Web.propietarios
             //Hago el insert en la base
 
             //Abre la Modal
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "show", "showDiv('wnOk', 'Cochera Alta','Operación exitosa');", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "show", "showDiv2('wnOk', 'Cochera Alta','Operación exitosa');", true);
 
             //LimpiaControles
             ScriptManager.RegisterStartupScript(this, this.GetType(), "clearAll", "LimpiaControles();", true);

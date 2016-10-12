@@ -41,6 +41,7 @@ restaFechas = function (f1, f2) {
 // A $( document ).ready() block.
 $(document).ready(function () {
     $('select').material_select();
+    $('.modal-trigger').leanModal();
 
     $("#txtHorarioInicio,#txtHorarioFin,#txtFechaInicio,#txtFechaFin").keyup(function ()
     {
@@ -62,7 +63,11 @@ $(document).ready(function () {
             var horasTotales = horas * dias;
             var precioTotal = horasTotales * precioHora;
 
-            document.getElementById('lblPrecioTotal').innerHTML = precioTotal;
+            //Si es un Numero
+            if(!isNaN(precioTotal))
+                document.getElementById('lblPrecioTotal').innerHTML = precioTotal.toFixed(2);
+            else
+                document.getElementById('lblPrecioTotal').innerHTML = "";
 
             console.log(dias);
             console.log(horas);
@@ -75,7 +80,31 @@ $(document).ready(function () {
 
 });
 
-function showDiv(nomWn, titulo, mensaje) {
+function showDiv(nomWn, titulo) {
+    var hei = 180;
+    var wid = 600;
+    $("#" + nomWn).wijdialog({
+        autoOpen: true,
+        height: 390, //350
+        width: 650,
+        modal: true,
+        title: titulo,
+        captionButtons: {
+            pin: { visible: false },
+            refresh: { visible: false },
+            toggle: { visible: false },
+            minimize: { visible: false },
+            maximize: { visible: false },
+            close: { visible: true }
+        }
+    });
+    /*var t = Math.max(0, (((parent.document.body.clientHeight - $("#tabs", parent.document).position().top - 50) - $("#" + nomWn).parent().height()) / 2) + $(window).scrollTop()) + "px";
+    var l = Math.max(0, ((parent.document.body.clientWidth - $("#" + nomWn).parent().width()) / 2) + $(window).scrollLeft()) + "px";
+    $("#" + nomWn).parent().css("top", t);
+    $("#" + nomWn).parent().css("left", l);*/
+}
+
+function showDiv2(nomWn, titulo, mensaje) {
     var hei = 180;
     var wid = 600;
     $("#lblMensaje").val = mensaje;

@@ -13,32 +13,69 @@
             puntuación 
         
     --%>
-    <table class="highlight light-blue">
-        <thead>
-            <tr>
-                <th data-field="fechaInicio">fecha inicio</th>
-                <th data-field="fechaFin">fecha fin</th>
-                <th data-field="hora">horario</th>
-                <th data-field="precioTotal">precio total</th>
-                <th data-field="puntuacion">puntuacion</th>
-                <th data-field="Select"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>10/05/2016</td>
-                <td>20/05/2016</td>
-                <td>9</td>
-                <td>$1800.00</td>
-                <td>4</td>
-                <td><asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink></td>
-            </tr>
-        </tbody>
-    </table>
+
+        <div class="row">
+        <asp:GridView ID="gvReservas" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" OnRowDataBound="gvReservas_RowDataBound" OnSelectedIndexChanged="gvReservas_SelectedIndexChanged">
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:TemplateField HeaderText="idReserva" Visible="False">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("idReserva") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblid" runat="server" Text='<%# Bind("idReserva") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="FechaInicio">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("FechaInicio") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblFechaInicio" runat="server" Text='<%# Bind("FechaInicio") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="FechaFin">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("FechaFin") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblFechaFin" runat="server" Text='<%# Bind("FechaFin") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField HeaderText="Horario" DataField="Horario" />
+                <asp:BoundField HeaderText="PrecioTotal" DataField="PrecioTotal" />
+                <asp:TemplateField HeaderText="Puntuacion">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Puntuacion") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblPuntuacion" runat="server" Text='<%# Bind("Puntuacion") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Puntuar" ShowHeader="False">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lnkPuntuar" runat="server" CommandName="Select" class="modal-trigger" href="#miModal">Puntuar</asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        </asp:GridView>
+    </div>
 
 
     
-
 
     <!-- Modal -->
     <div id="miModal" class="modal">
@@ -61,4 +98,5 @@
             </div>
         </div>
     </div>
+
 </asp:Content>
