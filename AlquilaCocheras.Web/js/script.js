@@ -26,6 +26,12 @@ function pageLoad() {
 }
 
 
+function showModal(modalName, hf, idReserva) {
+    //document.getElementById('miModal').style.display = "block";
+    $("#" + modalName).css({ 'display': "block" });
+    $("#" + hf).val(idReserva);
+}
+
 
 // Función para calcular los días transcurridos entre dos fechas
 restaFechas = function (f1, f2) {
@@ -42,6 +48,7 @@ restaFechas = function (f1, f2) {
 $(document).ready(function () {
     $('select').material_select();
     $('.modal-trigger').leanModal();
+
 
     $("#txtHorarioInicio,#txtHorarioFin,#txtFechaInicio,#txtFechaFin").keyup(function ()
     {
@@ -78,76 +85,83 @@ $(document).ready(function () {
             document.getElementById('lblPrecioTotal').innerHTML = "";
     });
 
+
+
+    function showDiv(nomWn, titulo) {
+        var hei = 180;
+        var wid = 600;
+        $("#" + nomWn).wijdialog({
+            autoOpen: true,
+            height: 390, //350
+            width: 650,
+            modal: true,
+            title: titulo,
+            captionButtons: {
+                pin: { visible: false },
+                refresh: { visible: false },
+                toggle: { visible: false },
+                minimize: { visible: false },
+                maximize: { visible: false },
+                close: { visible: true }
+            }
+        });
+        var t = Math.max(0, ((parent.document.body.clientHeight - $("#" + nomWn).parent().height()) / 2) + $(window).scrollTop()) + "px";
+        var l = Math.max(0, ((parent.document.body.clientWidth - $("#" + nomWn).parent().width()) / 2) + $(window).scrollLeft()) + "px";
+        $("#" + nomWn).parent().css("top", t);
+        $("#" + nomWn).parent().css("left", l);
+    }
+
+    function showDiv2(nomWn, titulo, mensaje) {
+        var hei = 180;
+        var wid = 600;
+        $("#lblMensaje").val = mensaje;
+        $("#" + nomWn).wijdialog({
+            autoOpen: true,
+            height: 390, //350
+            width: 650,
+            modal: true,
+            title: titulo,
+            captionButtons: {
+                pin: { visible: false },
+                refresh: { visible: false },
+                toggle: { visible: false },
+                minimize: { visible: false },
+                maximize: { visible: false },
+                close: { visible: true }
+            }
+        });
+        /*var t = Math.max(0, (((parent.document.body.clientHeight - $("#tabs", parent.document).position().top - 50) - $("#" + nomWn).parent().height()) / 2) + $(window).scrollTop()) + "px";
+        var l = Math.max(0, ((parent.document.body.clientWidth - $("#" + nomWn).parent().width()) / 2) + $(window).scrollLeft()) + "px";
+        $("#" + nomWn).parent().css("top", t);
+        $("#" + nomWn).parent().css("left", l);*/
+    }
+
+    function closeWn(nomWn) {
+        $("#" + nomWn).wijdialog("close");
+    }
+
+    function LimpiaControles() {
+        $("input[type=text]").val("");
+        $("select").val("");
+    }
+
+    function mostrarImagen(elem) {
+        $("#imgFoto").attr('src', elem.value);
+    }
+
+    function showimagepreview(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementsByTagName("img")[0].setAttribute("src", e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+
+
+
 });
 
-function showDiv(nomWn, titulo) {
-    var hei = 180;
-    var wid = 600;
-    $("#" + nomWn).wijdialog({
-        autoOpen: true,
-        height: 390, //350
-        width: 650,
-        modal: true,
-        title: titulo,
-        captionButtons: {
-            pin: { visible: false },
-            refresh: { visible: false },
-            toggle: { visible: false },
-            minimize: { visible: false },
-            maximize: { visible: false },
-            close: { visible: true }
-        }
-    });
-    /*var t = Math.max(0, (((parent.document.body.clientHeight - $("#tabs", parent.document).position().top - 50) - $("#" + nomWn).parent().height()) / 2) + $(window).scrollTop()) + "px";
-    var l = Math.max(0, ((parent.document.body.clientWidth - $("#" + nomWn).parent().width()) / 2) + $(window).scrollLeft()) + "px";
-    $("#" + nomWn).parent().css("top", t);
-    $("#" + nomWn).parent().css("left", l);*/
-}
-
-function showDiv2(nomWn, titulo, mensaje) {
-    var hei = 180;
-    var wid = 600;
-    $("#lblMensaje").val = mensaje;
-    $("#" + nomWn).wijdialog({
-        autoOpen: true,
-        height: 390, //350
-        width: 650,
-        modal: true,
-        title: titulo,
-        captionButtons: {
-            pin: { visible: false },
-            refresh: { visible: false },
-            toggle: { visible: false },
-            minimize: { visible: false },
-            maximize: { visible: false },
-            close: { visible: true }
-        }
-    });
-    /*var t = Math.max(0, (((parent.document.body.clientHeight - $("#tabs", parent.document).position().top - 50) - $("#" + nomWn).parent().height()) / 2) + $(window).scrollTop()) + "px";
-    var l = Math.max(0, ((parent.document.body.clientWidth - $("#" + nomWn).parent().width()) / 2) + $(window).scrollLeft()) + "px";
-    $("#" + nomWn).parent().css("top", t);
-    $("#" + nomWn).parent().css("left", l);*/
-}
-
-function closeWn(nomWn) {
-    $("#" + nomWn).wijdialog("close");
-}
-
-function LimpiaControles() {
-    $("input[type=text]").val("");
-    $("select").val("");
-}
-
-function mostrarImagen(elem) {
-    $("#imgFoto").attr('src', elem.value);
-}
-
-function showimagepreview(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            document.getElementsByTagName("img")[0].setAttribute("src", e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}

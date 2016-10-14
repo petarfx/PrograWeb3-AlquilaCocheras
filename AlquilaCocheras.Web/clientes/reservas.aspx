@@ -57,7 +57,7 @@
                         <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:LinkButton ID="lnkPuntuar" runat="server" CommandName="Select" class="modal-trigger" href="#miModal">Puntuar</asp:LinkButton>
+                        <asp:LinkButton ID="lnkPuntuar" runat="server"  CommandName="Select">Puntuar</asp:LinkButton> <%--class="modal-trigger" href="#miModal"--%>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -93,8 +93,8 @@
                     <asp:ListItem Text="5" Value="5" />
                 </asp:DropDownList>
 
-                <asp:Button Text="Confirmar" runat="server" ID="btnConfirmar" ClientIDMode="Static" />
-                <button class="cerrar">Cerrar</button>
+                <asp:Button Text="Confirmar" runat="server" ID="btnConfirmar" ClientIDMode="Static" class="btn cyan waves-effect waves-light"/>
+                <button class="cerrar btn cyan waves-effect waves-light">Cerrar</button>
             </div>
         </div>
     </div>

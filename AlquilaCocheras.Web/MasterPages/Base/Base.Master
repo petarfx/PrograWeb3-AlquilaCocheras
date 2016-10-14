@@ -15,6 +15,18 @@
     </asp:ContentPlaceHolder>
 </head>
 <body class="cyan loaded">
+
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-1.9.1.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-ui-1.10.3.custom.min.js") %>'></script>  
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-3.1.1.js") %>'></script>  
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/Wijmo/wijutil/jquery.wijmo.wijutil.min.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/Wijmo/Base/jquery.wijmo.widget.min.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/Wijmo/wijdialog/jquery.wijmo.wijdialog.min.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/materialize.min.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/userControlBuscador.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/script.js") %>'></script>  
+
+
     <div class="container">
         <form id="form1" runat="server">
             <div>
@@ -24,15 +36,7 @@
         </form>
     </div>  
     
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-3.1.1.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-1.9.1.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-ui-1.10.3.custom.min.js") %>'></script>    
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/Wijmo/wijutil/jquery.wijmo.wijutil.min.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/Wijmo/Base/jquery.wijmo.widget.min.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/Wijmo/wijdialog/jquery.wijmo.wijdialog.min.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/materialize.min.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/userControlBuscador.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/script.js") %>'></script>  
+
 
 </body>
 </html>

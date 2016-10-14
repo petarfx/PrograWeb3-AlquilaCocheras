@@ -71,10 +71,11 @@ namespace AlquilaCocheras.Web.clientes
                 LinkButton lnkPuntuar = (LinkButton)e.Row.FindControl("lnkPuntuar");
                 Label lblFechaInicio = (Label)e.Row.FindControl("lblFechaInicio");
                 Label lblPuntuacion = (Label)e.Row.FindControl("lblPuntuacion");
-                if (lblPuntuacion != null && lblPuntuacion.Text != "" && Convert.ToDateTime(lblFechaInicio.Text) <= DateTime.Today)
-                    lnkPuntuar.Visible = false;
+                // Si ya tiene puntaje o es una reserva futura
+                if (lblPuntuacion != null && lblPuntuacion.Text != "" || Convert.ToDateTime(lblFechaInicio.Text) > DateTime.Today) 
+                    lnkPuntuar.Visible = false; //No lo muestro
                 else
-                    lnkPuntuar.Visible = true;
+                    lnkPuntuar.Visible = true; // Lo muestro
             }
         }
 
@@ -83,8 +84,8 @@ namespace AlquilaCocheras.Web.clientes
             Label lblid = (Label)gvReservas.SelectedRow.FindControl("lblid");
             if (lblid != null)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "show", "showDiv('miModal', 'Puntuacion');", true);
-                ViewState["idReserva"] = lblid.Text;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "show", "showModal('miModal', 'hdIdReserva', '" + lblid.Text + "');", true);
+                //ViewState["idReserva"] = lblid.Text;
             }
         }
     }

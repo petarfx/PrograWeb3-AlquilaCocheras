@@ -17,7 +17,7 @@
             </ul>
         </div>
     </nav>
+
     <asp:ContentPlaceHolder ID="ContentPlaceHolder_Principal" runat="server">
-        <script type="text/javascript" src="~/js/script.js"></script>
     </asp:ContentPlaceHolder>
 </asp:Content>

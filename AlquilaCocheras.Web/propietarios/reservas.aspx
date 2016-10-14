@@ -22,7 +22,7 @@
                         <asp:TextBox ID="txtFechaFin" runat="server" ClientIDMode="Static"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="revFechaFin" runat="server" ControlToValidate="txtFechaFin"
                             ForeColor="Red" ValidationExpression="^(?:(?:0?[1-9]|1\d|2[0-8])(\/|-)(?:0?[1-9]|1[0-2]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:31(\/|-)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-)(?:0?[1,3-9]|1[0-2])))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(29(\/|-)0?2)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$">Fecha de Fin Inválida (Ingrese dd/mm/aaaa)</asp:RegularExpressionValidator>
-                        <asp:CompareValidator ID="cvFechas90" runat="server" ControlToCompare="txtFechaInicio" ControlToValidate="txtFechaFin" ErrorMessage="El periodo de fechas a filtrar no puede&nbsp;ser&nbsp;mayor&nbsp;de&nbsp;90&nbsp;días" ForeColor="Red" Operator="LessThanEqual" Type="Date" ValueToCompare="90"></asp:CompareValidator>
+                        <asp:CompareValidator ID="cvFechas90" runat="server" ControlToCompare="txtFechaInicio" ControlToValidate="txtFechaFin" ErrorMessage="El periodo de fechas a filtrar no puede ser mayor de 90 días" ForeColor="Red" Operator="LessThanEqual" Type="Date" ValueToCompare="90"></asp:CompareValidator>
                     </div>
                 </div>
                 <div class="row">
