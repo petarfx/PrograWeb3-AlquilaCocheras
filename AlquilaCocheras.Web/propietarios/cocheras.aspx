@@ -137,8 +137,8 @@
                     <div class="col s12 m6">--%>
                         <%-- <div class=" col s12 m12 input-field">--%>
                         <asp:Label ID="label19" runat="server" Text="Tipo Vehículo: "></asp:Label>
-                        <asp:ListBox ID="lbTipoVehiculo" runat="server" ClientIDMode="Static">
-                            <asp:ListItem Value="0">Seleccione:</asp:ListItem>
+                        <asp:ListBox ID="lbTipoVehiculo" runat="server" SelectionMode="Multiple" ClientIDMode="Static">
+                            <asp:ListItem Value="0" Enabled="false">Seleccione:</asp:ListItem>
                             <asp:ListItem Value="1">Auto</asp:ListItem>
                             <asp:ListItem Value="2">Pickup</asp:ListItem>
                             <asp:ListItem Value="3">Camion</asp:ListItem>
@@ -168,7 +168,6 @@
                             <label for="chk4">Moto</label>
                         </p>
                     </div>--%>
-
 
 
 <%--                </div>--%>

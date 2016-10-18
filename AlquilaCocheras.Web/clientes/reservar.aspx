@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Clientes.Master" AutoEventWireup="true" CodeBehind="reservar.aspx.cs" Inherits="AlquilaCocheras.Web.clientes.reservar" %>
-<%@ Register TagName="Buscador" TagPrefix="uc" src="~/ucBuscador.ascx" %>
+
+<%@ Register TagName="Buscador" TagPrefix="uc" Src="~/ucBuscador.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Principal" runat="server">
@@ -16,7 +17,7 @@
 
     <uc:Buscador runat="server" ID="ucBuscador" EnableViewState="false" />
 
-      <%--    LISTADO  (gridview, repeater o datalist)
+    <%--    LISTADO  (gridview, repeater o datalist)
     Por cada disponibilidad se deberá mostrar la siguiente información:
     precio, 
     nombre y 
@@ -45,7 +46,15 @@
                 <asp:BoundField HeaderText="ApeyNom" DataField="ApeyNom" />
                 <asp:BoundField HeaderText="PrecioTotal" DataField="PrecioTotal" />
                 <asp:BoundField HeaderText="Foto" DataField="Foto" />
-                <asp:BoundField HeaderText="Mapa" DataField="Mapa" />
+                <asp:TemplateField HeaderText="Mapa">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Mapa") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("Mapa") %>'></asp:Label>
+                        <div id="map" runat="server"></div>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField HeaderText="Puntuacion" DataField="Puntuacion" />
                 <asp:TemplateField HeaderText="Reservar">
                     <EditItemTemplate>
@@ -69,4 +78,18 @@
         </asp:GridView>
     </div>
     <%--<asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>--%>
+
+
+    <div style='overflow: hidden; height: 440px; width: 700px;'>
+        <div id='gmap_canvas' style='height: 440px; width: 700px;'></div>
+        <div><small><a href="http://embedgooglemaps.com">embed google map</a></small></div>
+        <div><small><a href="https://plantillaterminosycondicionestiendaonline.com/">plantilla terminos y condiciones tienda online</a></small></div>
+        <style>
+            #gmap_canvas img {
+                max-width: none !important;
+                background: none !important;
+            }
+        </style>
+    </div>
+
 </asp:Content>

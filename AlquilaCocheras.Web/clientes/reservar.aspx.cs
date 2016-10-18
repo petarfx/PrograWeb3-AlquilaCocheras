@@ -86,9 +86,8 @@ namespace AlquilaCocheras.Web.clientes
             }
             catch (Exception ex)
             {
-                //error
+                //lblResultado.Text = ex.Message;
             }
         }
-
     }
 }

@@ -24,8 +24,9 @@
     <script type="text/javascript" src='<%= ResolveUrl("~/js/Wijmo/wijdialog/jquery.wijmo.wijdialog.min.js") %>'></script>
     <script type="text/javascript" src='<%= ResolveUrl("~/js/materialize.min.js") %>'></script>
     <script type="text/javascript" src='<%= ResolveUrl("~/js/userControlBuscador.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/script.js") %>'></script>  
-
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/script.js") %>'></script>
+    <%--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.3"></script>--%>
+    <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
 
     <div class="container">
         <form id="form1" runat="server">

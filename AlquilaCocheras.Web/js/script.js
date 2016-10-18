@@ -44,15 +44,72 @@ restaFechas = function (f1, f2) {
     return dias;
 }
 
+function showimagepreview(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementsByTagName("img")[0].setAttribute("src", e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function LimpiaControles() {
+    $("input[type=text]").val("");
+    $("select").val("");
+}
+
+function mostrarImagen(elem) {
+    $("#imgFoto").attr('src', elem.value);
+}
+
+/*
+function InitializeMap() {
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+        zoom: 8,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+}
+window.onload = InitializeMap;*/
+
+/*
+function initMap() {
+    // Create a map object and specify the DOM element for display.
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: -34.397, lng: 150.644 },
+        scrollwheel: false,
+        zoom: 8
+    });
+}*/
+
+function init_map() {
+    var myOptions = { zoom: 10, center: new google.maps.LatLng(-34.684166254941246, -58.55828472006833), mapTypeId: google.maps.MapTypeId.ROADMAP }; map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions); marker = new google.maps.Marker({ map: map, position: new google.maps.LatLng(-34.684166254941246, -58.55828472006833) }); infowindow = new google.maps.InfoWindow({ content: '<strong>Título</strong><br>san justo, argentina<br>' }); google.maps.event.addListener(marker, 'click', function () { infowindow.open(map, marker); }); infowindow.open(map, marker);
+} google.maps.event.addDomListener(window, 'load', init_map);
+
+
+/*
+function iniciar() {
+    var mapOptions = {
+        center: new google.maps.LatLng(25.80, -80.30),
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}*/
+
+
 // A $( document ).ready() block.
 $(document).ready(function () {
     $('select').material_select();
+    //$('select:([multiple])').material_select();
     $('.modal-trigger').leanModal();
 
 
-    $("#txtHorarioInicio,#txtHorarioFin,#txtFechaInicio,#txtFechaFin").keyup(function ()
-    {
-        if ($("input[id$='txtHorarioInicio']").val().length == 5 && $("input[id$='txtHorarioFin']").val().length == 5 && $("input[id$='txtFechaInicio']").val().length == 10 && $("input[id$='txtFechaFin']").val().length == 10) {
+    $("#txtHorarioInicio,#txtHorarioFin,#txtFechaInicio,#txtFechaFin").keyup(function () {
+        if ($("input[id$='txtHorarioInicio']").val().length == 5 && $("input[id$='txtHorarioInicio']").val().substr(2, 1) == ":" && $("input[id$='txtHorarioFin']").val().length == 5 && $("input[id$='txtHorarioFin']").val().substr(2, 1) == ":" && $("input[id$='txtFechaInicio']").val().length == 10 && $("input[id$='txtFechaFin']").val().length == 10) {
             var hi = parseFloat(parseInt(($("input[id$='txtHorarioInicio']").val().substr(0, 2))) + parseFloat(($("input[id$='txtHorarioInicio']").val().substr(3, 2)) / 60))
             var hf = parseFloat(parseInt(($("input[id$='txtHorarioFin']").val().substr(0, 2))) + parseFloat(($("input[id$='txtHorarioFin']").val().substr(3, 2)) / 60))
             var fi = $("input[id$='txtFechaInicio']").val();
@@ -71,7 +128,7 @@ $(document).ready(function () {
             var precioTotal = horasTotales * precioHora;
 
             //Si es un Numero
-            if(!isNaN(precioTotal))
+            if (!isNaN(precioTotal))
                 document.getElementById('lblPrecioTotal').innerHTML = precioTotal.toFixed(2);
             else
                 document.getElementById('lblPrecioTotal').innerHTML = "";
@@ -84,82 +141,6 @@ $(document).ready(function () {
         else
             document.getElementById('lblPrecioTotal').innerHTML = "";
     });
-
-
-
-    function showDiv(nomWn, titulo) {
-        var hei = 180;
-        var wid = 600;
-        $("#" + nomWn).wijdialog({
-            autoOpen: true,
-            height: 390, //350
-            width: 650,
-            modal: true,
-            title: titulo,
-            captionButtons: {
-                pin: { visible: false },
-                refresh: { visible: false },
-                toggle: { visible: false },
-                minimize: { visible: false },
-                maximize: { visible: false },
-                close: { visible: true }
-            }
-        });
-        var t = Math.max(0, ((parent.document.body.clientHeight - $("#" + nomWn).parent().height()) / 2) + $(window).scrollTop()) + "px";
-        var l = Math.max(0, ((parent.document.body.clientWidth - $("#" + nomWn).parent().width()) / 2) + $(window).scrollLeft()) + "px";
-        $("#" + nomWn).parent().css("top", t);
-        $("#" + nomWn).parent().css("left", l);
-    }
-
-    function showDiv2(nomWn, titulo, mensaje) {
-        var hei = 180;
-        var wid = 600;
-        $("#lblMensaje").val = mensaje;
-        $("#" + nomWn).wijdialog({
-            autoOpen: true,
-            height: 390, //350
-            width: 650,
-            modal: true,
-            title: titulo,
-            captionButtons: {
-                pin: { visible: false },
-                refresh: { visible: false },
-                toggle: { visible: false },
-                minimize: { visible: false },
-                maximize: { visible: false },
-                close: { visible: true }
-            }
-        });
-        /*var t = Math.max(0, (((parent.document.body.clientHeight - $("#tabs", parent.document).position().top - 50) - $("#" + nomWn).parent().height()) / 2) + $(window).scrollTop()) + "px";
-        var l = Math.max(0, ((parent.document.body.clientWidth - $("#" + nomWn).parent().width()) / 2) + $(window).scrollLeft()) + "px";
-        $("#" + nomWn).parent().css("top", t);
-        $("#" + nomWn).parent().css("left", l);*/
-    }
-
-    function closeWn(nomWn) {
-        $("#" + nomWn).wijdialog("close");
-    }
-
-    function LimpiaControles() {
-        $("input[type=text]").val("");
-        $("select").val("");
-    }
-
-    function mostrarImagen(elem) {
-        $("#imgFoto").attr('src', elem.value);
-    }
-
-    function showimagepreview(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                document.getElementsByTagName("img")[0].setAttribute("src", e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-
 
 
 

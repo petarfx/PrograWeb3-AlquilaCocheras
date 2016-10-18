@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Drawing;
 
 namespace AlquilaCocheras.Web.clientes
 {
@@ -70,12 +71,16 @@ namespace AlquilaCocheras.Web.clientes
             {
                 LinkButton lnkPuntuar = (LinkButton)e.Row.FindControl("lnkPuntuar");
                 Label lblFechaInicio = (Label)e.Row.FindControl("lblFechaInicio");
+                Label lblFechaFin = (Label)e.Row.FindControl("lblFechaFin");
                 Label lblPuntuacion = (Label)e.Row.FindControl("lblPuntuacion");
                 // Si ya tiene puntaje o es una reserva futura
                 if (lblPuntuacion != null && lblPuntuacion.Text != "" || Convert.ToDateTime(lblFechaInicio.Text) > DateTime.Today) 
                     lnkPuntuar.Visible = false; //No lo muestro
                 else
                     lnkPuntuar.Visible = true; // Lo muestro
+
+                if (Convert.ToDateTime(lblFechaFin.Text) < DateTime.Today)
+                    e.Row.BackColor = Color.LightGray;
             }
         }
 
