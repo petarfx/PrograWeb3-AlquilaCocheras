@@ -42,15 +42,37 @@
                 <asp:BoundField HeaderText="Precio" DataField="Precio" />
                 <asp:BoundField HeaderText="ApeyNom" DataField="ApeyNom" />
                 <asp:BoundField HeaderText="PrecioTotal" DataField="PrecioTotal" />
-                <asp:BoundField HeaderText="Foto" DataField="Foto" />
-                <asp:BoundField HeaderText="Mapa" DataField="Mapa" />
+                <asp:TemplateField HeaderText="Foto">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Image ID="imgFoto" runat="server" Height="150px" Width="150px" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="FotoURL" Visible="False">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("FotoURL") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblFotoURL" runat="server" Text='<%# Bind("FotoURL") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Mapa">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Mapa") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <div id="map" style="width:150px;height:150px"></div>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField HeaderText="Puntuacion" DataField="Puntuacion" />
                 <asp:TemplateField HeaderText="Reservar">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static">Reservar</asp:HyperLink>
+                        <asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -66,5 +88,6 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
     </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=myMap"></script>
 </asp:Content>
 

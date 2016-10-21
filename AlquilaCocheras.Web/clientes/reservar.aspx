@@ -4,19 +4,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Principal" runat="server">
-    <%--Esto va en un UserControl--%>
-    <%--Inicio User Control--%>
-    <%--<asp:Label ID="label1" runat="server" Text="Ubicación: "></asp:Label>
-    <asp:TextBox ID="txtUbicacion" runat="server" ClientIDMode="Static"></asp:TextBox>
-    <asp:Button ID="btnFiltrar" runat="server" Text="Buscar" ClientIDMode="Static" />--%>
-
-    <%--si no se encuentran resultados mostrar mensaje "No se encontraron resultados"--%>
-    <%--<asp:Label ID="lblResultado" runat="server"></asp:Label>--%>
-
-    <%--Fin User Control--%>
-
-    <uc:Buscador runat="server" ID="ucBuscador" EnableViewState="false" />
-
     <%--    LISTADO  (gridview, repeater o datalist)
     Por cada disponibilidad se deberá mostrar la siguiente información:
     precio, 
@@ -28,7 +15,12 @@
     la puntuación promedio        
     y el link a confirmar reserva que esta agregado abajo como asp:HyperLink, 
         donde deberán cambiarle dinamicamente el link y ponerle el idcochera correspondiente
-    --%>
+    --%><%--<asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>--%><%--<div id="map" style="width:100%;height:500px"></div>--%>    <%--<asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>--%><%--<div id="map" style="width:100%;height:500px"></div>--%>
+    <%--<asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>--%>
+
+    <uc:Buscador runat="server" ID="ucBuscador" EnableViewState="false" />
+
+    <%--<div id="map" style="width:100%;height:500px"></div>--%>
 
     <div class="row">
         <asp:GridView ID="gvCocheras" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" OnRowDataBound="gvCocheras_RowDataBound" OnPreRender="gvCocheras_PreRender">
@@ -45,14 +37,28 @@
                 <asp:BoundField HeaderText="Precio" DataField="Precio" />
                 <asp:BoundField HeaderText="ApeyNom" DataField="ApeyNom" />
                 <asp:BoundField HeaderText="PrecioTotal" DataField="PrecioTotal" />
-                <asp:BoundField HeaderText="Foto" DataField="Foto" />
+                <asp:TemplateField HeaderText="Foto">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Image ID="imgFoto" runat="server" Height="150px" Width="150px" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="FotoURL" Visible="False">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("FotoURL") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblFotoURL" runat="server" Text='<%# Bind("FotoURL") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Mapa">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Mapa") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("Mapa") %>'></asp:Label>
-                        <div id="map" runat="server"></div>
+                        <div id="map" style="width:150px;height:150px"></div>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="Puntuacion" DataField="Puntuacion" />
@@ -79,17 +85,6 @@
     </div>
     <%--<asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>--%>
 
-
-    <div style='overflow: hidden; height: 440px; width: 700px;'>
-        <div id='gmap_canvas' style='height: 440px; width: 700px;'></div>
-        <div><small><a href="http://embedgooglemaps.com">embed google map</a></small></div>
-        <div><small><a href="https://plantillaterminosycondicionestiendaonline.com/">plantilla terminos y condiciones tienda online</a></small></div>
-        <style>
-            #gmap_canvas img {
-                max-width: none !important;
-                background: none !important;
-            }
-        </style>
-    </div>
-
+    <%--<div id="map" style="width:100%;height:500px"></div>--%>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=myMap"></script>
 </asp:Content>

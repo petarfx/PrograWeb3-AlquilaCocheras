@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Drawing;
 
 namespace AlquilaCocheras.Web.propietarios
 {
@@ -16,6 +18,20 @@ namespace AlquilaCocheras.Web.propietarios
                 //Para que siempre pueda editar la fecha de inicio
                 esEdicion.Value = "true";
             }
+        }
+
+        protected void gvCocheras_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Label lblFechaInicio = (Label)e.Row.FindControl("lblFechaInicio");
+            // Si es una reserva futura
+            if (lblFechaInicio != null && Convert.ToDateTime(lblFechaInicio.Text) > DateTime.Today)
+                e.Row.BackColor = Color.AliceBlue;
+        }
+
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            //Haria algo
+            DataTable dt = new DataTable();
         }
     }
 }

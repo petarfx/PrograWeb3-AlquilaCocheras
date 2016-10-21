@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Configuration;
 
 namespace AlquilaCocheras.Web
 {
@@ -49,6 +50,7 @@ namespace AlquilaCocheras.Web
             dt.Columns.Add("ApeyNom");
             dt.Columns.Add("PrecioTotal");
             dt.Columns.Add("Foto");
+            dt.Columns.Add("FotoURL");
             dt.Columns.Add("Mapa");
             dt.Columns.Add("Puntuacion");
             //dt.Columns.Add("Seleccionar");
@@ -58,6 +60,7 @@ namespace AlquilaCocheras.Web
             dt.Rows[0]["ApeyNom"] = "Juan Perez";
             dt.Rows[0]["PrecioTotal"] = "800";
             dt.Rows[0]["Foto"] = "";
+            dt.Rows[0]["FotoURL"] = "EstacionamientoEjemplo.jpg";
             dt.Rows[0]["Mapa"] = "";
             dt.Rows[0]["Puntuacion"] = "4";
             //dt.Rows[0]["Seleccionar"] = "Seleccionar";
@@ -67,12 +70,26 @@ namespace AlquilaCocheras.Web
         }
         protected void gvCocheras_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+
             Label lblid = (Label)e.Row.FindControl("lblid");
             if (lblid != null)
             {
                 HyperLink aConfirmar = (HyperLink)e.Row.FindControl("aConfirmar");
                 aConfirmar.NavigateUrl = "/clientes/confirmar-reserva.aspx?idcochera=" + lblid.Text;
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "mapa", "initMap();", true);
+
+
+                Label FotoURL = (Label)e.Row.FindControl("lblFotoURL");
+                if (FotoURL != null && FotoURL.Text.Trim() != "")
+                {
+                    Image imgFoto = (Image)e.Row.FindControl("imgFoto");
+                    Random rnd = new Random();
+                    int nro = rnd.Next(0, 10000000);
+                    imgFoto.ImageUrl = ConfigurationManager.AppSettings["pathFotosCocheras"].ToString() + FotoURL.Text.ToString() + "?hash=" + nro;
+                }
             }
+
+
         }
 
         protected void gvCocheras_PreRender(object sender, EventArgs e)
