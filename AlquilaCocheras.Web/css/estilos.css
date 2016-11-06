@@ -1,5 +1,4 @@
-.btnEstilo
-{    
+.btnEstilo {
     padding: 4px 16px;
     line-height: 20px;
     text-align: center;
@@ -8,7 +7,7 @@
     font-family: Helvetica, Open Sans, arial, sans-serif !important;
     color: #fff;
     text-shadow: -1px 2px 2px rgba(0, 0, 0, 0.56); /*background: #276A99;*/
-    background-color: #00bcd4 !important;/*#428bca;*/
+    background-color: #00bcd4 !important; /*#428bca;*/
     border: 1px solid #357ebd;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -16,7 +15,25 @@
     cursor: pointer;
     width: auto;
     font-weight: bold;
+    text-decoration: none;
+    letter-spacing: .5px;
+}
 
-    text-decoration:none;
-    letter-spacing:.5px;
+
+.fotoGrilla {
+    width: 150px;
+    height: 150px;
+}
+
+.fotoFormulario {
+    width: 100%;
+    height: 100%;
+}
+
+
+.iconoDate {
+    display: inline-block;
+    vertical-align: middle;
+    width: 90%;
+    margin: 0 5px 0 0;
 }

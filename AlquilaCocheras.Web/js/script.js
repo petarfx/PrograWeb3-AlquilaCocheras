@@ -1,32 +1,21 @@
-/*
-function afterLoad() {
-    console.log(esEdicion);
-    if (esEdicion) {
-        $("#txtFechaInicio").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            showOn: "button",
-            buttonImage: "imagenes/calendario.png",
-            buttonImageOnly: true,
-            dateFormat: "dd/mm/yy",
-            showButtonPanel: true
-        });
-        console.log("fechainiciooo");
-    }
-}
+//$(function () {
 
-function pageLoad() {
-    $(document).ready(function () {
-        // Variable global para activar la edicion en los combobox.
-        //esEdicion = true;
-        esEdicion = $("#esEdicion").val() == "true" ? true : false;
-        console.log(esEdicion);
-        afterLoad();
-        $('select').material_select();
-    });
-}
+//    $("#txtFechaInicio").datepicker({
+//        //changeMonth: true,
+//        //changeYear: true,
+//        //showOn: "button",
+//        buttonImage: "../imagenes/calendario.png",
+//        buttonImageOnly: true,
+//        dateFormat: "dd/mm/yy"
+//        //showButtonPanel: true
+//    });
 
-*/
+//    $("#txtFechaFin").datepicker({
+//        buttonImage: "../imagenes/calendario.png",
+//        buttonImageOnly: true,
+//        dateFormat: "dd/mm/yy"
+//    });
+//});
 
 
 function showModal(modalName, hf, idReserva) {
@@ -124,7 +113,6 @@ $(document).ready(function () {
                 document.getElementById('lblPrecioTotal').innerHTML = "";
         });
     }
-
 
 });
 

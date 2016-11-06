@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -24,6 +25,11 @@ namespace AlquilaCocheras.Web.clientes
                 lblPrecioHora.Text = "20";
                 lblPrecioTotal.Text = "$ 1800";
                 lblUbicacion.Text = "HAEDO";
+
+                Random rnd = new Random();
+                int nro = rnd.Next(0, 10000000);
+                imgFoto.ImageUrl = ConfigurationManager.AppSettings["pathFotosCocheras"].ToString() + "EstacionamientoEjemplo.jpg" + "?hash=" + nro;
+               
                 #endregion
             }
         }

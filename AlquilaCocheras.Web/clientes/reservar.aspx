@@ -58,7 +58,7 @@
                         <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Mapa") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <div id="map" style="width:150px;height:150px"></div>
+                        <div id="map" class="fotoGrilla"></div>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="Puntuacion" DataField="Puntuacion" />
@@ -87,4 +87,38 @@
 
     <%--<div id="map" style="width:100%;height:500px"></div>--%>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=myMap"></script>
+
+
+     <script>
+        $(function () {
+            $.datepicker.regional['es'] = {
+                closeText: 'Cerrar',
+                prevText: '<Ant',
+                nextText: 'Sig>',
+                currentText: 'Hoy',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+                dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy',
+                showOn: "button",
+                buttonImage: "../imagenes/calendario.png",
+                //buttonImageOnly: true,
+                buttonText: "Seleccione una Fecha",
+                firstDay: 1,
+                isRTL: false,
+                //showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['es']);
+
+            $(function () {
+                $("#txtFechaInicio,#txtFechaFin").datepicker();
+            });
+
+        });
+    </script>
+
 </asp:Content>

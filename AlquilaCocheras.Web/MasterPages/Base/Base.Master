@@ -5,10 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="~/css/calendar.css" />
     <link rel="stylesheet" type="text/css" href="~/css/estilos.css" />
-    <%--    <link rel="stylesheet" type="text/css" href="~/Themes/rocket/jquery-wijmo.css" />
-    <link rel="stylesheet" type="text/css" href="~/js/Wijmo/wijdialog/jquery.wijmo.wijdialog.css" />--%>
+    <%--    <link rel="stylesheet" type="text/css" href="~/css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/jquery-ui-1.10.4.custom.css" />--%>
+
+    <link rel="stylesheet" type="text/css" href="~/css/jquery-ui-1.12.1/jquery-ui.theme.css" />
+    <%--<link rel="stylesheet" type="text/css" href="~/css/jquery-ui-themes-1.12.1/themes/base/jquery-ui.css" />--%>
+    <link rel="stylesheet" type="text/css" href="~/css/jquery-ui-1.12.1/jquery-ui.css" />
+    <%--    <link rel="stylesheet" type="text/css" href="~/css/jquery-ui-1.12.1/jquery-ui.structure.css" />--%>
+
+
+
     <link rel="stylesheet" type="text/css" href="~/css/materialize.min.css" />
     <link rel="stylesheet" type="text/css" href="~/css/material-icons.css" />
     <asp:ContentPlaceHolder ID="head_Base" runat="server">
@@ -16,15 +23,17 @@
 </head>
 <body class="cyan loaded">
 
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-1.9.1.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-ui-1.10.3.custom.min.js") %>'></script>
+    <%--prueba 1--%>
     <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-3.1.1.js") %>'></script>
-    <%--<script type="text/javascript" src='<%= ResolveUrl("~/js/Wijmo/wijutil/jquery.wijmo.wijutil.min.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/Wijmo/Base/jquery.wijmo.widget.min.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/Wijmo/wijdialog/jquery.wijmo.wijdialog.min.js") %>'></script>--%>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-1.12.4.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-ui.js") %>'></script>
     <script type="text/javascript" src='<%= ResolveUrl("~/js/materialize.min.js") %>'></script>
     <script type="text/javascript" src='<%= ResolveUrl("~/js/script.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/userControlBuscador.js") %>'></script>    
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/userControlBuscador.js") %>'></script>
+
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-1.9.1.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-ui-1.10.3.custom.min.js") %>'></script>
+
 
     <div class="container">
         <form id="form1" runat="server">
@@ -34,8 +43,6 @@
             </div>
         </form>
     </div>
-
-
 
 </body>
 </html>

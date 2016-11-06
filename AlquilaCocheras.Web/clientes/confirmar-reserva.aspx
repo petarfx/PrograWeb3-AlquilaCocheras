@@ -78,9 +78,9 @@
                         <asp:Label ID="lblUbicacion" ClientIDMode="Static" runat="server"></asp:Label>
 
                     </div>
-                    <div class=" col s12 m6 input-field">
+                    <div class=" col s12 m6">
                         <asp:Label ID="label9" runat="server" Text="Foto: "></asp:Label>
-                        <asp:Image ID="imgFoto" ClientIDMode="Static" runat="server" />
+                        <asp:Image ID="imgFoto" ClientIDMode="Static" runat="server" CssClass="fotoFormulario" />
                     </div>
                 </div>
 
@@ -105,5 +105,7 @@
             </div>
         </div>
     </div>
+
+
 
 </asp:Content>

@@ -37,6 +37,10 @@ namespace AlquilaCocheras.Web
             else if (ucBuscador.myUbicacion == "HAEDO")
             {
                 cargarGrilla();
+
+                //string script = "$(function() { $('html, body').animate({scrollTop: $('#gvCocheras').offset().top}, 2000); });";
+                string script = "$('html, body').animate({scrollTop:$('#divGrilla').position().top}, 'slow')";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", script, true);
             }
             else
                 ucBuscador.myResultado = "Ubicacion desconocida";

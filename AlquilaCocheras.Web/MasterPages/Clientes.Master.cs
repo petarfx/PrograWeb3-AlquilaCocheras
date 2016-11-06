@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,13 +16,19 @@ namespace AlquilaCocheras.Web.MasterPages
             {
                 if (Session["ROL"] != "C")
                 {
-                    Session["ROL"] = null;
-                    if (Request.QueryString == null)
-                        Response.Redirect("../login.aspx");
-                    else
-                        if (Request.QueryString["idcochera"] != null)
-                    Response.Redirect("../login.aspx?idCochera=" + Request.QueryString["idCochera"].ToString());
+                    if (Session["ROL"] == "P") //PROPIETARIO
+                        Response.Redirect(ConfigurationManager.AppSettings["PropietarioInicio"].ToString());
+                    else //ANONIMO
+                    {
+                        Session["ROL"] = null;
+                        if (Request.QueryString == null)
+                            Response.Redirect("../login.aspx");
+                        else
+                            if (Request.QueryString["idcochera"] != null)
+                                Response.Redirect("../login.aspx?idCochera=" + Request.QueryString["idCochera"].ToString());
+                    }
                 }
+                //CLIENTE (NO HACE NADA)
             }
         }
     }
