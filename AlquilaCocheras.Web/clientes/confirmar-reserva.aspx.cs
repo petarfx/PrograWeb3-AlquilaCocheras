@@ -35,7 +35,7 @@ namespace AlquilaCocheras.Web.clientes
                     imgFoto.ImageUrl = cochera.First().Imagen + "?hash=" + nro;
 
 
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "mapa", "mapAlone('" + cochera.First().Latitud + "','" + cochera.First().Longitud + "','map');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mapa", "loadMap('" + cochera.First().Latitud + "','" + cochera.First().Longitud + "');", true);
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "mapa", "mapAlone();", true);
                 }
                                 

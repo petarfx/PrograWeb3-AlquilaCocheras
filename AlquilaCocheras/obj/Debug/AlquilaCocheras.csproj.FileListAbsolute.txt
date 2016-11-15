@@ -5,6 +5,6 @@ C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras\bin\Debug\EntityFramewor
 C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras\bin\Debug\EntityFramework.SqlServer.dll
 C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras\bin\Debug\EntityFramework.xml
 C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras\bin\Debug\EntityFramework.SqlServer.xml
+C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras\obj\Debug\AlquilaCocheras.csprojResolveAssemblyReference.cache
 C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras\obj\Debug\AlquilaCocheras.dll
 C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras\obj\Debug\AlquilaCocheras.pdb
-C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras\obj\Debug\AlquilaCocheras.csprojResolveAssemblyReference.cache

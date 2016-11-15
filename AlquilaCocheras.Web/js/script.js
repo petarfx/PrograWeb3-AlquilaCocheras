@@ -110,8 +110,8 @@ function myMap() {
         map: map,
         title: 'Cochera'
     });
-
 };
+
 function mapAlone() {
     //console.log(vlat);
     //console.log(vlong);
@@ -128,6 +128,24 @@ function mapAlone() {
         map: map,
         title: 'Cochera'
     });
+};
+
+
+function loadMap(lat, lon) {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: lat, lng: lon},
+        scrollwheel: false,
+        zoom: 14
+    });
+
+    var marker = new google.maps.Marker({
+        position: {lat: lat, lng: lon},
+        map: map,
+        title: 'Cochera'
+    });
+
+
+
 };
 
 

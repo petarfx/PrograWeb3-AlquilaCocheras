@@ -50,14 +50,21 @@ namespace AlquilaCocheras
         }
 
 
-        public List<cocheraDTO> VerificaDisponibilidad(int idCochera)
+        public List<cocheraDTO> VerificaDisponibilidad(int idCochera, DateTime fi, DateTime ff, string hi, string hf)
         {
             TP_20162CEntities dc = new TP_20162CEntities();
             var query = (from c in dc.Cocheras                         
                          join r in dc.Reservas
-                         on c.IdCochera equals r.IdCochera
-                         and 
-                         where c.IdCochera == idCochera
+                         on c.IdCochera equals r.IdCochera                         
+                         where (
+                         c.IdCochera == idCochera
+
+                         && c.FechaInicio <= fi     //me aseguro que estoy en el rango de la cochera
+                         && c.FechaFin >= ff
+
+                         //me aseguro que los horarios esten dentro del rango.. mañana lo hago
+
+                        )
 
                          select new cocheraDTO
                          {

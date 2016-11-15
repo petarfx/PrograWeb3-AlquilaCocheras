@@ -105,7 +105,7 @@
         </div>
     </div>
 
-    <%--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=mapAlone"></script>--%>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=loadMap"></script>
    
 
 
