@@ -5,14 +5,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Principal" runat="server">
-    <%-- <%--Esto va en un UserControl--%><%--Inicio User Control--%><%--<asp:Label ID="label1" runat="server" Text="Ubicación: "></asp:Label>
-    <asp:TextBox ID="txtUbicacion" runat="server" ClientIDMode="Static"></asp:TextBox>
-    
-    <asp:Label ID="label2" runat="server" Text="Período Disponible: "></asp:Label>
-    <asp:TextBox ID="txtFechaInicio" runat="server" ClientIDMode="Static"></asp:TextBox>
-    <asp:TextBox ID="txtFechaFin" runat="server" ClientIDMode="Static"></asp:TextBox>
-
-    <asp:Button ID="btnFiltrar" runat="server" Text="Buscar" ClientIDMode="Static" />--%>    <%--si no se encuentran resultados mostrar mensaje "No se encontraron resultados"--%><%--<asp:Label ID="lblResultado" runat="server"></asp:Label>--%><%--Fin User Control--%>
+    <%--<asp:Label ID="lblResultado" runat="server"></asp:Label>--%><%--Fin User Control--%><%--    LISTADO  (gridview, repeater o datalist)
+    Por cada disponibilidad se deberá mostrar la siguiente información:
+    precio, 
+    nombre y 
+    apellido del propietario, 
+    precio total por las horas que se desean reservar, 
+    la foto, 
+    el mapa del lugar donde está ubicado (utilizar la API de Google Maps) 
+    la puntuación promedio        
+    y el link a confirmar reserva que esta agregado abajo como asp:HyperLink, 
+        donde deberán cambiarle dinamicamente el link y ponerle el idcochera correspondiente
+    --%>    <%--si no se encuentran resultados mostrar mensaje "No se encontraron resultados"--%><%--<asp:Label ID="lblResultado" runat="server"></asp:Label>--%><%--Fin User Control--%>
     <uc:Buscador runat="server" ID="ucBuscador" EnableViewState="false" />
 
     <%--    LISTADO  (gridview, repeater o datalist)
@@ -40,8 +44,8 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="Precio" DataField="Precio" />
-                <asp:BoundField HeaderText="ApeyNom" DataField="ApeyNom" />
-                <asp:BoundField HeaderText="PrecioTotal" DataField="PrecioTotal" />
+                <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                 <asp:TemplateField HeaderText="Foto">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
@@ -52,10 +56,10 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="FotoURL" Visible="False">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("FotoURL") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Imagen") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="lblFotoURL" runat="server" Text='<%# Bind("FotoURL") %>'></asp:Label>
+                        <asp:Label ID="lblFotoURL" runat="server" Text='<%# Bind("Imagen") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Mapa">
@@ -66,7 +70,14 @@
                         <div id="map" class="fotoGrilla"></div>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField HeaderText="Puntuacion" DataField="Puntuacion" />
+                <asp:TemplateField HeaderText="Puntuacion">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblPuntuacion" runat="server"></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Reservar">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>

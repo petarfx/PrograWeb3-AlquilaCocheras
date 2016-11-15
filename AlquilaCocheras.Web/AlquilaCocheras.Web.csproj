@@ -43,11 +43,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,8 +76,199 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\calendar.css" />
+    <Content Include="fonts\material-design-icons-3.0.1\MaterialIcons-Regular.svg" />
     <Content Include="imagenes\calendario.png" />
+    <Content Include="js\jquery-1.9.1.js" />
+    <Content Include="js\jquery-3.1.1.js" />
+    <Content Include="js\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="js\materialize.js" />
+    <Content Include="js\materialize.min.js" />
     <Content Include="js\script.js" />
+    <Content Include="js\userControlBuscador.js" />
+    <Content Include="js\Wijmo\Base\jquery.wijmo.widget.js" />
+    <Content Include="js\Wijmo\Base\jquery.wijmo.widget.min.js" />
+    <Content Include="js\Wijmo\data\wijmo.data.ajax.js" />
+    <Content Include="js\Wijmo\data\wijmo.data.ajax.min.js" />
+    <Content Include="js\Wijmo\data\wijmo.data.breeze.js" />
+    <Content Include="js\Wijmo\data\wijmo.data.breeze.min.js" />
+    <Content Include="js\Wijmo\data\wijmo.data.js" />
+    <Content Include="js\Wijmo\data\wijmo.data.min.js" />
+    <Content Include="js\Wijmo\data\wijmo.data.wijdatasource.js" />
+    <Content Include="js\Wijmo\data\wijmo.data.wijdatasource.min.js" />
+    <Content Include="js\Wijmo\external\breeze.debug.js" />
+    <Content Include="js\Wijmo\external\breeze.min.js" />
+    <Content Include="js\Wijmo\external\cultures\globalize.cultures.js" />
+    <Content Include="js\Wijmo\external\globalize.min.js" />
+    <Content Include="js\Wijmo\external\jquery-1.8.2.js" />
+    <Content Include="js\Wijmo\external\jquery-1.8.2.min.js" />
+    <Content Include="js\Wijmo\external\jquery-1.9.1.min.js" />
+    <Content Include="js\Wijmo\external\jquery-migrate-1.1.1.js" />
+    <Content Include="js\Wijmo\external\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="js\Wijmo\external\jquery-ui.effects.custom.min.js" />
+    <Content Include="js\Wijmo\external\jquery.bgiframe.js" />
+    <Content Include="js\Wijmo\external\jquery.cookie.js" />
+    <Content Include="js\Wijmo\external\jquery.mobile-1.2.0.js" />
+    <Content Include="js\Wijmo\external\jquery.mobile-1.2.0.min.js" />
+    <Content Include="js\Wijmo\external\jquery.mousewheel.min.js" />
+    <Content Include="js\Wijmo\external\jquery.ui.position.js" />
+    <Content Include="js\Wijmo\external\knockout-2.0.0.debug.js" />
+    <Content Include="js\Wijmo\external\knockout-2.0.0.js" />
+    <Content Include="js\Wijmo\external\knockout-2.2.0.debug.js" />
+    <Content Include="js\Wijmo\external\knockout-2.2.0.js" />
+    <Content Include="js\Wijmo\external\q.js" />
+    <Content Include="js\Wijmo\external\raphael-min.js" />
+    <Content Include="js\Wijmo\external\raphael.js" />
+    <Content Include="js\Wijmo\external\swfobject.js" />
+    <Content Include="js\Wijmo\external\swfupload.js" />
+    <Content Include="js\Wijmo\interop\angular.wijmo.js" />
+    <Content Include="js\Wijmo\interop\angular.wijmo.min.js" />
+    <Content Include="js\Wijmo\interop\knockout.wijmo.js" />
+    <Content Include="js\Wijmo\interop\knockout.wijmo.min.js" />
+    <Content Include="js\Wijmo\wijaccordion\jquery.wijmo.wijaccordion.css" />
+    <Content Include="js\Wijmo\wijaccordion\jquery.wijmo.wijaccordion.js" />
+    <Content Include="js\Wijmo\wijaccordion\jquery.wijmo.wijaccordion.min.js" />
+    <Content Include="js\Wijmo\wijappview\jquery.wijmo.wijappview.css" />
+    <Content Include="js\Wijmo\wijappview\jquery.wijmo.wijappview.js" />
+    <Content Include="js\Wijmo\wijappview\jquery.wijmo.wijappview.min.js" />
+    <Content Include="js\Wijmo\wijbarchart\jquery.wijmo.wijbarchart.js" />
+    <Content Include="js\Wijmo\wijbarchart\jquery.wijmo.wijbarchart.min.js" />
+    <Content Include="js\Wijmo\wijbubblechart\jquery.wijmo.wijbubblechart.js" />
+    <Content Include="js\Wijmo\wijbubblechart\jquery.wijmo.wijbubblechart.min.js" />
+    <Content Include="js\Wijmo\wijcalendar\jquery.wijmo.wijcalendar.css" />
+    <Content Include="js\Wijmo\wijcalendar\jquery.wijmo.wijcalendar.js" />
+    <Content Include="js\Wijmo\wijcalendar\jquery.wijmo.wijcalendar.min.js" />
+    <Content Include="js\Wijmo\wijcarousel\jquery.wijmo.wijcarousel.css" />
+    <Content Include="js\Wijmo\wijcarousel\jquery.wijmo.wijcarousel.js" />
+    <Content Include="js\Wijmo\wijcarousel\jquery.wijmo.wijcarousel.min.js" />
+    <Content Include="js\Wijmo\wijchart\jquery.wijmo.wijchartcore.js" />
+    <Content Include="js\Wijmo\wijchart\jquery.wijmo.wijchartcore.min.js" />
+    <Content Include="js\Wijmo\wijcheckbox\jquery.wijmo.wijcheckbox.css" />
+    <Content Include="js\Wijmo\wijcheckbox\jquery.wijmo.wijcheckbox.js" />
+    <Content Include="js\Wijmo\wijcheckbox\jquery.wijmo.wijcheckbox.min.js" />
+    <Content Include="js\Wijmo\wijcombobox\jquery.wijmo.wijcombobox.css" />
+    <Content Include="js\Wijmo\wijcombobox\jquery.wijmo.wijcombobox.js" />
+    <Content Include="js\Wijmo\wijcombobox\jquery.wijmo.wijcombobox.min.js" />
+    <Content Include="js\Wijmo\wijcompositechart\jquery.wijmo.wijcompositechart.js" />
+    <Content Include="js\Wijmo\wijcompositechart\jquery.wijmo.wijcompositechart.min.js" />
+    <Content Include="js\Wijmo\wijdatasource\jquery.wijmo.wijdatasource.js" />
+    <Content Include="js\Wijmo\wijdatasource\jquery.wijmo.wijdatasource.min.js" />
+    <Content Include="js\Wijmo\wijdatepager\jquery.wijmo.wijdatepager.css" />
+    <Content Include="js\Wijmo\wijdatepager\jquery.wijmo.wijdatepager.js" />
+    <Content Include="js\Wijmo\wijdatepager\jquery.wijmo.wijdatepager.min.js" />
+    <Content Include="js\Wijmo\wijdialog\jquery.wijmo.wijdialog.css" />
+    <Content Include="js\Wijmo\wijdialog\jquery.wijmo.wijdialog.js" />
+    <Content Include="js\Wijmo\wijdialog\jquery.wijmo.wijdialog.min.js" />
+    <Content Include="js\Wijmo\wijdropdown\jquery.wijmo.wijdropdown.css" />
+    <Content Include="js\Wijmo\wijdropdown\jquery.wijmo.wijdropdown.js" />
+    <Content Include="js\Wijmo\wijdropdown\jquery.wijmo.wijdropdown.min.js" />
+    <Content Include="js\Wijmo\wijeditor\jquery.wijmo.wijeditor.css" />
+    <Content Include="js\Wijmo\wijeditor\jquery.wijmo.wijeditor.js" />
+    <Content Include="js\Wijmo\wijeditor\jquery.wijmo.wijeditor.min.js" />
+    <Content Include="js\Wijmo\wijevcal\jquery.wijmo.wijevcal.css" />
+    <Content Include="js\Wijmo\wijevcal\jquery.wijmo.wijevcal.js" />
+    <Content Include="js\Wijmo\wijevcal\jquery.wijmo.wijevcal.min.js" />
+    <Content Include="js\Wijmo\wijexpander\jquery.wijmo.wijexpander.css" />
+    <Content Include="js\Wijmo\wijexpander\jquery.wijmo.wijexpander.js" />
+    <Content Include="js\Wijmo\wijexpander\jquery.wijmo.wijexpander.min.js" />
+    <Content Include="js\Wijmo\wijfilter\jquery.wijmo.wijfilter.css" />
+    <Content Include="js\Wijmo\wijfilter\jquery.wijmo.wijfilter.js" />
+    <Content Include="js\Wijmo\wijfilter\jquery.wijmo.wijfilter.min.js" />
+    <Content Include="js\Wijmo\wijgallery\jquery.wijmo.wijgallery.css" />
+    <Content Include="js\Wijmo\wijgallery\jquery.wijmo.wijgallery.js" />
+    <Content Include="js\Wijmo\wijgallery\jquery.wijmo.wijgallery.min.js" />
+    <Content Include="js\Wijmo\wijgauge\jquery.wijmo.wijgauge.js" />
+    <Content Include="js\Wijmo\wijgauge\jquery.wijmo.wijgauge.min.js" />
+    <Content Include="js\Wijmo\wijgrid\jquery.wijmo.wijgrid.css" />
+    <Content Include="js\Wijmo\wijgrid\jquery.wijmo.wijgrid.js" />
+    <Content Include="js\Wijmo\wijgrid\jquery.wijmo.wijgrid.min.js" />
+    <Content Include="js\Wijmo\wijinput\jquery.wijmo.wijinput.css" />
+    <Content Include="js\Wijmo\wijinput\jquery.wijmo.wijinputcore.js" />
+    <Content Include="js\Wijmo\wijinput\jquery.wijmo.wijinputcore.min.js" />
+    <Content Include="js\Wijmo\wijinput\jquery.wijmo.wijinputdate.js" />
+    <Content Include="js\Wijmo\wijinput\jquery.wijmo.wijinputdate.min.js" />
+    <Content Include="js\Wijmo\wijinput\jquery.wijmo.wijinputmask.js" />
+    <Content Include="js\Wijmo\wijinput\jquery.wijmo.wijinputmask.min.js" />
+    <Content Include="js\Wijmo\wijinput\jquery.wijmo.wijinputnumber.js" />
+    <Content Include="js\Wijmo\wijinput\jquery.wijmo.wijinputnumber.min.js" />
+    <Content Include="js\Wijmo\wijlightbox\jquery.wijmo.wijlightbox.css" />
+    <Content Include="js\Wijmo\wijlightbox\jquery.wijmo.wijlightbox.js" />
+    <Content Include="js\Wijmo\wijlightbox\jquery.wijmo.wijlightbox.min.js" />
+    <Content Include="js\Wijmo\wijlineargauge\jquery.wijmo.wijlineargauge.js" />
+    <Content Include="js\Wijmo\wijlineargauge\jquery.wijmo.wijlineargauge.min.js" />
+    <Content Include="js\Wijmo\wijlinechart\jquery.wijmo.wijlinechart.js" />
+    <Content Include="js\Wijmo\wijlinechart\jquery.wijmo.wijlinechart.min.js" />
+    <Content Include="js\Wijmo\wijlistview\jquery.wijmo.wijlistview.js" />
+    <Content Include="js\Wijmo\wijlistview\jquery.wijmo.wijlistview.min.js" />
+    <Content Include="js\Wijmo\wijlist\jquery.wijmo.wijlist.css" />
+    <Content Include="js\Wijmo\wijlist\jquery.wijmo.wijlist.js" />
+    <Content Include="js\Wijmo\wijlist\jquery.wijmo.wijlist.min.js" />
+    <Content Include="js\Wijmo\wijmenu\jquery.wijmo.wijmenu.css" />
+    <Content Include="js\Wijmo\wijmenu\jquery.wijmo.wijmenu.js" />
+    <Content Include="js\Wijmo\wijmenu\jquery.wijmo.wijmenu.min.js" />
+    <Content Include="js\Wijmo\wijpager\jquery.wijmo.wijpager.css" />
+    <Content Include="js\Wijmo\wijpager\jquery.wijmo.wijpager.js" />
+    <Content Include="js\Wijmo\wijpager\jquery.wijmo.wijpager.min.js" />
+    <Content Include="js\Wijmo\wijpiechart\jquery.wijmo.wijpiechart.js" />
+    <Content Include="js\Wijmo\wijpiechart\jquery.wijmo.wijpiechart.min.js" />
+    <Content Include="js\Wijmo\wijpopup\jquery.wijmo.wijpopup.js" />
+    <Content Include="js\Wijmo\wijpopup\jquery.wijmo.wijpopup.min.js" />
+    <Content Include="js\Wijmo\wijprogressbar\jquery.wijmo.wijprogressbar.css" />
+    <Content Include="js\Wijmo\wijprogressbar\jquery.wijmo.wijprogressbar.js" />
+    <Content Include="js\Wijmo\wijprogressbar\jquery.wijmo.wijprogressbar.min.js" />
+    <Content Include="js\Wijmo\wijradialgauge\jquery.wijmo.wijradialgauge.js" />
+    <Content Include="js\Wijmo\wijradialgauge\jquery.wijmo.wijradialgauge.min.js" />
+    <Content Include="js\Wijmo\wijradio\jquery.wijmo.wijradio.css" />
+    <Content Include="js\Wijmo\wijradio\jquery.wijmo.wijradio.js" />
+    <Content Include="js\Wijmo\wijradio\jquery.wijmo.wijradio.min.js" />
+    <Content Include="js\Wijmo\wijrating\jquery.wijmo.wijrating.css" />
+    <Content Include="js\Wijmo\wijrating\jquery.wijmo.wijrating.js" />
+    <Content Include="js\Wijmo\wijrating\jquery.wijmo.wijrating.min.js" />
+    <Content Include="js\Wijmo\wijribbon\jquery.wijmo.wijribbon.css" />
+    <Content Include="js\Wijmo\wijribbon\jquery.wijmo.wijribbon.js" />
+    <Content Include="js\Wijmo\wijribbon\jquery.wijmo.wijribbon.min.js" />
+    <Content Include="js\Wijmo\wijscatterchart\jquery.wijmo.wijscatterchart.js" />
+    <Content Include="js\Wijmo\wijscatterchart\jquery.wijmo.wijscatterchart.min.js" />
+    <Content Include="js\Wijmo\wijslider\jquery.wijmo.wijslider.css" />
+    <Content Include="js\Wijmo\wijslider\jquery.wijmo.wijslider.js" />
+    <Content Include="js\Wijmo\wijslider\jquery.wijmo.wijslider.min.js" />
+    <Content Include="js\Wijmo\wijsplitter\jquery.wijmo.wijsplitter.css" />
+    <Content Include="js\Wijmo\wijsplitter\jquery.wijmo.wijsplitter.js" />
+    <Content Include="js\Wijmo\wijsplitter\jquery.wijmo.wijsplitter.min.js" />
+    <Content Include="js\Wijmo\wijsuperpanel\jquery.wijmo.wijsuperpanel.css" />
+    <Content Include="js\Wijmo\wijsuperpanel\jquery.wijmo.wijsuperpanel.js" />
+    <Content Include="js\Wijmo\wijsuperpanel\jquery.wijmo.wijsuperpanel.min.js" />
+    <Content Include="js\Wijmo\wijtabs\jquery.wijmo.wijtabs.css" />
+    <Content Include="js\Wijmo\wijtabs\jquery.wijmo.wijtabs.js" />
+    <Content Include="js\Wijmo\wijtabs\jquery.wijmo.wijtabs.min.js" />
+    <Content Include="js\Wijmo\wijtextbox\jquery.wijmo.wijtextbox.css" />
+    <Content Include="js\Wijmo\wijtextbox\jquery.wijmo.wijtextbox.js" />
+    <Content Include="js\Wijmo\wijtextbox\jquery.wijmo.wijtextbox.min.js" />
+    <Content Include="js\Wijmo\wijtooltip\jquery.wijmo.wijtooltip.css" />
+    <Content Include="js\Wijmo\wijtooltip\jquery.wijmo.wijtooltip.js" />
+    <Content Include="js\Wijmo\wijtooltip\jquery.wijmo.wijtooltip.min.js" />
+    <Content Include="js\Wijmo\wijtree\jquery.wijmo.wijtree.css" />
+    <Content Include="js\Wijmo\wijtree\jquery.wijmo.wijtree.js" />
+    <Content Include="js\Wijmo\wijtree\jquery.wijmo.wijtree.min.js" />
+    <Content Include="js\Wijmo\wijupload\jquery.wijmo.wijupload.css" />
+    <Content Include="js\Wijmo\wijupload\jquery.wijmo.wijupload.js" />
+    <Content Include="js\Wijmo\wijupload\jquery.wijmo.wijupload.min.js" />
+    <Content Include="js\Wijmo\wijutil\jquery.plugin.wijtextselection.js" />
+    <Content Include="js\Wijmo\wijutil\jquery.plugin.wijtextselection.min.js" />
+    <Content Include="js\Wijmo\wijutil\jquery.wijmo.raphael.js" />
+    <Content Include="js\Wijmo\wijutil\jquery.wijmo.raphael.min.js" />
+    <Content Include="js\Wijmo\wijutil\jquery.wijmo.wijtouchtransitions.js" />
+    <Content Include="js\Wijmo\wijutil\jquery.wijmo.wijtouchtransitions.min.js" />
+    <Content Include="js\Wijmo\wijutil\jquery.wijmo.wijtouchutil.js" />
+    <Content Include="js\Wijmo\wijutil\jquery.wijmo.wijtouchutil.min.js" />
+    <Content Include="js\Wijmo\wijutil\jquery.wijmo.wijutil.css" />
+    <Content Include="js\Wijmo\wijutil\jquery.wijmo.wijutil.js" />
+    <Content Include="js\Wijmo\wijutil\jquery.wijmo.wijutil.min.js" />
+    <Content Include="js\Wijmo\wijvideo\jquery.wijmo.wijvideo.css" />
+    <Content Include="js\Wijmo\wijvideo\jquery.wijmo.wijvideo.js" />
+    <Content Include="js\Wijmo\wijvideo\jquery.wijmo.wijvideo.min.js" />
+    <Content Include="js\Wijmo\wijwizard\jquery.wijmo.wijwizard.css" />
+    <Content Include="js\Wijmo\wijwizard\jquery.wijmo.wijwizard.js" />
+    <Content Include="js\Wijmo\wijwizard\jquery.wijmo.wijwizard.min.js" />
     <Content Include="packages.config" />
     <Content Include="MasterPages\Base\Base.Master" />
     <Content Include="MasterPages\Anonimo.Master" />
@@ -87,8 +287,39 @@
     <Content Include="propietarios\perfil.aspx" />
     <Content Include="propietarios\reservas.aspx" />
     <Content Include="registracion.aspx" />
+    <Content Include="servicios\Cocheras.asmx" />
+    <Content Include="Themes\rocket\images\ui-bg_diagonals-thick_50_00a6dd_40x40.png" />
+    <Content Include="Themes\rocket\images\ui-bg_diagonals-thick_50_00a6dd_40x401.png" />
+    <Content Include="Themes\rocket\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Themes\rocket\images\ui-bg_flat_100_f1f1f1_40x100.png" />
+    <Content Include="Themes\rocket\images\ui-bg_highlight-soft_15_242122_1x100.png" />
+    <Content Include="Themes\rocket\images\ui-bg_highlight-soft_15_242122_1x100_bottom - copia.png" />
+    <Content Include="Themes\rocket\images\ui-bg_highlight-soft_15_242122_1x100_bottom.png" />
+    <Content Include="Themes\rocket\images\ui-bg_highlight-soft_15_333333_1x100.png" />
+    <Content Include="Themes\rocket\images\ui-bg_highlight-soft_15_333333_1x100_50.png" />
+    <Content Include="Themes\rocket\images\ui-bg_highlight-soft_15_65358a_1x100.png" />
+    <Content Include="Themes\rocket\images\ui-bg_highlight-soft_15_8A56B2_1x100.png" />
+    <Content Include="Themes\rocket\images\ui-bg_highlight-soft_15_9eca38_1x100.png" />
+    <Content Include="Themes\rocket\images\ui-bg_highlight-soft_15_9eca38_1x100_50.png" />
+    <Content Include="Themes\rocket\images\ui-bg_highlight-soft_15_ca3838_1x100.png" />
+    <Content Include="Themes\rocket\images\ui-bg_highlight-soft_35_00a6dd_1x100.png" />
+    <Content Include="Themes\rocket\images\ui-bg_inset-soft_100_e1e1e1_1x100.png" />
+    <Content Include="Themes\rocket\images\ui-bg_inset-soft_15_242122_1x100 - Copy.png" />
+    <Content Include="Themes\rocket\images\ui-bg_inset-soft_15_242122_1x100.png" />
+    <Content Include="Themes\rocket\images\ui-icons_00a6dd_256x240.png" />
+    <Content Include="Themes\rocket\images\ui-icons_304915_256x240.png" />
+    <Content Include="Themes\rocket\images\ui-icons_d399ff_256x240.png" />
+    <Content Include="Themes\rocket\images\ui-icons_eaffb9_256x240.png" />
+    <Content Include="Themes\rocket\images\ui-icons_f4f4f9_256x240.png" />
+    <Content Include="Themes\rocket\images\ui-icons_fafafa_256x240.png" />
+    <Content Include="Themes\rocket\images\ui-icons_ff8f8f_256x240.png" />
+    <Content Include="Themes\rocket\images\wijmo-ui-icons_000000_240x112.png" />
+    <Content Include="Themes\rocket\images\wijmo-ui-icons_ffffff_240x112.png" />
+    <Content Include="Themes\rocket\jquery-wijmo.css" />
     <Content Include="ucBuscador.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clientes\confirmar-reserva.aspx.cs">
@@ -197,6 +428,10 @@
     <Compile Include="registracion.aspx.designer.cs">
       <DependentUpon>registracion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="servicios\Cocheras.asmx.cs">
+      <DependentUpon>Cocheras.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ucBuscador.ascx.cs">
       <DependentUpon>ucBuscador.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -209,9 +444,44 @@
     <Folder Include="imagenes\cocheras\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{ff51bbc2-c4e4-46cc-9ccf-62b7d73f52c3}</Project>
-      <Name>DAL</Name>
+    <Content Include="fonts\material-design-icons-3.0.1\MaterialIcons-Regular.eot" />
+    <Content Include="fonts\material-design-icons-3.0.1\MaterialIcons-Regular.ttf" />
+    <Content Include="fonts\material-design-icons-3.0.1\MaterialIcons-Regular.woff" />
+    <Content Include="fonts\material-design-icons-3.0.1\MaterialIcons-Regular.woff2" />
+    <Content Include="fonts\roboto\Roboto-Bold.eot" />
+    <Content Include="fonts\roboto\Roboto-Bold.ttf" />
+    <Content Include="fonts\roboto\Roboto-Bold.woff" />
+    <Content Include="fonts\roboto\Roboto-Bold.woff2" />
+    <Content Include="fonts\roboto\Roboto-Light.eot" />
+    <Content Include="fonts\roboto\Roboto-Light.ttf" />
+    <Content Include="fonts\roboto\Roboto-Light.woff" />
+    <Content Include="fonts\roboto\Roboto-Light.woff2" />
+    <Content Include="fonts\roboto\Roboto-Medium.eot" />
+    <Content Include="fonts\roboto\Roboto-Medium.ttf" />
+    <Content Include="fonts\roboto\Roboto-Medium.woff" />
+    <Content Include="fonts\roboto\Roboto-Medium.woff2" />
+    <Content Include="fonts\roboto\Roboto-Regular.eot" />
+    <Content Include="fonts\roboto\Roboto-Regular.ttf" />
+    <Content Include="fonts\roboto\Roboto-Regular.woff" />
+    <Content Include="fonts\roboto\Roboto-Regular.woff2" />
+    <Content Include="fonts\roboto\Roboto-Thin.eot" />
+    <Content Include="fonts\roboto\Roboto-Thin.ttf" />
+    <Content Include="fonts\roboto\Roboto-Thin.woff" />
+    <Content Include="fonts\roboto\Roboto-Thin.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Themes\rocket\images\ui-bg_diagonals-thick_50_00a6dd_40x40.png.BAK" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AlquilaCocheras\AlquilaCocheras.csproj">
+      <Project>{b4ee1577-0005-46e9-8a2a-9095448e018f}</Project>
+      <Name>AlquilaCocheras</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

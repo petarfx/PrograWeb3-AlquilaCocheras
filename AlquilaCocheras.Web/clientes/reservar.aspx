@@ -22,7 +22,7 @@
 
     <%--<div id="map" style="width:100%;height:500px"></div>--%>
 
-    <div class="row">
+    <div class="row" ID="divGrilla">
         <asp:GridView ID="gvCocheras" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" OnRowDataBound="gvCocheras_RowDataBound" OnPreRender="gvCocheras_PreRender">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -35,8 +35,8 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="Precio" DataField="Precio" />
-                <asp:BoundField HeaderText="ApeyNom" DataField="ApeyNom" />
-                <asp:BoundField HeaderText="PrecioTotal" DataField="PrecioTotal" />
+                <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                 <asp:TemplateField HeaderText="Foto">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
@@ -47,10 +47,10 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="FotoURL" Visible="False">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("FotoURL") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Imagen") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="lblFotoURL" runat="server" Text='<%# Bind("FotoURL") %>'></asp:Label>
+                        <asp:Label ID="lblFotoURL" runat="server" Text='<%# Bind("Imagen") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Mapa">
@@ -61,7 +61,14 @@
                         <div id="map" class="fotoGrilla"></div>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField HeaderText="Puntuacion" DataField="Puntuacion" />
+                <asp:TemplateField HeaderText="Puntuacion">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblPuntuacion" runat="server"></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Reservar">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>

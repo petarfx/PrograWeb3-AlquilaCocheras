@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TP_20162CModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cocheras">
+    <Key>
+      <PropertyRef Name="IdCochera" />
+    </Key>
+    <Property Name="IdCochera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPropietario" Type="Int32" Nullable="false" />
+    <Property Name="Ubicacion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraInicio" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HoraFin" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Latitud" Type="Decimal" Precision="12" Scale="9" Nullable="false" />
+    <Property Name="Longitud" Type="Decimal" Precision="12" Scale="9" Nullable="false" />
+    <Property Name="MetrosCuadrados" Type="Int32" Nullable="false" />
+    <Property Name="TipoVehiculo" Type="Int16" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Imagen" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Cocheras_Usuarios" FromRole="Cocheras" ToRole="Usuarios" />
+    <NavigationProperty Name="Reservas" Relationship="Self.FK_Reservas_Cocheras" FromRole="Cocheras" ToRole="Reservas" />
+  </EntityType>
+  <EntityType Name="Reservas">
+    <Key>
+      <PropertyRef Name="IdReserva" />
+    </Key>
+    <Property Name="IdReserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <Property Name="IdCochera" Type="Int32" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraInicio" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HoraFin" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CantidadHoras" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FechaCarga" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Puntuacion" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Cocheras" Relationship="Self.FK_Reservas_Cocheras" FromRole="Reservas" ToRole="Cocheras" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Reservas_Usuarios" FromRole="Reservas" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Contrasenia" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Perfil" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Cocheras" Relationship="Self.FK_Cocheras_Usuarios" FromRole="Usuarios" ToRole="Cocheras" />
+    <NavigationProperty Name="Reservas" Relationship="Self.FK_Reservas_Usuarios" FromRole="Usuarios" ToRole="Reservas" />
+  </EntityType>
+  <Association Name="FK_Cocheras_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Cocheras" Type="Self.Cocheras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Cocheras">
+        <PropertyRef Name="IdPropietario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservas_Cocheras">
+    <End Role="Cocheras" Type="Self.Cocheras" Multiplicity="1" />
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocheras">
+        <PropertyRef Name="IdCochera" />
+      </Principal>
+      <Dependent Role="Reservas">
+        <PropertyRef Name="IdCochera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservas_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Reservas">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TP_20162CEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cocheras" EntityType="Self.Cocheras" />
+    <EntitySet Name="Reservas" EntityType="Self.Reservas" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK_Cocheras_Usuarios" Association="Self.FK_Cocheras_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Cocheras" EntitySet="Cocheras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservas_Cocheras" Association="Self.FK_Reservas_Cocheras">
+      <End Role="Cocheras" EntitySet="Cocheras" />
+      <End Role="Reservas" EntitySet="Reservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservas_Usuarios" Association="Self.FK_Reservas_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Reservas" EntitySet="Reservas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

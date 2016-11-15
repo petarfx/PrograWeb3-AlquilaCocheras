@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Configuration;
+using AlquilaCocheras;
 
 namespace AlquilaCocheras.Web
 {
@@ -30,46 +31,35 @@ namespace AlquilaCocheras.Web
             ucBuscador.myResultado = "";
             gvCocheras.DataSource = null;
             gvCocheras.DataBind();
-            if (ucBuscador.myUbicacion == "SAN JUSTO")
-            {
-                ucBuscador.myResultado = "No se encontraron resultados";
-            }
-            else if (ucBuscador.myUbicacion == "HAEDO")
-            {
-                cargarGrilla();
+            //if (ucBuscador.myUbicacion == "SAN JUSTO")
+            //{
+            //    ucBuscador.myResultado = "No se encontraron resultados";
+            //}
+            //else if (ucBuscador.myUbicacion == "HAEDO")
+            //{
+            cargarGrilla();
 
-                //string script = "$(function() { $('html, body').animate({scrollTop: $('#gvCocheras').offset().top}, 2000); });";
-                string script = "$('html, body').animate({scrollTop:$('#divGrilla').position().top}, 'slow')";
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", script, true);
-            }
-            else
-                ucBuscador.myResultado = "Ubicacion desconocida";
+            //string script = "$(function() { $('html, body').animate({scrollTop: $('#gvCocheras').offset().top}, 2000); });";
+            string script = "$('html, body').animate({scrollTop:$('#divGrilla').position().top}, 'slow')";
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", script, true);
+            //}
+            //else
+            //    ucBuscador.myResultado = "Ubicacion desconocida";
         }
 
         public void cargarGrilla()
-        { //Haria el get a la base, lo asigno a un datatable, y lo bindeo a la grilla
-            DataTable dt = new DataTable();
-            dt.Columns.Add("idCochera");
-            dt.Columns.Add("Precio");
-            dt.Columns.Add("ApeyNom");
-            dt.Columns.Add("PrecioTotal");
-            dt.Columns.Add("Foto");
-            dt.Columns.Add("FotoURL");
-            dt.Columns.Add("Mapa");
-            dt.Columns.Add("Puntuacion");
-            //dt.Columns.Add("Seleccionar");
-            dt.Rows.Add();
-            dt.Rows[0]["idCochera"] = "123";
-            dt.Rows[0]["Precio"] = "20";
-            dt.Rows[0]["ApeyNom"] = "Juan Perez";
-            dt.Rows[0]["PrecioTotal"] = "800";
-            dt.Rows[0]["Foto"] = "";
-            dt.Rows[0]["FotoURL"] = "EstacionamientoEjemplo.jpg";
-            dt.Rows[0]["Mapa"] = "";
-            dt.Rows[0]["Puntuacion"] = "4";
-            //dt.Rows[0]["Seleccionar"] = "Seleccionar";
+        {
+            //Fecha Inicio
+            DateTime FI = ucBuscador.myFechaInicio.Trim() == string.Empty ? Convert.ToDateTime(Helper.dateNULL) : Convert.ToDateTime(ucBuscador.myFechaInicio);
 
-            gvCocheras.DataSource = dt;
+            //Fecha Fin
+            DateTime FF = ucBuscador.myFechaFin.Trim() == string.Empty ? Convert.ToDateTime(Helper.dateFar) : Convert.ToDateTime(ucBuscador.myFechaFin);
+
+            servicios.Cocheras ws = new servicios.Cocheras();
+
+            var xxx = ws.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
+
+            gvCocheras.DataSource = xxx;
             gvCocheras.DataBind();
         }
         protected void gvCocheras_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -89,8 +79,16 @@ namespace AlquilaCocheras.Web
                     Image imgFoto = (Image)e.Row.FindControl("imgFoto");
                     Random rnd = new Random();
                     int nro = rnd.Next(0, 10000000);
-                    imgFoto.ImageUrl = ConfigurationManager.AppSettings["pathFotosCocheras"].ToString() + FotoURL.Text.ToString() + "?hash=" + nro;
+                    imgFoto.ImageUrl = FotoURL.Text.ToString() + "?hash=" + nro;
                 }
+
+                Label lblPuntuacion = (Label)e.Row.FindControl("lblPuntuacion");
+                servicios.Cocheras ws = new servicios.Cocheras();
+
+                var xxx = ws.ObtenerPromedio(Convert.ToInt32(lblid.Text)).ToList();
+
+                if (xxx.Count > 0)
+                    lblPuntuacion.Text = xxx.FirstOrDefault().Puntuacion.ToString();
             }
 
 
@@ -110,7 +108,7 @@ namespace AlquilaCocheras.Web
             }
             catch (Exception ex)
             {
-               //error
+                //error
             }
         }
     }

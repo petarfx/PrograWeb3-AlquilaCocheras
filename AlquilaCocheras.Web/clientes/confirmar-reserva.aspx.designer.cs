@@ -211,15 +211,6 @@ namespace AlquilaCocheras.Web.clientes {
         protected global::System.Web.UI.WebControls.Label lblPrecioTotal;
         
         /// <summary>
-        /// Control label7.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label7;
-        
-        /// <summary>
         /// Control lblUbicacion.
         /// </summary>
         /// <remarks>

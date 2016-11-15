@@ -16,26 +16,37 @@ namespace AlquilaCocheras.Web.clientes
             { }
             if (Request.QueryString["idcochera"] != null)
             {
-                //Si tuviera los datos en la bd hago un get por idcochera para obtener todos los datos..
-                #region datosPruebaVisualizar
-                txtFechaInicio.Text = "10/05/2016";
-                txtFechaFin.Text = "20/05/2016";
-                txtHorarioInicio.Text = "08:00";
-                txtHorarioFin.Text = "17:00";
-                lblPrecioHora.Text = "20";
-                lblPrecioTotal.Text = "$ 1800";
-                lblUbicacion.Text = "HAEDO";
+                Views vc = new Views();
+                List<cocheraDTO> cochera = vc.ObtenerCochera(Convert.ToInt32(Request.QueryString["idcochera"]));
 
-                Random rnd = new Random();
-                int nro = rnd.Next(0, 10000000);
-                imgFoto.ImageUrl = ConfigurationManager.AppSettings["pathFotosCocheras"].ToString() + "EstacionamientoEjemplo.jpg" + "?hash=" + nro;
-               
-                #endregion
+                if (cochera.Count > 0)
+                {
+                   
+                    txtFechaInicio.Text = cochera.First().FechaInicio.ToShortDateString();
+                    txtFechaFin.Text = cochera.First().FechaFin.ToShortDateString();
+                    txtHorarioInicio.Text = cochera.First().HoraInicio;
+                    txtHorarioFin.Text = cochera.First().HoraFin;
+                    lblPrecioHora.Text = cochera.First().Precio.ToString();
+                    //lblPrecioTotal.Text = "$ 1800";
+                    lblUbicacion.Text = cochera.First().Ubicacion;
+
+                    Random rnd = new Random();
+                    int nro = rnd.Next(0, 10000000);
+                    imgFoto.ImageUrl = cochera.First().Imagen + "?hash=" + nro;
+
+
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "mapa", "mapAlone('" + cochera.First().Latitud + "','" + cochera.First().Longitud + "','map');", true);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "mapa", "mapAlone();", true);
+                }
+                                
             }
         }
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
+
+
+
             //LimpiaControles
             ScriptManager.RegisterStartupScript(this, this.GetType(), "clearAll", "LimpiaControles();", true);
             lblResultado.Text = "Operación exitosa";

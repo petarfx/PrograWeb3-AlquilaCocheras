@@ -1,29 +1,8 @@
-//$(function () {
-
-//    $("#txtFechaInicio").datepicker({
-//        //changeMonth: true,
-//        //changeYear: true,
-//        //showOn: "button",
-//        buttonImage: "../imagenes/calendario.png",
-//        buttonImageOnly: true,
-//        dateFormat: "dd/mm/yy"
-//        //showButtonPanel: true
-//    });
-
-//    $("#txtFechaFin").datepicker({
-//        buttonImage: "../imagenes/calendario.png",
-//        buttonImageOnly: true,
-//        dateFormat: "dd/mm/yy"
-//    });
-//});
-
 
 function showModal(modalName, hf, idReserva) {
-    //document.getElementById('miModal').style.display = "block";
     $("#" + modalName).css({ 'display': "block" });
     $("#" + hf).val(idReserva);
 }
-
 
 function validaFecha90(source, arguments) {
     var txt1 = document.getElementById("txtFechaInicio");
@@ -117,19 +96,7 @@ $(document).ready(function () {
 });
 
 
-
 function myMap() {
-    //var mapCanvas = document.getElementById("map");
-    //var mapOptions = {
-    //    center: new google.maps.LatLng(-34.684101, -58.558074),
-    //    zoom: 10
-    //};
-    //var marcador = new google.maps.Marker({
-    //    position: new google.maps.LatLng(-34.684101, -58.558074),
-    //    map: map
-    //});
-    //var map = new google.maps.Map(mapCanvas, mapOptions);
-
 
     var myLatLng = { lat: -34.684101, lng: -58.558074 };
 
@@ -143,4 +110,24 @@ function myMap() {
         map: map,
         title: 'Cochera'
     });
-}
+
+};
+function mapAlone() {
+    //console.log(vlat);
+    //console.log(vlong);
+    //console.log(mapa);
+    var myLatLng = { lat: -34.667276800, lng: -58.567109200 };
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: myLatLng
+    });
+
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Cochera'
+    });
+};
+
+

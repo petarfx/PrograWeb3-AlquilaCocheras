@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataModel20162C.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cocheras">
+    <Key>
+      <PropertyRef Name="IdCochera" />
+    </Key>
+    <Property Name="IdCochera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPropietario" Type="int" Nullable="false" />
+    <Property Name="Ubicacion" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaFin" Type="datetime" Nullable="false" />
+    <Property Name="HoraInicio" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="HoraFin" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Latitud" Type="decimal" Precision="12" Scale="9" Nullable="false" />
+    <Property Name="Longitud" Type="decimal" Precision="12" Scale="9" Nullable="false" />
+    <Property Name="MetrosCuadrados" Type="int" Nullable="false" />
+    <Property Name="TipoVehiculo" Type="smallint" Nullable="false" />
+    <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Imagen" Type="nvarchar" MaxLength="400" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reservas">
+    <Key>
+      <PropertyRef Name="IdReserva" />
+    </Key>
+    <Property Name="IdReserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCliente" Type="int" Nullable="false" />
+    <Property Name="IdCochera" Type="int" Nullable="false" />
+    <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaFin" Type="datetime" Nullable="false" />
+    <Property Name="HoraInicio" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="HoraFin" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CantidadHoras" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FechaCarga" Type="datetime" Nullable="false" />
+    <Property Name="Puntuacion" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Contrasenia" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Perfil" Type="smallint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Cocheras_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Cocheras" Type="Self.Cocheras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Cocheras">
+        <PropertyRef Name="IdPropietario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservas_Cocheras">
+    <End Role="Cocheras" Type="Self.Cocheras" Multiplicity="1" />
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocheras">
+        <PropertyRef Name="IdCochera" />
+      </Principal>
+      <Dependent Role="Reservas">
+        <PropertyRef Name="IdCochera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservas_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Reservas">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ObtenerTodas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idUsuario" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="DataModel20162CStoreContainer">
+    <EntitySet Name="Cocheras" EntityType="Self.Cocheras" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reservas" EntityType="Self.Reservas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cocheras_Usuarios" Association="Self.FK_Cocheras_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Cocheras" EntitySet="Cocheras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservas_Cocheras" Association="Self.FK_Reservas_Cocheras">
+      <End Role="Cocheras" EntitySet="Cocheras" />
+      <End Role="Reservas" EntitySet="Reservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservas_Usuarios" Association="Self.FK_Reservas_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Reservas" EntitySet="Reservas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

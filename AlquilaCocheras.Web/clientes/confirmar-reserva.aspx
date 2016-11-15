@@ -48,13 +48,13 @@
                     <div class=" col s12 m6 input-field">
                         <asp:Label ID="label1" runat="server" Text="Hora de Entrada: "></asp:Label>
                         <asp:TextBox ID="txtHorarioInicio" runat="server" ClientIDMode="Static" MaxLength="5"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvtxtHorarioInicio" runat="server" ControlToValidate="txtHorarioInicio" ErrorMessage="Debe ingresar la hora de inicio" ForeColor="Red">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvtxtHorarioInicio" runat="server" ControlToValidate="txtHorarioInicio" ErrorMessage="Debe ingresar la hora de inicio" ForeColor="Red">*</asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="revHoraInicio" runat="server" ControlToValidate="txtHorarioInicio" ErrorMessage="Formato de Hora invalido (hh:mm) en formato 24hs" ForeColor="Red" ValidationExpression="^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$">*</asp:RegularExpressionValidator>
                     </div>
                     <div class=" col s12 m6 input-field">
                         <asp:Label ID="label3" runat="server" Text="Hora de Salida: "></asp:Label>
                         <asp:TextBox ID="txtHorarioFin" runat="server" ClientIDMode="Static" MaxLength="5"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvtxtHorarioFin" runat="server" ControlToValidate="txtHorarioFin" ErrorMessage="Debe ingresar la hora de fin" ForeColor="Red">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvtxtHorarioFin" runat="server" ControlToValidate="txtHorarioFin" ErrorMessage="Debe ingresar la hora de fin" ForeColor="Red">*</asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="cvHorario" runat="server" ControlToCompare="txtHorarioFin" ControlToValidate="txtHorarioInicio" ErrorMessage="El horario de Inicio no puede superar el de Fin" ForeColor="Red" Operator="LessThan">*</asp:CompareValidator>
                         <asp:RegularExpressionValidator ID="revHoraFin" runat="server" ControlToValidate="txtHorarioFin" ErrorMessage="Formato de Hora invalido (hh:mm) en formato 24hs" ForeColor="Red" ValidationExpression="^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$">*</asp:RegularExpressionValidator>
                     </div>
@@ -74,9 +74,8 @@
 
                 <div class="row">
                     <div class=" col s12 m6 input-field">
-                        <asp:Label ID="label7" runat="server" Text="Ubicacion: "></asp:Label>
                         <asp:Label ID="lblUbicacion" ClientIDMode="Static" runat="server"></asp:Label>
-
+                        <div id="map" class="fotoFormulario"></div>
                     </div>
                     <div class=" col s12 m6">
                         <asp:Label ID="label9" runat="server" Text="Foto: "></asp:Label>
@@ -106,6 +105,8 @@
         </div>
     </div>
 
+    <%--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=mapAlone"></script>--%>
+   
 
 
 </asp:Content>

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DAL;
 using System.Configuration;
+using AlquilaCocheras;
 
 namespace AlquilaCocheras.Web
 {
@@ -17,7 +17,7 @@ namespace AlquilaCocheras.Web
             {
                 if (Request.QueryString["idcochera"] != null)
                 {
- 
+
                 }
             }
         }
@@ -25,26 +25,32 @@ namespace AlquilaCocheras.Web
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             lblResultado.Text = string.Empty;
-            if (txtEmail.Text == "cliente@gmail.com" && txtContrasenia.Text == "Password1")
+            LoginDTO logval = new LoginDTO();
+            List<LoginDTO> x = logval.validaLogin(txtEmail.Text, txtContrasenia.Text);
+
+            if (x.Count > 0)
             {
-                //Cliente OK
-                Session["ROL"] = "C";
-                if (Request.QueryString["idcochera"] == null)
-                    Response.Redirect(ConfigurationManager.AppSettings["ClienteReservarCochera"].ToString());         
-                else                
-                    Response.Redirect(ConfigurationManager.AppSettings["ClienteConfirmarCochera"].ToString() + "?idcochera=" + Request.QueryString["idcochera"].ToString());
-            }
-            else if (txtEmail.Text == "propietario@gmail.com" && txtContrasenia.Text == "Password1")
-            {
-                //Propietario OK
-                Session["ROL"] = "P";
-                Response.Redirect("propietarios/reservas.aspx");
+                Session["ROL"] = x.First().Perfil;
+
+                if (Session["ROL"].ToString() == ConfigurationManager.AppSettings["PerfilCliente"].ToString())
+                {
+                    if (Request.QueryString["idcochera"] == null)
+                        Response.Redirect(ConfigurationManager.AppSettings["ClienteReservarCochera"].ToString());
+                    else
+                        Response.Redirect(ConfigurationManager.AppSettings["ClienteConfirmarCochera"].ToString() + "?idcochera=" + Request.QueryString["idcochera"].ToString());
+                }
+                else
+                {
+                    Response.Redirect("propietarios/reservas.aspx");
+                }
+
             }
             else
             {
                 Session["ROL"] = null;
                 lblResultado.Text = "Usuario y/o Contraseña inválidos";
             }
+
         }
 
     }

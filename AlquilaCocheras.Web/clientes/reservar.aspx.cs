@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Configuration;
+using AlquilaCocheras;
 
 namespace AlquilaCocheras.Web.clientes
 {
@@ -30,43 +31,34 @@ namespace AlquilaCocheras.Web.clientes
             ucBuscador.myResultado = "";
             gvCocheras.DataSource = null;
             gvCocheras.DataBind();
-            if (ucBuscador.myUbicacion == "SAN JUSTO")
-            {
-                ucBuscador.myResultado = "No se encontraron resultados";
-            }
-            else if (ucBuscador.myUbicacion == "HAEDO")
-            {
-                //Haria el get a la base, lo asigno a un datatable, y lo bindeo a la grilla
-                DataTable dt = new DataTable();
-                dt.Columns.Add("idCochera");
-                dt.Columns.Add("Precio");
-                dt.Columns.Add("ApeyNom");
-                dt.Columns.Add("PrecioTotal");
-                dt.Columns.Add("Foto");
-                dt.Columns.Add("FotoURL");
-                dt.Columns.Add("Mapa");
-                dt.Columns.Add("Puntuacion");
-                //dt.Columns.Add("Seleccionar");
-                dt.Rows.Add();
-                dt.Rows[0]["idCochera"] = "123";
-                dt.Rows[0]["Precio"] = "20";
-                dt.Rows[0]["ApeyNom"] = "Juan Perez";
-                dt.Rows[0]["PrecioTotal"] = "800";
-                dt.Rows[0]["Foto"] = "";
-                dt.Rows[0]["FotoURL"] = "EstacionamientoEjemplo.jpg";
-                dt.Rows[0]["Mapa"] = "";
-                dt.Rows[0]["Puntuacion"] = "4";
-                //dt.Rows[0]["Seleccionar"] = "Seleccionar";
-
-                gvCocheras.DataSource = dt;
-                gvCocheras.DataBind();
-            }
-            else
-                ucBuscador.myResultado = "Ubicacion desconocida";
+            cargarGrilla();
+            string script = "$('html, body').animate({scrollTop:$('#divGrilla').position().top}, 'slow')";
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", script, true);
         }
 
+
+        #region procedimientos
+        public void cargarGrilla()
+        {
+            //Fecha Inicio
+            DateTime FI = ucBuscador.myFechaInicio.Trim() == string.Empty ? Convert.ToDateTime(Helper.dateNULL) : Convert.ToDateTime(ucBuscador.myFechaInicio);
+
+            //Fecha Fin
+            DateTime FF = ucBuscador.myFechaFin.Trim() == string.Empty ? Convert.ToDateTime(Helper.dateFar) : Convert.ToDateTime(ucBuscador.myFechaFin);
+
+            servicios.Cocheras ws = new servicios.Cocheras();
+
+            var xxx = ws.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
+
+            gvCocheras.DataSource = xxx;
+            gvCocheras.DataBind();
+        }
+        #endregion
+
+        #region grilla_eventos
         protected void gvCocheras_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+
             Label lblid = (Label)e.Row.FindControl("lblid");
             if (lblid != null)
             {
@@ -81,9 +73,19 @@ namespace AlquilaCocheras.Web.clientes
                     Image imgFoto = (Image)e.Row.FindControl("imgFoto");
                     Random rnd = new Random();
                     int nro = rnd.Next(0, 10000000);
-                    imgFoto.ImageUrl = ConfigurationManager.AppSettings["pathFotosCocheras"].ToString() + FotoURL.Text.ToString() + "?hash=" + nro;
+                    imgFoto.ImageUrl = FotoURL.Text.ToString() + "?hash=" + nro;
                 }
+
+                Label lblPuntuacion = (Label)e.Row.FindControl("lblPuntuacion");
+                servicios.Cocheras ws = new servicios.Cocheras();
+
+                var xxx = ws.ObtenerPromedio(Convert.ToInt32(lblid.Text)).ToList();
+
+                if (xxx.Count > 0)
+                    lblPuntuacion.Text = xxx.FirstOrDefault().Puntuacion.ToString();
             }
+
+
         }
 
         protected void gvCocheras_PreRender(object sender, EventArgs e)
@@ -100,8 +102,9 @@ namespace AlquilaCocheras.Web.clientes
             }
             catch (Exception ex)
             {
-                //lblResultado.Text = ex.Message;
+                //error
             }
         }
+        #endregion
     }
 }

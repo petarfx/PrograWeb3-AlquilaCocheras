@@ -1,0 +1,5 @@
+C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Negocio\bin\Debug\AlquilaCocheras.Negocio.dll
+C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Negocio\bin\Debug\AlquilaCocheras.Negocio.pdb
+C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Negocio\obj\Debug\AlquilaCocheras.Negocio.csprojResolveAssemblyReference.cache
+C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Negocio\obj\Debug\AlquilaCocheras.Negocio.dll
+C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Negocio\obj\Debug\AlquilaCocheras.Negocio.pdb

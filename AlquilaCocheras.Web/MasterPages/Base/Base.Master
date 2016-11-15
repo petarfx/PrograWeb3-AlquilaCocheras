@@ -27,13 +27,11 @@
     <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-3.1.1.js") %>'></script>
     <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-1.12.4.js") %>'></script>
     <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-ui.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/materialize.min.js") %>'></script>
-    <script type="text/javascript" src='<%= ResolveUrl("~/js/script.js") %>'></script>
     <script type="text/javascript" src='<%= ResolveUrl("~/js/userControlBuscador.js") %>'></script>
-
     <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-1.9.1.js") %>'></script>
     <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-ui-1.10.3.custom.min.js") %>'></script>
-
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/materialize.min.js") %>'></script>
+    <script type="text/javascript" src='<%= ResolveUrl("~/js/script.js") %>'></script>
 
     <div class="container">
         <form id="form1" runat="server">

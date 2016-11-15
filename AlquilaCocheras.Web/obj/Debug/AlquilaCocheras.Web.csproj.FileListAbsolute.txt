@@ -53,9 +53,13 @@ C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\roslyn\VBCSCompi
 C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\AlquilaCocheras.Web.dll.config
 C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\AlquilaCocheras.Web.dll
 C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\AlquilaCocheras.Web.pdb
-C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\DAL.dll
+C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\AlquilaCocheras.dll
+C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\EntityFramework.dll
+C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\EntityFramework.SqlServer.dll
 C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\DAL.pdb
+C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\AlquilaCocheras.pdb
+C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\EntityFramework.xml
+C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\EntityFramework.SqlServer.xml
 C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\obj\Debug\AlquilaCocheras.Web.csprojResolveAssemblyReference.cache
 C:\Proyectos\PrograWeb3-AlquilaCocheras\AlquilaCocheras.Web\obj\Debug\AlquilaCocheras.Web.dll
