@@ -150,21 +150,22 @@ function loadMap(numlat, numlon) {
 };
 
 
-//function loadMapGrid(numlat, numlon, divmap) {
-//    console.log("latlong:");
-//    console.log(numlat);
-//    console.log(numlon);
+function loadMapGrid(numlat, numlon, id) {
+    console.log("latlong:");
+    console.log(numlat);
+    console.log(numlon);
+    console.log(id);
+    console.log('map'+id);
+    var myLatLng = { lat: parseFloat(numlat), lng: parseFloat(numlon) };
+    
+    var map = new google.maps.Map(document.getElementById('ContentPlaceHolder_Principal_Base_ContentPlaceHolder_Principal_gvCocheras_map_'+id), {
+        zoom: 14,
+        center: myLatLng
+    });
 
-//    var myLatLng = { lat: parseFloat(numlat), lng: parseFloat(numlon) };
-
-//    var map = new google.maps.Map(document.getElementById(divmap), {
-//        zoom: 14,
-//        center: myLatLng
-//    });
-
-//    var marker = new google.maps.Marker({
-//        position: myLatLng,
-//        map: map,
-//        title: 'Cochera'
-//    });
-//};
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Cochera'
+    });
+};

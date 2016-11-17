@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Configuration;
 using AlquilaCocheras;
-//using System.Web.UI.HtmlControls;
+using System.Web.UI.HtmlControls;
 
 namespace AlquilaCocheras.Web
 {
@@ -92,10 +92,11 @@ namespace AlquilaCocheras.Web
                 //HtmlGenericControl divmapa = (HtmlGenericControl)e.Row.FindControl("map");
                 //divmapa.ID = "map" + lblid.ToString();
 
-                //Label lblLatitud = (Label)e.Row.FindControl("lblLatitud");
-                //Label lblLongitud = (Label)e.Row.FindControl("lblLongitud");
+                Label lblLatitud = (Label)e.Row.FindControl("lblLatitud");
+                Label lblLongitud = (Label)e.Row.FindControl("lblLongitud");
 
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "mapagrilla", "loadMapGrid('" + lblLatitud.Text + "','" + lblLongitud.Text + "','" + divmapa.ID + "');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mapagrilla", "loadMapGrid('" + lblLatitud.Text + "','" + lblLongitud.Text + "','" + e.Row.RowIndex.ToString() + "');", true);
             }
 
 

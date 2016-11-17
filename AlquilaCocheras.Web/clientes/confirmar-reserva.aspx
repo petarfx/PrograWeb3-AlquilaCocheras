@@ -104,7 +104,7 @@
             </div>
         </div>
     </div>
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=loadMap" ></script>
+<%--    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=loadMap" ></script>--%>
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0" type="text/javascript"></script>
 
     <asp:HiddenField ID="hfLat" runat="server" />
