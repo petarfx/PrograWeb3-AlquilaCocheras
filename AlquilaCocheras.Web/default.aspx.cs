@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Configuration;
 using AlquilaCocheras;
+//using System.Web.UI.HtmlControls;
 
 namespace AlquilaCocheras.Web
 {
@@ -56,10 +57,8 @@ namespace AlquilaCocheras.Web
             DateTime FF = ucBuscador.myFechaFin.Trim() == string.Empty ? Convert.ToDateTime(Helper.dateFar) : Convert.ToDateTime(ucBuscador.myFechaFin);
 
             servicios.Cocheras ws = new servicios.Cocheras();
-
-            var xxx = ws.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
-
-            gvCocheras.DataSource = xxx;
+            
+            gvCocheras.DataSource = ws.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
             gvCocheras.DataBind();
         }
         protected void gvCocheras_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -89,6 +88,14 @@ namespace AlquilaCocheras.Web
 
                 if (xxx.Count > 0)
                     lblPuntuacion.Text = xxx.FirstOrDefault().Puntuacion.ToString();
+
+                //HtmlGenericControl divmapa = (HtmlGenericControl)e.Row.FindControl("map");
+                //divmapa.ID = "map" + lblid.ToString();
+
+                //Label lblLatitud = (Label)e.Row.FindControl("lblLatitud");
+                //Label lblLongitud = (Label)e.Row.FindControl("lblLongitud");
+
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "mapagrilla", "loadMapGrid('" + lblLatitud.Text + "','" + lblLongitud.Text + "','" + divmapa.ID + "');", true);
             }
 
 

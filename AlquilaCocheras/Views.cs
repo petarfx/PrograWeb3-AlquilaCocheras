@@ -15,7 +15,7 @@ namespace AlquilaCocheras
         //Por cada disponibilidad se deberá mostrar la siguiente información: precio, nombre y apellido 
         //del propietario, precio por hora, la foto, el mapa del lugar dondeestáubicado(utilizar laAPI de                                     
         //Google Maps) y la puntuación promedio.
-      
+
 
         public List<cocheraDTO> ObtenerCochera(int idCochera)
         {
@@ -24,47 +24,6 @@ namespace AlquilaCocheras
                          join u in dc.Usuarios
                          on c.IdPropietario equals u.IdUsuario
                          where c.IdCochera == idCochera
-                         
-                         select new cocheraDTO
-                         {
-                             IdCochera = c.IdCochera,
-                             Precio = c.Precio,
-                             IdPropietario = c.IdPropietario,                            
-
-                             FechaInicio = c.FechaInicio,
-                             FechaFin = c.FechaFin, 
-                             HoraInicio = c.HoraInicio,
-                             HoraFin = c.HoraFin,
-
-                             Ubicacion = c.Ubicacion,
-                             Imagen = c.Imagen,
-                             Latitud = c.Latitud,
-                             Longitud = c.Longitud,
-                             MetrosCuadrados = c.MetrosCuadrados,
-                             TipoVehiculo = c.TipoVehiculo,
-                             //Datos del propietario
-                             Apellido = u.Apellido,
-                             Nombre = u.Nombre
-                         }).ToList();
-            return query;
-        }
-
-
-        public List<cocheraDTO> VerificaDisponibilidad(int idCochera, DateTime fi, DateTime ff, string hi, string hf)
-        {
-            TP_20162CEntities dc = new TP_20162CEntities();
-            var query = (from c in dc.Cocheras                         
-                         join r in dc.Reservas
-                         on c.IdCochera equals r.IdCochera                         
-                         where (
-                         c.IdCochera == idCochera
-
-                         && c.FechaInicio <= fi     //me aseguro que estoy en el rango de la cochera
-                         && c.FechaFin >= ff
-
-                         //me aseguro que los horarios esten dentro del rango.. mañana lo hago
-
-                        )
 
                          select new cocheraDTO
                          {
@@ -91,7 +50,62 @@ namespace AlquilaCocheras
         }
 
 
+        public List<cocheraDTO> VerificaDisponibilidad(int idCochera, DateTime fi, DateTime ff, string hi, string hf)
+        {
+            TP_20162CEntities dc = new TP_20162CEntities();
+            var query = (from c in dc.Cocheras
+                         join u in dc.Usuarios
+                         on c.IdPropietario equals u.IdUsuario
+                         join r in dc.Reservas
+                         on c.IdCochera equals r.IdCochera
+
+                         where (
+                         c.IdCochera == idCochera
+
+                         //COCHERAS
+                         //verifico que el rango de dia/hora ingresado esté dentro de los de la cochera
+                         && (c.FechaInicio <= fi
+                         && c.FechaFin >= ff
+                         && Int32.Parse(c.HoraInicio.Substring(0, 2)) <= Int32.Parse(hi.Substring(0, 2))
+                         && Int32.Parse(c.HoraFin.Substring(0, 2)) >= Int32.Parse(hf.Substring(0, 2)))
 
 
+                         //RESERVAS
+                         && (r.FechaInicio <= fi
+                         && r.FechaFin >= fi
+                         && r.FechaFin <= ff
+                         && r.FechaInicio >= ff
+
+                         && Int32.Parse(r.HoraInicio.Substring(0, 2)) <= Int32.Parse(hi.Substring(0, 2))
+                         && Int32.Parse(r.HoraFin.Substring(0, 2)) >= Int32.Parse(hi.Substring(0, 2))
+
+                         && Int32.Parse(r.HoraFin.Substring(0, 2)) <= Int32.Parse(hf.Substring(0, 2))
+                         && Int32.Parse(r.HoraInicio.Substring(0, 2)) >= Int32.Parse(hf.Substring(0, 2))
+                         )
+                         )
+
+                         select new cocheraDTO
+                         {
+                             IdCochera = c.IdCochera,
+                             Precio = c.Precio,
+                             IdPropietario = c.IdPropietario,
+
+                             FechaInicio = c.FechaInicio,
+                             FechaFin = c.FechaFin,
+                             HoraInicio = c.HoraInicio,
+                             HoraFin = c.HoraFin,
+
+                             Ubicacion = c.Ubicacion,
+                             Imagen = c.Imagen,
+                             Latitud = c.Latitud,
+                             Longitud = c.Longitud,
+                             MetrosCuadrados = c.MetrosCuadrados,
+                             TipoVehiculo = c.TipoVehiculo,
+                             //Datos del propietario
+                             Apellido = u.Apellido,
+                             Nombre = u.Nombre
+                         }).ToList();
+            return query;
+        }
     }
 }

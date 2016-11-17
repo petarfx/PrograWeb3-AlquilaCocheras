@@ -73,9 +73,9 @@
                 </div>
 
                 <div class="row">
-                    <div class=" col s12 m6 input-field">
+                    <div class=" col s12 m6">
                         <asp:Label ID="lblUbicacion" ClientIDMode="Static" runat="server"></asp:Label>
-                        <div id="map" class="fotoFormulario"></div>
+                         <div id="map" class="mapabig"></div>
                     </div>
                     <div class=" col s12 m6">
                         <asp:Label ID="label9" runat="server" Text="Foto: "></asp:Label>
@@ -104,9 +104,10 @@
             </div>
         </div>
     </div>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=loadMap" ></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0" type="text/javascript"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=loadMap"></script>
-   
-
+    <asp:HiddenField ID="hfLat" runat="server" />
+    <asp:HiddenField ID="hfLon" runat="server" />
 
 </asp:Content>

@@ -40,6 +40,8 @@ namespace AlquilaCocheras.Web.servicios
                              IdCochera = c.IdCochera,
                              IdPropietario = c.IdPropietario,
                              Ubicacion = c.Ubicacion,
+                             Latitud = c.Latitud,
+                             Longitud = c.Longitud,
                              FechaInicio = c.FechaInicio,
                              FechaFin = c.FechaFin,
                              //ApeYNom = u.Apellido + " " + u.Nombre,

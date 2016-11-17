@@ -51,6 +51,8 @@ function mostrarImagen(elem) {
 
 
 
+
+
 // A $( document ).ready() block.
 $(document).ready(function () {
     $('select').material_select();
@@ -93,6 +95,19 @@ $(document).ready(function () {
         });
     }
 
+
+    //$("#hfLon").change(function () {
+
+    //    console.log($("input[id$='hfLat']").val());
+    //    var lat = $("input[id$='hfLat']").val(); //parseInt($("#<%= hfLat.ClientID %>").val());
+    //    console.log(lat);
+    //    var lon = $("input[id$='hfLat']").val();  //parseInt($("#<%= hfLon.ClientID %>").val());
+    //    console.log(lon);
+    //    //loadMap(lat, lon);
+    //});
+
+
+
 });
 
 
@@ -112,11 +127,15 @@ function myMap() {
     });
 };
 
-function mapAlone() {
-    //console.log(vlat);
-    //console.log(vlong);
-    //console.log(mapa);
-    var myLatLng = { lat: -34.667276800, lng: -58.567109200 };
+
+
+function loadMap(numlat, numlon) {
+    console.log("latlong:");
+    console.log(numlat);
+    console.log(numlon);
+
+    var myLatLng = {lat:parseFloat(numlat),lng:parseFloat(numlon)};
+    //var myLatLng = { lat: -34.684101, lng: -58.558074 };
 
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
@@ -131,21 +150,21 @@ function mapAlone() {
 };
 
 
-function loadMap(lat, lon) {
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: lat, lng: lon},
-        scrollwheel: false,
-        zoom: 14
-    });
+//function loadMapGrid(numlat, numlon, divmap) {
+//    console.log("latlong:");
+//    console.log(numlat);
+//    console.log(numlon);
 
-    var marker = new google.maps.Marker({
-        position: {lat: lat, lng: lon},
-        map: map,
-        title: 'Cochera'
-    });
+//    var myLatLng = { lat: parseFloat(numlat), lng: parseFloat(numlon) };
 
+//    var map = new google.maps.Map(document.getElementById(divmap), {
+//        zoom: 14,
+//        center: myLatLng
+//    });
 
-
-};
-
-
+//    var marker = new google.maps.Marker({
+//        position: myLatLng,
+//        map: map,
+//        title: 'Cochera'
+//    });
+//};

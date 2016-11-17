@@ -16,7 +16,7 @@
     la puntuación promedio        
     y el link a confirmar reserva que esta agregado abajo como asp:HyperLink, 
         donde deberán cambiarle dinamicamente el link y ponerle el idcochera correspondiente
-    --%>    <%--si no se encuentran resultados mostrar mensaje "No se encontraron resultados"--%><%--<asp:Label ID="lblResultado" runat="server"></asp:Label>--%><%--Fin User Control--%>
+    --%><%--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=myMap"></script>--%><%--<asp:Label ID="lblResultado" runat="server"></asp:Label>--%><%--Fin User Control--%>
     <uc:Buscador runat="server" ID="ucBuscador" EnableViewState="false" />
 
     <%--    LISTADO  (gridview, repeater o datalist)
@@ -62,12 +62,28 @@
                         <asp:Label ID="lblFotoURL" runat="server" Text='<%# Bind("Imagen") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
+                <asp:TemplateField HeaderText="Latitud" Visible="False">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("Latitud") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblLatitud" runat="server" Text='<%# Bind("Latitud") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Longitud" Visible="False">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Longitud") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblLongitud" runat="server" Text='<%# Bind("Longitud") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Mapa">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Mapa") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <div id="map" class="fotoGrilla"></div>
+                        <div id="map" class="fotoGrilla" runat="server"></div>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Puntuacion">
@@ -99,8 +115,8 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=myMap"></script>
-
+<%--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=myMap"></script>--%>
+<%--    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0" type="text/javascript"></script>--%>
         <script>
         $(function () {
             $.datepicker.regional['es'] = {
