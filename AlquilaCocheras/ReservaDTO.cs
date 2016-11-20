@@ -21,5 +21,6 @@ namespace AlquilaCocheras
         public double Puntuacion { get; set; }
         public string Ubicacion { get; set; }
         public string UsuarioReserva { get; set; }
+        public string Horario2 { get; set; }
     }
 }

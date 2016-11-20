@@ -26,6 +26,14 @@
                         <asp:Label ID="lblid" runat="server" Text='<%# Bind("idReserva") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
+                <asp:TemplateField HeaderText="Nro">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("idCochera") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblidCochera" runat="server" Text='<%# Bind("idCochera") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="FechaInicio">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("FechaInicio") %>'></asp:TextBox>
@@ -42,8 +50,15 @@
                         <asp:Label ID="lblFechaFin" runat="server" Text='<%# Bind("FechaFin") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField HeaderText="Horario" DataField="Horario" />
-                <asp:BoundField HeaderText="PrecioTotal" DataField="PrecioTotal" />
+                <asp:TemplateField HeaderText="Horario">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Horario") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblHorario" runat="server" Text='<%# Bind("Horario2") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField HeaderText="PrecioTotal" DataField="Precio" />
                 <asp:TemplateField HeaderText="Puntuacion">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Puntuacion") %>'></asp:TextBox>
@@ -81,8 +96,8 @@
     <div id="miModal" class="modal">
         <!-- Contenido Modal -->
         <div class="modal-content">
-            <span class="close">x</span>
             <div>
+                <asp:Label ID="lblCocheraSeleccionada" runat="server" Text=""></asp:Label>
                 <%--hidden donde se guarda el id de la reserva elegida para que desde el codebehind se pueda identificar--%>
                 <input type="hidden" id="hdIdReserva" />
                 <asp:DropDownList runat="server" ID="ddlPuntuacion" ClientIDMode="Static">
@@ -93,7 +108,7 @@
                     <asp:ListItem Text="5" Value="5" />
                 </asp:DropDownList>
 
-                <asp:Button Text="Confirmar" runat="server" ID="btnConfirmar" ClientIDMode="Static" class="btn cyan waves-effect waves-light"/>
+                <asp:Button Text="Confirmar" runat="server" ID="btnConfirmar" OnClick="btnConfirmar_Click" ClientIDMode="Static" class="btn cyan waves-effect waves-light"/>
                 <button class="cerrar btn cyan waves-effect waves-light">Cerrar</button>
             </div>
         </div>

@@ -57,7 +57,7 @@ namespace AlquilaCocheras.Web.clientes
                 TP_20162CEntities dc = new TP_20162CEntities();
 
                 Reservas r = new Reservas();
-                r.IdCochera = user.First().IdUsuario;
+                r.IdCliente = user.First().IdUsuario;
                 r.IdCochera = Convert.ToInt32(Request.QueryString["idCochera"].ToString());
                 r.FechaInicio = Convert.ToDateTime(txtFechaInicio.Text);
                 r.FechaFin = Convert.ToDateTime(txtFechaFin.Text);

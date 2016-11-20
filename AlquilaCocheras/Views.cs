@@ -169,5 +169,44 @@ namespace AlquilaCocheras
                          }).ToList();
             return query;
         }
+
+        public List<ReservaDTO> clienteReservas(int idUsuario)
+        {
+            TP_20162CEntities dc = new TP_20162CEntities();
+            var query = (from r in dc.Reservas
+
+                         join u in dc.Usuarios
+                         on r.IdCliente equals u.IdUsuario
+
+                         where u.IdUsuario == idUsuario
+                         select new ReservaDTO
+                         {
+                             IdReserva = r.IdReserva,
+                             IdCochera = r.IdCochera,
+                             FechaInicio = r.FechaInicio,
+                             FechaFin = r.FechaFin,
+                             Horario2 = r.HoraInicio + "-" + r.HoraFin, 
+                             Precio = r.Precio,                             
+                             Puntuacion = r.Puntuacion                             
+                         }).ToList();
+            return query;
+        }
+
+        public int puntuarReserva(int idReserva, short Puntuacion)
+        {
+            TP_20162CEntities dc = new TP_20162CEntities();
+            var query = (from r in dc.Reservas
+                         where r.IdReserva == idReserva
+                         select r
+                         ).SingleOrDefault();
+            if (query != null)
+            {
+                query.Puntuacion = Puntuacion;
+                dc.SaveChanges();
+                return 1;
+            }
+            return 0;
+        }
+
     }
 }
