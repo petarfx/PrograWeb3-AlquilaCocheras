@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using AlquilaCocheras;
+using System.Globalization;
 
 namespace AlquilaCocheras.Web.clientes
 {
@@ -44,27 +46,35 @@ namespace AlquilaCocheras.Web.clientes
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
+            List<LoginDTO> user = (List<LoginDTO>)Session["UsuarioLogueado"];
+
             Views vd = new Views();
-            //if (vd.VerificaDisponibilidad(Convert.ToInt32(Request.QueryString["idCochera"].ToString()), Convert.ToDateTime(txtFechaInicio.Text), Convert.ToDateTime(txtFechaFin.Text), txtHorarioInicio.Text, txtHorarioFin.Text).Count > 0)
-            //{
+
+            List<Reservas> lr= vd.VerificaDisponibilidad(Convert.ToInt32(Request.QueryString["idCochera"].ToString()), Convert.ToDateTime(txtFechaInicio.Text), Convert.ToDateTime(txtFechaFin.Text), Convert.ToDateTime(txtHorarioInicio.Text).ToShortTimeString().Substring(0, 5), Convert.ToDateTime(txtHorarioFin.Text).ToShortTimeString().Substring(0, 5));
+
+            if (vd.VerificaDisponibilidad(Convert.ToInt32(Request.QueryString["idCochera"].ToString()), Convert.ToDateTime(txtFechaInicio.Text), Convert.ToDateTime(txtFechaFin.Text), Convert.ToDateTime(txtHorarioInicio.Text).ToShortTimeString().Substring(0, 5), Convert.ToDateTime(txtHorarioFin.Text).ToShortTimeString().Substring(0, 5)).Count == 0)
+            {
                 TP_20162CEntities dc = new TP_20162CEntities();
 
                 Reservas r = new Reservas();
+                r.IdCochera = user.First().IdUsuario;
                 r.IdCochera = Convert.ToInt32(Request.QueryString["idCochera"].ToString());
                 r.FechaInicio = Convert.ToDateTime(txtFechaInicio.Text);
                 r.FechaFin = Convert.ToDateTime(txtFechaFin.Text);
-                r.HoraInicio = txtHorarioInicio.Text;
-                r.HoraFin = txtHorarioFin.Text;
-                r.Precio = Convert.ToDecimal(lblPrecioTotal.Text);
+                r.HoraInicio = Convert.ToDateTime(txtHorarioInicio.Text).ToShortTimeString().Substring(0,5);
+                r.HoraFin = Convert.ToDateTime(txtHorarioFin.Text).ToShortTimeString().Substring(0, 5);
+                r.CantidadHoras = Convert.ToDecimal((((Convert.ToDateTime(txtFechaFin.Text) - Convert.ToDateTime(txtFechaInicio.Text)).TotalDays) + 1) * Convert.ToInt32((Convert.ToInt32(Convert.ToDateTime(txtHorarioFin.Text).ToShortTimeString().Substring(0, 2)) - Convert.ToInt32(Convert.ToDateTime(txtHorarioInicio.Text).ToShortTimeString().Substring(0, 2)))));
+                r.Precio = Convert.ToDecimal(hfPrecioTotal.Value);
+                r.FechaCarga = DateTime.Now;
 
                 dc.Reservas.Add(r);
                 dc.SaveChanges();
                 //LimpiaControles
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "clearAll", "LimpiaControles();", true);
                 lblResultado.Text = "Operación exitosa";
-            //}
-            //else
-            //    lblResultado.Text = "No hay disponibilidad para los dias/horarios ingresados, por favor verifique los datos";            
+            }
+            else
+                lblResultado.Text = "No hay disponibilidad para los dias/horarios ingresados, por favor verifique los datos";            
         }
     }
 }

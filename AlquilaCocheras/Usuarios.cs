@@ -6,7 +6,7 @@
 //     Los cambios manuales en este archivo se sobrescribirán si se regenera el código.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
+using System.Linq;
 namespace AlquilaCocheras
 {
     using System;
@@ -29,5 +29,18 @@ namespace AlquilaCocheras
     
         public virtual ICollection<Cocheras> Cocheras { get; set; }
         public virtual ICollection<Reservas> Reservas { get; set; }
+
+
+        public List<Usuarios> validaMailDup(string user)
+        {
+            TP_20162CEntities dc = new TP_20162CEntities();
+            var query = (from u in dc.Usuarios
+                         where u.Email == user
+                         select u).ToList();
+
+            return query;
+        }
+
+
     }
 }

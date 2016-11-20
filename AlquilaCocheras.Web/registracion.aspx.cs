@@ -18,7 +18,25 @@ namespace AlquilaCocheras.Web
         {
             if (rblPerfil.SelectedValue != "")
             {
-                lblResultado.Text = "Registración exitosa, diríjase al <a href=\"login.aspx\">login</a>";
+                Usuarios user = new Usuarios();
+                if (user.validaMailDup(txtEmail.Text.Trim()).Count > 0) //Mail duplicado
+                {
+                    lblResultado.Text = "No se pudo completar la registración, existe otro usuario con el email ingresado.";
+                    txtEmail.Focus();
+                }
+                else //Todo bien
+                {
+                    TP_20162CEntities dc = new TP_20162CEntities();
+                    user.Nombre = txtNombre.Text.Trim();
+                    user.Apellido = txtApellido.Text.Trim();
+                    user.Contrasenia = txtContrasenia.Text.Trim();
+                    user.Email = txtEmail.Text.Trim();
+                    user.Perfil = (short)Convert.ToInt32(rblPerfil.SelectedItem.Value);
+                    dc.Usuarios.Add(user);
+                    dc.SaveChanges();
+                    
+                    lblResultado.Text = "Registración exitosa, diríjase al <a href=\"login.aspx\">login</a>";
+                }
             }
             else
             {

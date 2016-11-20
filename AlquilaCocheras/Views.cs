@@ -49,8 +49,7 @@ namespace AlquilaCocheras
             return query;
         }
 
-
-        public List<cocheraDTO> VerificaDisponibilidad(int idCochera, DateTime fi, DateTime ff, string hi, string hf)
+        public List<Reservas> VerificaDisponibilidad(int idCochera, DateTime fi, DateTime ff, string hi, string hf)
         {
             TP_20162CEntities dc = new TP_20162CEntities();
             var query = (from c in dc.Cocheras
@@ -63,47 +62,110 @@ namespace AlquilaCocheras
                          c.IdCochera == idCochera
 
                          //COCHERAS
-                         //verifico que el rango de dia/hora ingresado esté dentro de los de la cochera
-                         && (c.FechaInicio <= fi
-                         && c.FechaFin >= ff
-                         && Int32.Parse(c.HoraInicio.Substring(0, 2)) <= Int32.Parse(hi.Substring(0, 2))
-                         && Int32.Parse(c.HoraFin.Substring(0, 2)) >= Int32.Parse(hf.Substring(0, 2)))
+                             //verifico que el rango de dia/hora ingresado esté dentro de los de la cochera
+                             //&& (c.FechaInicio <= fi
+                             //&& c.FechaFin >= ff
+                             //&& Convert.ToInt32(Convert.ToDateTime(c.HoraInicio).ToShortTimeString().Substring(0, 2)) <= Convert.ToInt32(Convert.ToDateTime(hi).ToShortTimeString().Substring(0, 2))
+                             //&& Convert.ToInt32(Convert.ToDateTime(c.HoraFin).ToShortTimeString().Substring(0, 2)) <= Convert.ToInt32(Convert.ToDateTime(hf).ToShortTimeString().Substring(0, 2))
+
+                         && (
+                         (fi <= r.FechaInicio && ff > r.FechaInicio && ff <= r.FechaFin)
+                         || (fi <= r.FechaInicio && ff >= r.FechaFin)
+                         || (fi >= r.FechaInicio && ff <= r.FechaFin)
+                         || (fi >= r.FechaInicio && ff >= r.FechaFin && fi < r.FechaFin)
+                         )
+
+                         
+                         &&
+                         (      //*8*   *10*  (12)  (16)
+                             //1    hi  AA  hf  ZZ
+                             (
+                                (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) <= 0)
+                                && (String.Compare(hf.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
+                                && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) <= 0)
+                            )
+                            //2 hi  AA  ZZ  hf
+                            ||
+                            (
+                                (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) <= 0)
+                                && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) >= 0)
+                            )
+                            //3  AA hi  hf  ZZ
+                            ||
+                            (
+                                (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
+                                && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) <= 0)
+                            )
+                            //4 AA  hi  ZZ  hf
+                            || (
+                                (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
+                                && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) >= 0)
+                                && (String.Compare(hi.Substring(0, 2), r.HoraFin.Substring(0, 2)) < 0)
+                            )
+                        )
+                         
+                        )
+                         select r
+                         ).ToList();
+            //select new Reservas
+            //{
+            //    IdCochera = c.IdCochera,
+            //    Precio = c.Precio,
+            //    IdPropietario = c.IdPropietario,
+
+            //    FechaInicio = c.FechaInicio,
+            //    FechaFin = c.FechaFin,
+            //    HoraInicio = c.HoraInicio,
+            //    HoraFin = c.HoraFin,
+
+            //    Ubicacion = c.Ubicacion,
+            //    Imagen = c.Imagen,
+            //    Latitud = c.Latitud,
+            //    Longitud = c.Longitud,
+            //    MetrosCuadrados = c.MetrosCuadrados,
+            //    TipoVehiculo = c.TipoVehiculo,
+            //    //Datos del propietario
+            //    Apellido = u.Apellido,
+            //    Nombre = u.Nombre
+            //}).ToList();
+            return query;
+        }
 
 
-                         //RESERVAS
-                         && (r.FechaInicio <= fi
-                         && r.FechaFin >= fi
+        public List<Usuarios> obtenerUsuario(int idUsuario)
+        {
+            TP_20162CEntities dc = new TP_20162CEntities();
+            var query = (from u in dc.Usuarios
+                         where
+                         u.IdUsuario == idUsuario
+                         select u
+                         ).ToList();
+            return query;
+        }
+
+        public List<ReservaDTO> propietarioReservas(int idUsuario, DateTime fi, DateTime ff)
+        {
+            TP_20162CEntities dc = new TP_20162CEntities();
+            var query = (from r in dc.Reservas
+
+                         join c in dc.Cocheras
+                         on r.IdCochera equals c.IdCochera
+
+                         join ures in dc.Usuarios
+                         on r.IdCliente equals ures.IdUsuario
+
+                         where c.IdPropietario == idUsuario
+                         && r.FechaInicio >= fi
                          && r.FechaFin <= ff
-                         && r.FechaInicio >= ff
-
-                         && Int32.Parse(r.HoraInicio.Substring(0, 2)) <= Int32.Parse(hi.Substring(0, 2))
-                         && Int32.Parse(r.HoraFin.Substring(0, 2)) >= Int32.Parse(hi.Substring(0, 2))
-
-                         && Int32.Parse(r.HoraFin.Substring(0, 2)) <= Int32.Parse(hf.Substring(0, 2))
-                         && Int32.Parse(r.HoraInicio.Substring(0, 2)) >= Int32.Parse(hf.Substring(0, 2))
-                         )
-                         )
-
-                         select new cocheraDTO
+                         select new ReservaDTO
                          {
-                             IdCochera = c.IdCochera,
-                             Precio = c.Precio,
-                             IdPropietario = c.IdPropietario,
-
-                             FechaInicio = c.FechaInicio,
-                             FechaFin = c.FechaFin,
-                             HoraInicio = c.HoraInicio,
-                             HoraFin = c.HoraFin,
-
+                             FechaInicio = r.FechaInicio,
+                             FechaFin = r.FechaFin,
                              Ubicacion = c.Ubicacion,
-                             Imagen = c.Imagen,
-                             Latitud = c.Latitud,
-                             Longitud = c.Longitud,
-                             MetrosCuadrados = c.MetrosCuadrados,
-                             TipoVehiculo = c.TipoVehiculo,
-                             //Datos del propietario
-                             Apellido = u.Apellido,
-                             Nombre = u.Nombre
+                             CantidadHoras = r.CantidadHoras,
+                             Puntuacion = r.Puntuacion,
+                             UsuarioReserva = ures.Nombre + " " + ures.Apellido,
+                             Precio = r.Precio
                          }).ToList();
             return query;
         }

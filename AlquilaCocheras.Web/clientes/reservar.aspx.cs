@@ -80,6 +80,7 @@ namespace AlquilaCocheras.Web.clientes
                 servicios.Cocheras ws = new servicios.Cocheras();
 
                 var xxx = ws.ObtenerPromedio(Convert.ToInt32(lblid.Text)).ToList();
+                              
 
                 if (xxx.Count > 0)
                     lblPuntuacion.Text = xxx.FirstOrDefault().Puntuacion.ToString();

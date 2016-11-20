@@ -15,9 +15,11 @@ namespace AlquilaCocheras
         public DateTime FechaFin { get; set; }
         public string HoraInicio { get; set; }
         public string HoraFin { get; set; }
-        public string CantidadHoras { get; set; }
+        public decimal CantidadHoras { get; set; }
         public decimal Precio { get; set; }
         public DateTime FechaCarga { get; set; }
         public double Puntuacion { get; set; }
+        public string Ubicacion { get; set; }
+        public string UsuarioReserva { get; set; }
     }
 }

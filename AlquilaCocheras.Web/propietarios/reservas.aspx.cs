@@ -23,15 +23,24 @@ namespace AlquilaCocheras.Web.propietarios
         protected void gvCocheras_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             Label lblFechaInicio = (Label)e.Row.FindControl("lblFechaInicio");
+            Label lblFechaFin = (Label)e.Row.FindControl("lblFechaFin");
             // Si es una reserva futura
-            if (lblFechaInicio != null && Convert.ToDateTime(lblFechaInicio.Text) > DateTime.Today)
-                e.Row.BackColor = Color.AliceBlue;
+            if (lblFechaInicio != null && lblFechaFin != null)
+            {
+                if (Convert.ToDateTime(lblFechaInicio.Text) > DateTime.Today)
+                    e.Row.BackColor = Color.OrangeRed;
+
+                lblFechaInicio.Text = lblFechaInicio.Text.ToString().Substring(0, 10);
+                lblFechaFin.Text = lblFechaFin.Text.ToString().Substring(0, 10);
+            }
         }
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-            //Haria algo
-            DataTable dt = new DataTable();
+            List<LoginDTO> user = (List<LoginDTO>)Session["UsuarioLogueado"];
+            Views vr = new Views();
+            gvReservas.DataSource = vr.propietarioReservas(user.First().IdUsuario, Convert.ToDateTime(txtFechaInicio.Text.Trim()), Convert.ToDateTime(txtFechaFin.Text.Trim()));
+            gvReservas.DataBind();
         }
     }
 }

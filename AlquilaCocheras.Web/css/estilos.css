@@ -35,8 +35,13 @@
 
 
 .iconoDate {
-    display: inline-block;
+    /*display: inline-block;*/
     vertical-align: middle;
     width: 90%;
     margin: 0 5px 0 0;
+}
+
+.imgFotoCochera {
+    width:100%;
+    height:100%;
 }

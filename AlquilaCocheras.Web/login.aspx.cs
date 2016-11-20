@@ -25,14 +25,17 @@ namespace AlquilaCocheras.Web
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             lblResultado.Text = string.Empty;
+
             LoginDTO logval = new LoginDTO();
             List<LoginDTO> x = logval.validaLogin(txtEmail.Text, txtContrasenia.Text);
 
             if (x.Count > 0)
             {
+                
                 Session["ROL"] = x.First().Perfil;
+                Session["UsuarioLogueado"] = x;
 
-                if (Session["ROL"].ToString() == ConfigurationManager.AppSettings["PerfilCliente"].ToString())
+                if (x.First().Perfil.ToString() == ConfigurationManager.AppSettings["PerfilCliente"].ToString())
                 {
                     if (Request.QueryString["idcochera"] == null)
                         Response.Redirect(ConfigurationManager.AppSettings["ClienteReservarCochera"].ToString());

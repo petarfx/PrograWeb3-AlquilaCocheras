@@ -30,15 +30,67 @@ restaFechas = function (f1, f2) {
     return dias;
 }
 
+//function showimagepreview(input) {
+//    if (input.files && input.files[0]) {
+//        var reader = new FileReader();
+//        reader.onload = function (e) {
+//            document.getElementsByTagName("img")[0].setAttribute("src", e.target.result);
+//        }
+//        reader.readAsDataURL(input.files[0]);
+//    }
+//}
+
+
 function showimagepreview(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            document.getElementsByTagName("img")[0].setAttribute("src", e.target.result);
+            document.getElementsByTagName("img")[2].setAttribute("src", e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+//function showimagepreview(input) {
+//    if (input.files && input.files[0]) {
+//        var reader = new FileReader();
+//        reader.onload = function (e) {
+
+//            //var foto = document.getElementById('<%= imgFoto.ClientID %>');
+//            //foto.setAttribute("src", e.target.result);
+
+//            //document.getElementsByClassName("imgFotoCochera").setAttribute("src", e.target.result);
+//            document.getElementById("ContentPlaceHolder_Principal_Base_ContentPlaceHolder_Principal_imgFoto").setAttribute("src", e.target.result);
+//        }
+//        reader.readAsDataURL(input.files[0]);
+//    }
+//}
+
+//function pageLoad() {
+
+
+//    $(document).ready(function () {
+//        //carga FOTO
+//        $("#fuFoto").on('change', function () {
+
+//            var file = document.querySelector('#<%=fuFoto.ClientID %>');
+           
+//                var preview = document.querySelector("#img");
+//                file = file.files[0];
+//                var reader = new FileReader();
+//                reader.onloadend = function () {
+//                    preview.src = reader.result;
+//                }
+//                if (file) {
+//                    reader.readAsDataURL(file);
+//                } else {
+//                    preview.src = "";
+//                }
+//        });
+
+//    });
+//}
+
 
 function LimpiaControles() {
     $("input[type=text]").val("");
@@ -80,8 +132,10 @@ $(document).ready(function () {
                 var precioTotal = horasTotales * precioHora;
 
                 //Si es un Numero
-                if (!isNaN(precioTotal))
+                if (!isNaN(precioTotal)) {
                     document.getElementById('lblPrecioTotal').innerHTML = precioTotal.toFixed(2);
+                    document.getElementById('hfPrecioTotal').value = precioTotal.toFixed(2);
+                }
                 else
                     document.getElementById('lblPrecioTotal').innerHTML = "";
 
@@ -91,21 +145,10 @@ $(document).ready(function () {
                 console.log(precioTotal);
             }
             else
-                document.getElementById('lblPrecioTotal').innerHTML = "";
+                if (document.getElementById('lblPrecioTotal').length)
+                    document.getElementById('lblPrecioTotal').innerHTML = "";
         });
     }
-
-
-    //$("#hfLon").change(function () {
-
-    //    console.log($("input[id$='hfLat']").val());
-    //    var lat = $("input[id$='hfLat']").val(); //parseInt($("#<%= hfLat.ClientID %>").val());
-    //    console.log(lat);
-    //    var lon = $("input[id$='hfLat']").val();  //parseInt($("#<%= hfLon.ClientID %>").val());
-    //    console.log(lon);
-    //    //loadMap(lat, lon);
-    //});
-
 
 
 });
@@ -134,8 +177,7 @@ function loadMap(numlat, numlon) {
     console.log(numlat);
     console.log(numlon);
 
-    var myLatLng = {lat:parseFloat(numlat),lng:parseFloat(numlon)};
-    //var myLatLng = { lat: -34.684101, lng: -58.558074 };
+    var myLatLng = { lat: parseFloat(numlat), lng: parseFloat(numlon) };
 
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
@@ -155,10 +197,10 @@ function loadMapGrid(numlat, numlon, id) {
     console.log(numlat);
     console.log(numlon);
     console.log(id);
-    console.log('map'+id);
+    console.log('map' + id);
     var myLatLng = { lat: parseFloat(numlat), lng: parseFloat(numlon) };
-    
-    var map = new google.maps.Map(document.getElementById('ContentPlaceHolder_Principal_Base_ContentPlaceHolder_Principal_gvCocheras_map_'+id), {
+
+    var map = new google.maps.Map(document.getElementById('ContentPlaceHolder_Principal_Base_ContentPlaceHolder_Principal_gvCocheras_map_' + id), {
         zoom: 14,
         center: myLatLng
     });

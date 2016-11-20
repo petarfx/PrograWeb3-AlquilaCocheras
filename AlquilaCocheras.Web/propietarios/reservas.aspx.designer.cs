@@ -94,12 +94,21 @@ namespace AlquilaCocheras.Web.propietarios {
         protected global::System.Web.UI.WebControls.Button btnFiltrar;
         
         /// <summary>
-        /// Control gvCocheras.
+        /// Control vsReservas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCocheras;
+        protected global::System.Web.UI.WebControls.ValidationSummary vsReservas;
+        
+        /// <summary>
+        /// Control gvReservas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvReservas;
     }
 }

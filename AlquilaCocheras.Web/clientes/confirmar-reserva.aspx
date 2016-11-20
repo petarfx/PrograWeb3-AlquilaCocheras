@@ -108,6 +108,7 @@
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0" type="text/javascript"></script>
 
     <asp:HiddenField ID="hfLat" runat="server" />
-    <asp:HiddenField ID="hfLon" runat="server" />
+    <asp:HiddenField ID="hfLon" runat="server" />    
+    <asp:HiddenField ID="hfPrecioTotal" runat="server" ClientIDMode="Static" />
 
 </asp:Content>

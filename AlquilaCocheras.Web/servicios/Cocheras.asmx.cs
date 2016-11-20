@@ -59,6 +59,7 @@ namespace AlquilaCocheras.Web.servicios
             TP_20162CEntities dc = new TP_20162CEntities();
             var query = (from r in dc.Reservas
                          where r.IdCochera == idCochera
+                         && r.FechaFin <= DateTime.Now
                          group r by new { IdCochera = r.IdCochera } into grouped
                          select new cocheraDTO
                          {

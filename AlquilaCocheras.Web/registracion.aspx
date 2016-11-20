@@ -81,7 +81,7 @@
 
                 <div class="row">
                     <div class=" col s12 m12 center-align input-field">
-                        <asp:Button ID="Button1" runat="server" Text="Registrar usuario" CssClass="btn cyan waves-effect waves-light" ClientIDMode="Static" OnClick="btnRegistrarUsuario_Click" />
+                        <asp:Button ID="btnRegistrarUsuario" runat="server" Text="Registrar usuario" CssClass="btn cyan waves-effect waves-light" ClientIDMode="Static" OnClick="btnRegistrarUsuario_Click" />
                     </div>
                 </div>
                 <div class="row">

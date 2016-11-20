@@ -11,6 +11,7 @@ namespace AlquilaCocheras
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     
     public partial class Reservas
     {
@@ -28,5 +29,7 @@ namespace AlquilaCocheras
     
         public virtual Cocheras Cocheras { get; set; }
         public virtual Usuarios Usuarios { get; set; }
+
+
     }
 }

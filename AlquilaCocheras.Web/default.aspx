@@ -84,6 +84,7 @@
                     </EditItemTemplate>
                     <ItemTemplate>
                         <div id="map" class="fotoGrilla" runat="server"></div>
+                        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0" type="text/javascript"></script>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Puntuacion">
@@ -116,7 +117,7 @@
         </asp:GridView>
     </div>
 <%--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=myMap"></script>--%>
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0" type="text/javascript"></script>
+   <%-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0" type="text/javascript"></script>--%>
         <script>
         $(function () {
             $.datepicker.regional['es'] = {

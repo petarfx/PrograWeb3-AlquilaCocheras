@@ -20,16 +20,22 @@ namespace AlquilaCocheras
             TP_20162CEntities dc = new TP_20162CEntities();
             var query = (from u in dc.Usuarios
                          where u.Email == user
-
+                         && u.Contrasenia == pass
                          select new LoginDTO
                          {
                              Nombre = u.Nombre,
                              Apellido = u.Apellido,
-                             Perfil = u.Perfil
+                             IdUsuario = u.IdUsuario,
+                             Perfil = u.Perfil,
+                             Contrasenia = u.Contrasenia,
+                             Email = u.Email
                          }).ToList();
 
             return query;
         }
+
+        
+
        
     }   
     

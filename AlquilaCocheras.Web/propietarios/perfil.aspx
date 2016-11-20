@@ -52,7 +52,7 @@
                     </div>
                     <div class=" col s12 m6 input-field">
                         <asp:Label ID="label9" runat="server" Text="Perfil: "></asp:Label>
-                        <asp:RadioButtonList ID="rblPerfil" runat="server" ClientIDMode="Static" Enabled="False">
+                        <asp:RadioButtonList ID="rblPerfil" runat="server" ClientIDMode="Static">
                             <asp:ListItem Text="Cliente" Value="1" />
                             <asp:ListItem Text="Propietario" Value="2" />
                         </asp:RadioButtonList>
