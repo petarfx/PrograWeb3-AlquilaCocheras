@@ -14,7 +14,7 @@ namespace AlquilaCocheras.Web.MasterPages
         {
             if (!IsPostBack)
             {
-                if (Session["ROL"].ToString() != ConfigurationManager.AppSettings["PerfilPropietario"].ToString())
+                if (Session["ROL"] != null && Session["ROL"].ToString() != ConfigurationManager.AppSettings["PerfilPropietario"].ToString())
                 {
                     if (Session["ROL"] == ConfigurationManager.AppSettings["PerfilCliente"].ToString()) //CLIENTES
                         Response.Redirect(ConfigurationManager.AppSettings["ClienteInicio"].ToString());

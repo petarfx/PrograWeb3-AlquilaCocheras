@@ -112,43 +112,54 @@ $(document).ready(function () {
     $('.modal-trigger').leanModal();
 
     if ($("#txtHorarioInicio").length && $("#txtHorarioFin").length && $("#txtFechaInicio").length && $("#txtFechaFin").length) {
-        $("#txtHorarioInicio,#txtHorarioFin,#txtFechaInicio,#txtFechaFin").keyup(function () {
-            if ($("input[id$='txtHorarioInicio']").val().length == 5 && $("input[id$='txtHorarioInicio']").val().substr(2, 1) == ":" && $("input[id$='txtHorarioFin']").val().length == 5 && $("input[id$='txtHorarioFin']").val().substr(2, 1) == ":" && $("input[id$='txtFechaInicio']").val().length == 10 && $("input[id$='txtFechaFin']").val().length == 10) {
-                var hi = parseFloat(parseInt(($("input[id$='txtHorarioInicio']").val().substr(0, 2))) + parseFloat(($("input[id$='txtHorarioInicio']").val().substr(3, 2)) / 60))
-                var hf = parseFloat(parseInt(($("input[id$='txtHorarioFin']").val().substr(0, 2))) + parseFloat(($("input[id$='txtHorarioFin']").val().substr(3, 2)) / 60))
-                var fi = $("input[id$='txtFechaInicio']").val();
-                var ff = $("input[id$='txtFechaFin']").val();
-                var precioHora = document.getElementById('lblPrecioHora').innerHTML;
-                var precioTotal = document.getElementById('lblPrecioTotal').innerHTML;
+        calculaPrecioTotal();
+    }
 
-                //dias = DiferenciaDeDias(fecha fin,  fecha inicio)  ­ 
-                //horas = DiferenciaDeHoras(hora salida, hora entrada)  ­ 
-                //horas totales = horas * dias  ­ 
-                //precio total = horas totales * precio hora
+    $("#txtHorarioInicio,#txtHorarioFin,#txtFechaInicio,#txtFechaFin").keyup(function () {
+        calculaPrecioTotal();
+    });
 
-                var dias = restaFechas(fi, ff);
-                var horas = hf - hi;
-                var horasTotales = horas * dias;
-                var precioTotal = horasTotales * precioHora;
 
-                //Si es un Numero
-                if (!isNaN(precioTotal)) {
-                    document.getElementById('lblPrecioTotal').innerHTML = precioTotal.toFixed(2);
-                    document.getElementById('hfPrecioTotal').value = precioTotal.toFixed(2);
-                }
-                else
-                    document.getElementById('lblPrecioTotal').innerHTML = "";
 
-                console.log(dias);
-                console.log(horas);
-                console.log(horasTotales);
-                console.log(precioTotal);
+    function calculaPrecioTotal() {
+        if ($("input[id$='txtHorarioInicio']").val().length == 5 && $("input[id$='txtHorarioInicio']").val().substr(2, 1) == ":" && $("input[id$='txtHorarioFin']").val().length == 5 && $("input[id$='txtHorarioFin']").val().substr(2, 1) == ":" && $("input[id$='txtFechaInicio']").val().length == 10 && $("input[id$='txtFechaFin']").val().length == 10) {
+            var hi = parseFloat(parseInt(($("input[id$='txtHorarioInicio']").val().substr(0, 2))) + parseFloat(($("input[id$='txtHorarioInicio']").val().substr(3, 2)) / 60))
+            var hf = parseFloat(parseInt(($("input[id$='txtHorarioFin']").val().substr(0, 2))) + parseFloat(($("input[id$='txtHorarioFin']").val().substr(3, 2)) / 60))
+            var fi = $("input[id$='txtFechaInicio']").val();
+            var ff = $("input[id$='txtFechaFin']").val();
+            var precioHora = document.getElementById('lblPrecioHora').innerHTML;
+            var precioTotal = document.getElementById('lblPrecioTotal').innerHTML;
+
+            //dias = DiferenciaDeDias(fecha fin,  fecha inicio)  ­ 
+            //horas = DiferenciaDeHoras(hora salida, hora entrada)  ­ 
+            //horas totales = horas * dias  ­ 
+            //precio total = horas totales * precio hora
+
+            var dias = restaFechas(fi, ff);
+            var horas = hf - hi;
+            var horasTotales = horas * dias;
+            var precioTotal = horasTotales * precioHora;
+
+            //Si es un Numero
+            if (!isNaN(precioTotal)) {
+                document.getElementById('lblPrecioTotal').innerHTML = precioTotal.toFixed(2);
+                document.getElementById('hfPrecioTotal').value = precioTotal.toFixed(2);
             }
             else
-                if (document.getElementById('lblPrecioTotal').length)
-                    document.getElementById('lblPrecioTotal').innerHTML = "";
-        });
+                document.getElementById('lblPrecioTotal').innerHTML = "";
+
+            console.log(dias);
+            console.log(horas);
+            console.log(horasTotales);
+            console.log(precioTotal);
+        }
+        else
+            if (document.getElementById('lblPrecioTotal').length)
+                document.getElementById('lblPrecioTotal').innerHTML = "";
     }
+
+
+
 
 
 });

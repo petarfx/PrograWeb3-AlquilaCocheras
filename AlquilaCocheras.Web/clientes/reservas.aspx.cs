@@ -51,6 +51,10 @@ namespace AlquilaCocheras.Web.clientes
 
                 lblFechaInicio.Text = Convert.ToDateTime(lblFechaInicio.Text.ToString()).ToShortDateString();
                 lblFechaFin.Text = Convert.ToDateTime(lblFechaFin.Text.ToString()).ToShortDateString();
+
+                Label lblNroFila = (Label)e.Row.FindControl("lblNroFila");
+                lblNroFila.Text = (e.Row.RowIndex + 1).ToString();
+
             }
         }
 
@@ -59,11 +63,10 @@ namespace AlquilaCocheras.Web.clientes
             Label lblid = (Label)gvReservas.SelectedRow.FindControl("lblid");
             if (lblid != null)
             {
-                Label lblidCochera = (Label)gvReservas.SelectedRow.FindControl("lblidCochera");
-                lblCocheraSeleccionada.Text = string.Format("Cochera Seleccionada Nro: {0}", lblidCochera.Text);
+                Label lblNroFila = (Label)gvReservas.SelectedRow.FindControl("lblNroFila");
+                lblReservaSeleccionada.Text = string.Format("Reserva Seleccionada Nro: {0}", lblNroFila.Text);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "show", "showModal('miModal', 'hdIdReserva', '" + lblid.Text + "');", true);
                 ViewState["idReserva"] = lblid.Text;
-                ViewState["idCochera"] = lblidCochera.Text;
             }
         }
 
@@ -74,9 +77,6 @@ namespace AlquilaCocheras.Web.clientes
                 Views vr = new Views();
 
                 int i = vr.puntuarReserva(Convert.ToInt32(ViewState["idReserva"]), (short)Convert.ToInt32(ddlPuntuacion.SelectedValue));
-
-
-
 
             }
             catch (Exception ex)

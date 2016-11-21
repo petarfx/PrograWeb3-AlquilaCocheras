@@ -22,13 +22,13 @@ namespace AlquilaCocheras.Web.clientes {
         protected global::System.Web.UI.WebControls.GridView gvReservas;
         
         /// <summary>
-        /// Control lblCocheraSeleccionada.
+        /// Control lblReservaSeleccionada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCocheraSeleccionada;
+        protected global::System.Web.UI.WebControls.Label lblReservaSeleccionada;
         
         /// <summary>
         /// Control ddlPuntuacion.

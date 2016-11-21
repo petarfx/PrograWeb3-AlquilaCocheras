@@ -76,33 +76,33 @@ namespace AlquilaCocheras
                          )
 
                          
-                         &&
-                         (      //*8*   *10*  (12)  (16)
-                             //1    hi  AA  hf  ZZ
-                             (
-                                (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) <= 0)
-                                && (String.Compare(hf.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
-                                && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) <= 0)
-                            )
-                            //2 hi  AA  ZZ  hf
-                            ||
-                            (
-                                (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) <= 0)
-                                && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) >= 0)
-                            )
-                            //3  AA hi  hf  ZZ
-                            ||
-                            (
-                                (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
-                                && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) <= 0)
-                            )
-                            //4 AA  hi  ZZ  hf
-                            || (
-                                (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
-                                && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) >= 0)
-                                && (String.Compare(hi.Substring(0, 2), r.HoraFin.Substring(0, 2)) < 0)
-                            )
-                        )
+                        // &&
+                        // (      //*8*   *10*  (12)  (16)
+                        //     //1    hi  AA  hf  ZZ
+                        //     (
+                        //        (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) <= 0)
+                        //        && (String.Compare(hf.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
+                        //        && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) <= 0)
+                        //    )
+                        //    //2 hi  AA  ZZ  hf
+                        //    ||
+                        //    (
+                        //        (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) <= 0)
+                        //        && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) >= 0)
+                        //    )
+                        //    //3  AA hi  hf  ZZ
+                        //    ||
+                        //    (
+                        //        (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
+                        //        && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) <= 0)
+                        //    )
+                        //    //4 AA  hi  ZZ  hf
+                        //    || (
+                        //        (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
+                        //        && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) >= 0)
+                        //        && (String.Compare(hi.Substring(0, 2), r.HoraFin.Substring(0, 2)) < 0)
+                        //    )
+                        //)
                          
                         )
                          select r
@@ -206,6 +206,21 @@ namespace AlquilaCocheras
                 return 1;
             }
             return 0;
+        }
+
+
+        public int clienteReservasSinPuntuar(int idUsuario)
+        {
+            TP_20162CEntities dc = new TP_20162CEntities();
+            var query = (from r in dc.Reservas
+
+                         join u in dc.Usuarios
+                         on r.IdCliente equals u.IdUsuario
+
+                         where u.IdUsuario == idUsuario
+                         && r.Puntuacion == 0
+                         select r).Count();
+            return query;
         }
 
     }

@@ -18,6 +18,14 @@
         <asp:GridView ID="gvReservas" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" OnRowDataBound="gvReservas_RowDataBound" OnSelectedIndexChanged="gvReservas_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
+                <asp:TemplateField HeaderText="Nro">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblNroFila" runat="server"></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="idReserva" Visible="False">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("idReserva") %>'></asp:TextBox>
@@ -26,7 +34,7 @@
                         <asp:Label ID="lblid" runat="server" Text='<%# Bind("idReserva") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Nro">
+                <asp:TemplateField HeaderText="idCochera" ShowHeader="False" Visible="False">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("idCochera") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -97,8 +105,8 @@
         <!-- Contenido Modal -->
         <div class="modal-content">
             <div>
-                <asp:Label ID="lblCocheraSeleccionada" runat="server" Text=""></asp:Label>
-                <%--hidden donde se guarda el id de la reserva elegida para que desde el codebehind se pueda identificar--%>
+                <asp:Label ID="lblReservaSeleccionada" runat="server" Text=""></asp:Label>
+                <%--class="modal-trigger" href="#miModal"--%>
                 <input type="hidden" id="hdIdReserva" />
                 <asp:DropDownList runat="server" ID="ddlPuntuacion" ClientIDMode="Static">
                     <asp:ListItem Text="1" Value="1" />

@@ -6,16 +6,8 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet" type="text/css" href="~/css/estilos.css" />
-    <%--    <link rel="stylesheet" type="text/css" href="~/css/jquery-ui.css" />
-    <link rel="stylesheet" type="text/css" href="~/css/jquery-ui-1.10.4.custom.css" />--%>
-
     <link rel="stylesheet" type="text/css" href="~/css/jquery-ui-1.12.1/jquery-ui.theme.css" />
-    <%--<link rel="stylesheet" type="text/css" href="~/css/jquery-ui-themes-1.12.1/themes/base/jquery-ui.css" />--%>
     <link rel="stylesheet" type="text/css" href="~/css/jquery-ui-1.12.1/jquery-ui.css" />
-    <%--    <link rel="stylesheet" type="text/css" href="~/css/jquery-ui-1.12.1/jquery-ui.structure.css" />--%>
-
-
-
     <link rel="stylesheet" type="text/css" href="~/css/materialize.min.css" />
     <link rel="stylesheet" type="text/css" href="~/css/material-icons.css" />
     <asp:ContentPlaceHolder ID="head_Base" runat="server">
@@ -23,7 +15,6 @@
 </head>
 <body class="cyan loaded">
 
-    <%--prueba 1--%>
     <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-3.1.1.js") %>'></script>
     <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-1.12.4.js") %>'></script>
     <script type="text/javascript" src='<%= ResolveUrl("~/js/jquery-ui.js") %>'></script>
