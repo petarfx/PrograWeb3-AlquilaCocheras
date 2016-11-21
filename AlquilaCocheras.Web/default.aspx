@@ -71,6 +71,7 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Longitud" Visible="False">
+
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Longitud") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -83,8 +84,8 @@
                         <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Mapa") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <div id="map" class="fotoGrilla" runat="server"></div>
-                        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0" type="text/javascript"></script>
+                        <asp:Panel ID="mapPanel" runat="server"></asp:Panel>               
+                        <%--<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0" type="text/javascript"></script>--%>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Puntuacion">
@@ -117,7 +118,7 @@
         </asp:GridView>
     </div>
 <%--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=myMap"></script>--%>
-   <%-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0" type="text/javascript"></script>--%>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0" type="text/javascript"></script>
         <script>
         $(function () {
             $.datepicker.regional['es'] = {

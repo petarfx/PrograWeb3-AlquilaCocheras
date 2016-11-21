@@ -95,6 +95,28 @@ namespace AlquilaCocheras.Web
                 Label lblLatitud = (Label)e.Row.FindControl("lblLatitud");
                 Label lblLongitud = (Label)e.Row.FindControl("lblLongitud");
 
+                var divId = string.Format("map_{0}", e.Row.RowIndex.ToString());
+                var mapPanel = e.Row.Cells[8].FindControl("mapPanel") as Panel;
+
+                var div = new HtmlGenericControl("div");
+                div.Attributes.Add("id", divId);
+                div.Attributes.Add("style", "width:200px; height:200px");
+                mapPanel.Controls.Add(div);
+
+
+                var script = new HtmlGenericControl("script");
+                script.InnerHtml = @"
+                $('document').ready(function() {
+                var myLatLng = { lat: parseFloat("+ lblLatitud.Text + "), lng: parseFloat("+ lblLongitud.Text + ") };";
+                script.InnerHtml += @"
+                 var map = new google.maps.Map(document.getElementById('" + divId+ "'), {zoom: 14,center: myLatLng}); });";
+                script.Attributes.Add("class", "mapdiv");
+                mapPanel.Controls.Add(script);
+
+                /*string js = GetGoogleMapScript(carDealer, divId);
+                ScriptManager.RegisterStartupScript
+                  (this.Page, this.GetType(), "_map_" + carDealer.Id, js, true);
+                */
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "mapagrilla", "loadMapGrid('" + lblLatitud.Text + "','" + lblLongitud.Text + "','" + divmapa.ID + "');", true);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mapagrilla", "loadMapGrid('" + lblLatitud.Text + "','" + lblLongitud.Text + "','" + e.Row.RowIndex.ToString() + "');", true);
             }
