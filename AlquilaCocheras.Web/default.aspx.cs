@@ -56,10 +56,18 @@ namespace AlquilaCocheras.Web
             //Fecha Fin
             DateTime FF = ucBuscador.myFechaFin.Trim() == string.Empty ? Convert.ToDateTime(Helper.dateFar) : Convert.ToDateTime(ucBuscador.myFechaFin);
 
-            servicios.Cocheras ws = new servicios.Cocheras();
-            
-            gvCocheras.DataSource = ws.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
+
+
+            //usando el webservice
+            ServiceReference.CocherasSoapClient servicio = new ServiceReference.CocherasSoapClient();
+            gvCocheras.DataSource = servicio.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
             gvCocheras.DataBind();
+
+
+            //Sin usar el webservice
+            //servicios.Cocheras ws = new servicios.Cocheras();
+            //gvCocheras.DataSource = ws.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
+            //gvCocheras.DataBind();
         }
         protected void gvCocheras_RowDataBound(object sender, GridViewRowEventArgs e)
         {
