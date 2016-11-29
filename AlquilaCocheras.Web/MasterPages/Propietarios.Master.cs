@@ -14,17 +14,17 @@ namespace AlquilaCocheras.Web.MasterPages
         {
             if (!IsPostBack)
             {
-                if (Session["ROL"] != null && Session["ROL"].ToString() != ConfigurationManager.AppSettings["PerfilPropietario"].ToString())
+                if (Session["ROL"] != null)
                 {
                     if (Session["ROL"] == ConfigurationManager.AppSettings["PerfilCliente"].ToString()) //CLIENTES
                         Response.Redirect(ConfigurationManager.AppSettings["ClienteInicio"].ToString());
-                    else//ANONIMOS
-                    {
-                        Session["ROL"] = null;
-                        Response.Redirect("../login.aspx");
-                    }
+                    //else
+                        //PROPIETARIO (NO HACER NADA) 
                 }
-                //PROPIETARIO (NO HACER NADA)
+                else//ANONIMOS
+                {
+                    Response.Redirect("../login.aspx");
+                }                
             }
         }
     }

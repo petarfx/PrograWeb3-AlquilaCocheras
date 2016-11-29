@@ -84,8 +84,7 @@
                         <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Mapa") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Panel ID="mapPanel" runat="server"></asp:Panel>               
-                        <%--<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0" type="text/javascript"></script>--%>
+                        <asp:Panel ID="mapPanel" runat="server"></asp:Panel>                        
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Puntuacion">

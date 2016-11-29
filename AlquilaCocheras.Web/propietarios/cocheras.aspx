@@ -206,7 +206,11 @@
                 <div class="row">
                     <div class=" col s12 m12 center-align input-field">
                         <asp:Button ID="btnCrearCochera" runat="server" Text="Crear Cochera" ClientIDMode="Static" Class="btn cyan waves-effect waves-light" OnClick="btnCrearCochera_Click" />
-                        <%--OnClientClick="showDiv('wnOk','Cochera Alta', 'Operacion Exitosa')"--%>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col s12 m12 center-align input-field">
+                        <asp:Label ID="lblResultado" runat="server"></asp:Label>
                     </div>
                 </div>
                 <div class="row">

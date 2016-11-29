@@ -18,7 +18,6 @@ namespace AlquilaCocheras.Web.propietarios
                 //Para que siempre pueda editar la fecha de inicio
                 esEdicion.Value = "true";
             }
-
         }
 
         protected void btnCrearCochera_Click(object sender, EventArgs e)
@@ -63,18 +62,15 @@ namespace AlquilaCocheras.Web.propietarios
                         dc.Entry(objc).State = System.Data.Entity.EntityState.Modified;
 
                         dc.SaveChanges();
-                    }
- 
+                    } 
                 }
             }
             
-            //Abre la Modal
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "show", "showDiv2('wnOk', 'Cochera Alta','Operación exitosa');", true);
-
             //LimpiaControles
             ScriptManager.RegisterStartupScript(this, this.GetType(), "clearAll", "LimpiaControles();", true);
-            //Muestra un Alert
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Operación exitosa')", true);
+            
+            lblResultado.Text = "Operacion Exitosa";
+
         }
     }
 }

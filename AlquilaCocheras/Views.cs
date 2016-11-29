@@ -211,6 +211,9 @@ namespace AlquilaCocheras
 
         public int clienteReservasSinPuntuar(int idUsuario)
         {
+
+            DateTime fechaHoy = DateTime.Today;
+
             TP_20162CEntities dc = new TP_20162CEntities();
             var query = (from r in dc.Reservas
 
@@ -219,6 +222,7 @@ namespace AlquilaCocheras
 
                          where u.IdUsuario == idUsuario
                          && r.Puntuacion == 0
+                         && r.FechaInicio < fechaHoy
                          select r).Count();
             return query;
         }

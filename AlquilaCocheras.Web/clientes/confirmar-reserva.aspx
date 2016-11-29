@@ -40,7 +40,7 @@
                         <asp:TextBox ID="txtFechaFin" runat="server" ClientIDMode="Static" MaxLength="10"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvtxtFechaFin" runat="server" ControlToValidate="txtFechaFin" ErrorMessage="Debe ingresar la fecha de fin" ForeColor="Red">*</asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="revFechaFin" runat="server" ControlToValidate="txtFechaFin" ErrorMessage="Fecha de Fin Invalida (Ingrese dd/mm/aaaa)" ForeColor="Red" ValidationExpression="^(?:(?:0?[1-9]|1\d|2[0-8])(\/|-)(?:0?[1-9]|1[0-2]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:31(\/|-)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-)(?:0?[1,3-9]|1[0-2])))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(29(\/|-)0?2)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$">*</asp:RegularExpressionValidator>
-                        <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtFechaFin" ControlToValidate="txtFechaInicio" ErrorMessage="La Fecha de Inicio no puede superar la de Fin" ForeColor="Red" Type="Date" Operator="LessThan">*</asp:CompareValidator>
+                        <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtFechaFin" ControlToValidate="txtFechaInicio" ErrorMessage="La Fecha de Inicio no puede superar la de Fin" ForeColor="Red" Type="Date" Operator="LessThanEqual">*</asp:CompareValidator>
                     </div>
                 </div>
 

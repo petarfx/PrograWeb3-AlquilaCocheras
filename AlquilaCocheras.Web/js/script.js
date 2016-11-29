@@ -25,20 +25,15 @@ restaFechas = function (f1, f2) {
     var aFecha2 = f2.split('/');
     var fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
     var fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
+    console.log("fec1 " + fFecha1);
+    console.log("fec1 " + fFecha2);
     var dif = fFecha2 - fFecha1;
+    console.log("dif: " + dif);
     var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
-    return dias;
+    console.log("dias: " + dias);
+    return dias + 1;
 }
 
-//function showimagepreview(input) {
-//    if (input.files && input.files[0]) {
-//        var reader = new FileReader();
-//        reader.onload = function (e) {
-//            document.getElementsByTagName("img")[0].setAttribute("src", e.target.result);
-//        }
-//        reader.readAsDataURL(input.files[0]);
-//    }
-//}
 
 
 function showimagepreview(input) {
@@ -51,46 +46,6 @@ function showimagepreview(input) {
     }
 }
 
-//function showimagepreview(input) {
-//    if (input.files && input.files[0]) {
-//        var reader = new FileReader();
-//        reader.onload = function (e) {
-
-//            //var foto = document.getElementById('<%= imgFoto.ClientID %>');
-//            //foto.setAttribute("src", e.target.result);
-
-//            //document.getElementsByClassName("imgFotoCochera").setAttribute("src", e.target.result);
-//            document.getElementById("ContentPlaceHolder_Principal_Base_ContentPlaceHolder_Principal_imgFoto").setAttribute("src", e.target.result);
-//        }
-//        reader.readAsDataURL(input.files[0]);
-//    }
-//}
-
-//function pageLoad() {
-
-
-//    $(document).ready(function () {
-//        //carga FOTO
-//        $("#fuFoto").on('change', function () {
-
-//            var file = document.querySelector('#<%=fuFoto.ClientID %>');
-           
-//                var preview = document.querySelector("#img");
-//                file = file.files[0];
-//                var reader = new FileReader();
-//                reader.onloadend = function () {
-//                    preview.src = reader.result;
-//                }
-//                if (file) {
-//                    reader.readAsDataURL(file);
-//                } else {
-//                    preview.src = "";
-//                }
-//        });
-
-//    });
-//}
-
 
 function LimpiaControles() {
     $("input[type=text]").val("");
@@ -100,9 +55,6 @@ function LimpiaControles() {
 function mostrarImagen(elem) {
     $("#imgFoto").attr('src', elem.value);
 }
-
-
-
 
 
 // A $( document ).ready() block.
@@ -118,8 +70,6 @@ $(document).ready(function () {
     $("#txtHorarioInicio,#txtHorarioFin,#txtFechaInicio,#txtFechaFin").keyup(function () {
         calculaPrecioTotal();
     });
-
-
 
     function calculaPrecioTotal() {
         if ($("input[id$='txtHorarioInicio']").val().length == 5 && $("input[id$='txtHorarioInicio']").val().substr(2, 1) == ":" && $("input[id$='txtHorarioFin']").val().length == 5 && $("input[id$='txtHorarioFin']").val().substr(2, 1) == ":" && $("input[id$='txtFechaInicio']").val().length == 10 && $("input[id$='txtFechaFin']").val().length == 10) {
@@ -142,11 +92,20 @@ $(document).ready(function () {
 
             //Si es un Numero
             if (!isNaN(precioTotal)) {
-                document.getElementById('lblPrecioTotal').innerHTML = precioTotal.toFixed(2);
-                document.getElementById('hfPrecioTotal').value = precioTotal.toFixed(2);
+                if (parseFloat(precioTotal) <= 0)
+                {
+                    document.getElementById('lblPrecioTotal').innerHTML = "Verifique los datos ingresados"
+                    document.getElementById('hfPrecioTotal').value = null;
+                }
+                else {
+                    document.getElementById('lblPrecioTotal').innerHTML = precioTotal.toFixed(2);
+                    document.getElementById('hfPrecioTotal').value = precioTotal.toFixed(2);
+                }
             }
-            else
+            else {
                 document.getElementById('lblPrecioTotal').innerHTML = "";
+                document.getElementById('hfPrecioTotal').value = null;
+            }
 
             console.log(dias);
             console.log(horas);

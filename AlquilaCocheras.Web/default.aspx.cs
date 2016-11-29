@@ -77,7 +77,6 @@ namespace AlquilaCocheras.Web
             {
                 HyperLink aConfirmar = (HyperLink)e.Row.FindControl("aConfirmar");
                 aConfirmar.NavigateUrl = "/clientes/confirmar-reserva.aspx?idcochera=" + lblid.Text;
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "mapa", "initMap();", true);
 
 
                 Label FotoURL = (Label)e.Row.FindControl("lblFotoURL");
@@ -97,8 +96,7 @@ namespace AlquilaCocheras.Web
                 if (xxx.Count > 0)
                     lblPuntuacion.Text = xxx.FirstOrDefault().Puntuacion.ToString();
 
-                //HtmlGenericControl divmapa = (HtmlGenericControl)e.Row.FindControl("map");
-                //divmapa.ID = "map" + lblid.ToString();
+
 
                 Label lblLatitud = (Label)e.Row.FindControl("lblLatitud");
                 Label lblLongitud = (Label)e.Row.FindControl("lblLongitud");
@@ -118,15 +116,11 @@ namespace AlquilaCocheras.Web
                 var myLatLng = { lat: parseFloat("+ lblLatitud.Text + "), lng: parseFloat("+ lblLongitud.Text + ") };";
                 script.InnerHtml += @"
                  var map = new google.maps.Map(document.getElementById('" + divId+ "'), {zoom: 14,center: myLatLng}); });";
+
                 script.Attributes.Add("class", "mapdiv");
                 mapPanel.Controls.Add(script);
 
-                /*string js = GetGoogleMapScript(carDealer, divId);
-                ScriptManager.RegisterStartupScript
-                  (this.Page, this.GetType(), "_map_" + carDealer.Id, js, true);
-                */
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "mapagrilla", "loadMapGrid('" + lblLatitud.Text + "','" + lblLongitud.Text + "','" + divmapa.ID + "');", true);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "mapagrilla", "loadMapGrid('" + lblLatitud.Text + "','" + lblLongitud.Text + "','" + e.Row.RowIndex.ToString() + "');", true);
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "mapagrilla", "loadMapGrid('" + lblLatitud.Text + "','" + lblLongitud.Text + "','" + e.Row.RowIndex.ToString() + "');", true);
             }
 
 

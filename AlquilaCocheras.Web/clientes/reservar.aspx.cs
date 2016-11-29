@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Configuration;
 using AlquilaCocheras;
+using System.Web.UI.HtmlControls;
 
 namespace AlquilaCocheras.Web.clientes
 {
@@ -46,12 +47,18 @@ namespace AlquilaCocheras.Web.clientes
             //Fecha Fin
             DateTime FF = ucBuscador.myFechaFin.Trim() == string.Empty ? Convert.ToDateTime(Helper.dateFar) : Convert.ToDateTime(ucBuscador.myFechaFin);
 
-            servicios.Cocheras ws = new servicios.Cocheras();
-
-            var xxx = ws.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
-
-            gvCocheras.DataSource = xxx;
+            
+            
+            //usando el webservice
+            ServiceReference.CocherasSoapClient servicio = new ServiceReference.CocherasSoapClient();
+            gvCocheras.DataSource = servicio.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
             gvCocheras.DataBind();
+
+            //servicios.Cocheras ws = new servicios.Cocheras();
+            //var xxx = ws.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
+            //gvCocheras.DataSource = xxx;
+            //gvCocheras.DataBind();
+            
         }
         #endregion
 
@@ -84,6 +91,31 @@ namespace AlquilaCocheras.Web.clientes
 
                 if (xxx.Count > 0)
                     lblPuntuacion.Text = xxx.FirstOrDefault().Puntuacion.ToString();
+
+
+                Label lblLatitud = (Label)e.Row.FindControl("lblLatitud");
+                Label lblLongitud = (Label)e.Row.FindControl("lblLongitud");
+
+                var divId = string.Format("map_{0}", e.Row.RowIndex.ToString());
+                var mapPanel = e.Row.Cells[8].FindControl("mapPanel") as Panel;
+
+                var div = new HtmlGenericControl("div");
+                div.Attributes.Add("id", divId);
+                div.Attributes.Add("style", "width:200px; height:200px");
+                mapPanel.Controls.Add(div);
+
+
+                var script = new HtmlGenericControl("script");
+                script.InnerHtml = @"
+                $('document').ready(function() {
+                var myLatLng = { lat: parseFloat(" + lblLatitud.Text + "), lng: parseFloat(" + lblLongitud.Text + ") };";
+                script.InnerHtml += @"
+                 var map = new google.maps.Map(document.getElementById('" + divId + "'), {zoom: 14,center: myLatLng}); });";
+
+                script.Attributes.Add("class", "mapdiv");
+                mapPanel.Controls.Add(script);
+
+
             }
 
 

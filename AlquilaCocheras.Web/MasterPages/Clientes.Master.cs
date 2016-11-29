@@ -14,21 +14,21 @@ namespace AlquilaCocheras.Web.MasterPages
         {
             if (!IsPostBack)
             {
-                if (Session["ROL"] != null && Session["ROL"].ToString() != ConfigurationManager.AppSettings["PerfilCliente"].ToString())
+                if (Session["ROL"] != null)
                 {
                     if (Session["ROL"].ToString() == ConfigurationManager.AppSettings["PerfilPropietario"].ToString()) //PROPIETARIO
                         Response.Redirect(ConfigurationManager.AppSettings["PropietarioInicio"].ToString());
-                    else //ANONIMO
-                    {
-                        Session["ROL"] = null;
-                        if (Request.QueryString == null)
-                            Response.Redirect("../login.aspx");
-                        else
-                            if (Request.QueryString["idcochera"] != null)
-                                Response.Redirect("../login.aspx?idCochera=" + Request.QueryString["idCochera"].ToString());
-                    }
+                    //else
+                    //  CLIENTE (NO HACE NADA)
                 }
-                //CLIENTE (NO HACE NADA)
+                else //ANONIMO (Session["ROL"] = null)
+                {                    
+                    if (Request.QueryString == null)
+                        Response.Redirect("../login.aspx");
+                    else
+                        if (Request.QueryString["idcochera"] != null)
+                            Response.Redirect("../login.aspx?idCochera=" + Request.QueryString["idCochera"].ToString());
+                }                
             }
         }
     }

@@ -15,8 +15,7 @@
     la puntuación promedio        
     y el link a confirmar reserva que esta agregado abajo como asp:HyperLink, 
         donde deberán cambiarle dinamicamente el link y ponerle el idcochera correspondiente
-    --%><%--<asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>--%><%--<div id="map" style="width:100%;height:500px"></div>--%>    <%--<asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>--%><%--<div id="map" style="width:100%;height:500px"></div>--%>
-    <%--<asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>--%>
+    --%><%--<asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>--%><%--<div id="map" style="width:100%;height:500px"></div>--%>    <%--<asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>--%><%--<div id="map" style="width:100%;height:500px"></div>--%>    <%--<asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>--%>
 
     <uc:Buscador runat="server" ID="ucBuscador" EnableViewState="false" />
 
@@ -53,12 +52,28 @@
                         <asp:Label ID="lblFotoURL" runat="server" Text='<%# Bind("Imagen") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Mapa" Visible="False">
+                <asp:TemplateField HeaderText="Latitud" ShowHeader="False" Visible="False">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Latitud") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblLatitud" runat="server" Text='<%# Bind("Latitud") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Longitud" ShowHeader="False" Visible="False">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("Longitud") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblLongitud" runat="server" Text='<%# Bind("Longitud") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Mapa">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Mapa") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <div id="map" class="fotoGrilla"></div>
+                        <asp:Panel ID="mapPanel" runat="server"></asp:Panel>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Puntuacion">
@@ -91,7 +106,6 @@
         </asp:GridView>
     </div>
     <%--<asp:HyperLink ID="aConfirmar" runat="server" ClientIDMode="Static" NavigateUrl="/clientes/confirmar-reserva.aspx?idcochera=123">Reservar</asp:HyperLink>--%>
-
     <%--<div id="map" style="width:100%;height:500px"></div>--%>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD-fKIjX1fsTcfx56YpRDrzMIVJPGiO0&callback=myMap"></script>
 
