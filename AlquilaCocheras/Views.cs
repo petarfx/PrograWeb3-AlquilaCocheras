@@ -75,59 +75,38 @@ namespace AlquilaCocheras
                          || (fi >= r.FechaInicio && ff >= r.FechaFin && fi < r.FechaFin)
                          )
 
-                         
+
                         // &&
-                        // (      //*8*   *10*  (12)  (16)
-                        //     //1    hi  AA  hf  ZZ
-                        //     (
-                        //        (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) <= 0)
-                        //        && (String.Compare(hf.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
-                        //        && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) <= 0)
-                        //    )
-                        //    //2 hi  AA  ZZ  hf
-                        //    ||
-                        //    (
-                        //        (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) <= 0)
-                        //        && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) >= 0)
-                        //    )
-                        //    //3  AA hi  hf  ZZ
-                        //    ||
-                        //    (
-                        //        (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
-                        //        && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) <= 0)
-                        //    )
-                        //    //4 AA  hi  ZZ  hf
-                        //    || (
-                        //        (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
-                        //        && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) >= 0)
-                        //        && (String.Compare(hi.Substring(0, 2), r.HoraFin.Substring(0, 2)) < 0)
-                        //    )
-                        //)
-                         
+                             // (      //*8*   *10*  (12)  (16)
+                             //     //1    hi  AA  hf  ZZ
+                             //     (
+                             //        (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) <= 0)
+                             //        && (String.Compare(hf.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
+                             //        && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) <= 0)
+                             //    )
+                             //    //2 hi  AA  ZZ  hf
+                             //    ||
+                             //    (
+                             //        (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) <= 0)
+                             //        && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) >= 0)
+                             //    )
+                             //    //3  AA hi  hf  ZZ
+                             //    ||
+                             //    (
+                             //        (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
+                             //        && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) <= 0)
+                             //    )
+                             //    //4 AA  hi  ZZ  hf
+                             //    || (
+                             //        (String.Compare(hi.Substring(0, 2), r.HoraInicio.Substring(0, 2)) >= 0)
+                             //        && (String.Compare(hf.Substring(0, 2), r.HoraFin.Substring(0, 2)) >= 0)
+                             //        && (String.Compare(hi.Substring(0, 2), r.HoraFin.Substring(0, 2)) < 0)
+                             //    )
+                             //)
+
                         )
                          select r
                          ).ToList();
-            //select new Reservas
-            //{
-            //    IdCochera = c.IdCochera,
-            //    Precio = c.Precio,
-            //    IdPropietario = c.IdPropietario,
-
-            //    FechaInicio = c.FechaInicio,
-            //    FechaFin = c.FechaFin,
-            //    HoraInicio = c.HoraInicio,
-            //    HoraFin = c.HoraFin,
-
-            //    Ubicacion = c.Ubicacion,
-            //    Imagen = c.Imagen,
-            //    Latitud = c.Latitud,
-            //    Longitud = c.Longitud,
-            //    MetrosCuadrados = c.MetrosCuadrados,
-            //    TipoVehiculo = c.TipoVehiculo,
-            //    //Datos del propietario
-            //    Apellido = u.Apellido,
-            //    Nombre = u.Nombre
-            //}).ToList();
             return query;
         }
 
@@ -185,9 +164,9 @@ namespace AlquilaCocheras
                              IdCochera = r.IdCochera,
                              FechaInicio = r.FechaInicio,
                              FechaFin = r.FechaFin,
-                             Horario2 = r.HoraInicio + "-" + r.HoraFin, 
-                             Precio = r.Precio,                             
-                             Puntuacion = r.Puntuacion                             
+                             Horario2 = r.HoraInicio + "-" + r.HoraFin,
+                             Precio = r.Precio,
+                             Puntuacion = r.Puntuacion
                          }).ToList();
             return query;
         }
@@ -226,6 +205,35 @@ namespace AlquilaCocheras
                          select r).Count();
             return query;
         }
+
+
+        public bool ReservaHorario(int idCochera, string hora, DateTime fecha)
+        {
+            TP_20162CEntities dc = new TP_20162CEntities();
+            var query = (from r in dc.Reservas
+                         where r.IdCochera == idCochera
+                         && (String.Compare(r.HoraInicio.Substring(0, 2), hora) <= 0
+                         && String.Compare(r.HoraFin.Substring(0, 2), hora) >= 0)
+                         && (r.FechaInicio <= fecha
+                         && r.FechaFin >= fecha)
+                         select r).Count();
+            if (query > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public List<Reservas> ReservaDia(int idCochera, DateTime fecha)
+        {
+            TP_20162CEntities dc = new TP_20162CEntities();
+            var query = (from r in dc.Reservas
+                         where r.IdCochera == idCochera
+                         && (r.FechaInicio <= fecha
+                         && r.FechaFin >= fecha)
+                         select r).ToList();
+            return query;
+        }
+
 
     }
 }

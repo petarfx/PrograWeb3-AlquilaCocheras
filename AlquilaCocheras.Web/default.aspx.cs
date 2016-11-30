@@ -57,17 +57,66 @@ namespace AlquilaCocheras.Web
             DateTime FF = ucBuscador.myFechaFin.Trim() == string.Empty ? Convert.ToDateTime(Helper.dateFar) : Convert.ToDateTime(ucBuscador.myFechaFin);
 
 
-
             //usando el webservice
             ServiceReference.CocherasSoapClient servicio = new ServiceReference.CocherasSoapClient();
-            gvCocheras.DataSource = servicio.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
-            gvCocheras.DataBind();
-
-
-            //Sin usar el webservice
-            //servicios.Cocheras ws = new servicios.Cocheras();
-            //gvCocheras.DataSource = ws.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
+            //gvCocheras.DataSource = servicio.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
             //gvCocheras.DataBind();
+
+
+            #region validoLugaresDisponibles
+            //obtengo tods las cocheras para los parametros indicados
+            List<AlquilaCocheras.ServiceReference.cocheraDTO> lc = (List<AlquilaCocheras.ServiceReference.cocheraDTO>)servicio.ObtenerCocheras(ucBuscador.myUbicacion, FI, FF).ToList();
+
+            int cHoraDesde;
+            int cHoraHasta;
+            DateTime cFechaInicio;
+            DateTime cFechaFin;
+            bool tieneReserva;
+            List<AlquilaCocheras.ServiceReference.cocheraDTO> lDisponibles = new List<AlquilaCocheras.ServiceReference.cocheraDTO>();
+
+            foreach (AlquilaCocheras.ServiceReference.cocheraDTO li in lc)
+            {
+                //datosCochera
+                cHoraHasta = Convert.ToInt32(li.HoraFin.Substring(0, 2));
+                cFechaInicio = li.FechaInicio;
+                cFechaFin = li.FechaFin;
+                tieneReserva = true;
+                do
+                {
+                    cHoraDesde = Convert.ToInt32(li.HoraInicio.Substring(0, 2));
+                    
+
+                    //consulto x dia
+                    Views vdia = new Views();
+                    List<Reservas> rd = vdia.ReservaDia(li.IdCochera, cFechaInicio);
+                    if (rd.Count() > 0)
+                    {
+                        while (cHoraDesde <= cHoraHasta && tieneReserva)
+                        {
+                            Views v = new Views();
+                            if (v.ReservaHorario(li.IdCochera, cHoraDesde.ToString("00.##"), cFechaInicio))
+                                cHoraDesde++;
+                            else
+                                tieneReserva = false;
+                        }
+
+                        cFechaInicio = cFechaInicio.AddDays(1);
+                    }
+                    else
+                        tieneReserva = false;
+                } while (cFechaInicio <= cFechaFin && tieneReserva);
+
+
+                if (!tieneReserva)
+                    lDisponibles.Add(li);
+
+            }
+
+            gvCocheras.DataSource = lDisponibles;
+            gvCocheras.DataBind();
+            #endregion 
+
+
         }
         protected void gvCocheras_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -113,9 +162,9 @@ namespace AlquilaCocheras.Web
                 var script = new HtmlGenericControl("script");
                 script.InnerHtml = @"
                 $('document').ready(function() {
-                var myLatLng = { lat: parseFloat("+ lblLatitud.Text + "), lng: parseFloat("+ lblLongitud.Text + ") };";
+                var myLatLng = { lat: parseFloat(" + lblLatitud.Text + "), lng: parseFloat(" + lblLongitud.Text + ") };";
                 script.InnerHtml += @"
-                 var map = new google.maps.Map(document.getElementById('" + divId+ "'), {zoom: 14,center: myLatLng}); });";
+                 var map = new google.maps.Map(document.getElementById('" + divId + "'), {zoom: 14,center: myLatLng}); });";
 
                 script.Attributes.Add("class", "mapdiv");
                 mapPanel.Controls.Add(script);

@@ -44,6 +44,8 @@ namespace AlquilaCocheras.Web.servicios
                              Longitud = c.Longitud,
                              FechaInicio = c.FechaInicio,
                              FechaFin = c.FechaFin,
+                             HoraInicio = c.HoraInicio,
+                             HoraFin = c.HoraFin,
                              //ApeYNom = u.Apellido + " " + u.Nombre,
                              Apellido = u.Apellido,
                              Nombre = u.Nombre,
